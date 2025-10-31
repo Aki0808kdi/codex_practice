@@ -3,20 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Prompt Competition 2024</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <title>AIプロンプト Competition 2024</title>
   <style>
     :root {
-      color-scheme: light;
-      --bg: radial-gradient(circle at top left, #7b61ff, #0a0f2e);
-      --accent: #f9a826;
-      --accent-light: rgba(249, 168, 38, 0.2);
-      --card-bg: rgba(12, 19, 52, 0.65);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text-main: #f5f7ff;
-      --text-dim: rgba(245, 247, 255, 0.75);
+      --primary: #5c6bf2;
+      --secondary: #ffb64c;
+      --dark: #222244;
+      --light: #f4f6ff;
+      --text: #2e2f3e;
     }
 
     * {
@@ -25,484 +19,340 @@
 
     body {
       margin: 0;
-      font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      min-height: 100vh;
-    }
-
-    .background {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      overflow: hidden;
-      z-index: -2;
-    }
-
-    .orb {
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.7;
-      animation: float 12s ease-in-out infinite;
-    }
-
-    .orb:nth-child(1) {
-      top: -120px;
-      left: -150px;
-      background: #8a5dff;
-    }
-
-    .orb:nth-child(2) {
-      bottom: -160px;
-      right: -120px;
-      background: #ff5f8a;
-      animation-delay: 3s;
-    }
-
-    .orb:nth-child(3) {
-      top: 40%;
-      left: 60%;
-      background: #33f9c7;
-      animation-delay: 6s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate3d(0, 0, 0);
-      }
-      50% {
-        transform: translate3d(30px, -40px, 0);
-      }
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Helvetica Neue', sans-serif;
+      background: linear-gradient(135deg, var(--light), #ffffff);
+      color: var(--text);
+      line-height: 1.7;
     }
 
     header {
-      padding: 32px 5vw 0;
+      background: radial-gradient(circle at top left, rgba(92, 107, 242, 0.85), rgba(92, 107, 242, 0.95)),
+                  url('https://images.unsplash.com/photo-1526378722370-9c0581813fd9?auto=format&fit=crop&w=1400&q=80') center/cover;
+      color: #fff;
+      padding: 120px 20px 160px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(92, 107, 242, 0.85) 0%, rgba(40, 46, 110, 0.7) 100%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    header nav a {
-      color: var(--text-dim);
-      text-decoration: none;
-      margin-left: 24px;
-      font-weight: 600;
-      transition: color 0.2s ease;
-    }
-
-    header nav a:hover {
-      color: var(--accent);
-    }
-
-    .hero {
-      padding: 90px 5vw 60px;
-      display: grid;
-      gap: 36px;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      align-items: center;
-    }
-
-    .hero-copy h1 {
-      font-size: clamp(2.8rem, 5vw, 4.2rem);
-      line-height: 1.1;
-      margin: 0 0 20px;
-    }
-
-    .hero-copy p {
-      margin: 0 0 28px;
-      font-size: 1.1rem;
-      color: var(--text-dim);
-    }
-
-    .tagline {
+    .cta-button {
       display: inline-flex;
       align-items: center;
-      background: var(--accent-light);
-      color: var(--accent);
-      padding: 6px 18px;
-      border-radius: 999px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    .cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .cta-group a {
+      justify-content: center;
       padding: 14px 28px;
-      border-radius: 999px;
-      font-weight: 700;
+      border-radius: 32px;
+      border: none;
+      cursor: pointer;
       text-decoration: none;
+      font-weight: 600;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .cta-primary {
-      background: linear-gradient(135deg, #ff8a3d, #ffd166);
-      color: #1a1a1a;
-      box-shadow: 0 20px 40px rgba(255, 148, 60, 0.35);
-    }
-
-    .cta-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 24px 48px rgba(255, 148, 60, 0.45);
+      background: var(--secondary);
+      color: var(--dark);
+      box-shadow: 0 14px 28px rgba(255, 182, 76, 0.35);
     }
 
     .cta-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.45);
-      color: var(--text-main);
-      backdrop-filter: blur(10px);
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.6);
     }
 
-    .hero-card {
-      background: rgba(12, 19, 52, 0.6);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 24px;
-      display: grid;
-      gap: 18px;
+    .cta-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 32px rgba(33, 45, 135, 0.25);
     }
 
-    .hero-card h3 {
-      margin: 0;
-      font-size: 1.1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-    }
-
-    .hero-card ul {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .hero-card li span {
-      display: block;
-      font-size: 1.2rem;
-      font-weight: 700;
+    main {
+      padding: 60px 20px;
     }
 
     section {
-      padding: 60px 5vw;
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      background: #fff;
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: 0 20px 50px rgba(92, 107, 242, 0.15);
     }
 
-    .section-title {
-      font-size: 2.4rem;
-      margin-bottom: 24px;
+    h2 {
+      font-size: 2rem;
+      margin-top: 0;
+      color: var(--dark);
     }
 
     .grid {
       display: grid;
-      gap: 24px;
-    }
-
-    .grid-cols-3 {
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
     }
 
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 18px 40px rgba(10, 12, 31, 0.45);
-      backdrop-filter: blur(18px);
+      background: var(--light);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: inset 0 0 0 1px rgba(92, 107, 242, 0.08);
     }
 
     .card h3 {
       margin-top: 0;
-      margin-bottom: 12px;
-      font-size: 1.4rem;
-    }
-
-    .card p, .card li {
-      color: var(--text-dim);
-      line-height: 1.6;
+      color: var(--primary);
+      font-size: 1.3rem;
     }
 
     .timeline {
-      position: relative;
-      padding-left: 28px;
-      border-left: 2px dashed rgba(255, 255, 255, 0.35);
       display: grid;
-      gap: 24px;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -12px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 18px rgba(249, 168, 38, 0.6);
-      margin-top: 4px;
+      gap: 20px;
+      margin-top: 32px;
     }
 
     .timeline-item {
-      position: relative;
+      background: var(--light);
+      padding: 24px;
+      border-radius: 18px;
+      border-left: 5px solid var(--secondary);
     }
 
-    .highlight {
+    .timeline-item span {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .prize-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      align-items: center;
+      gap: 16px;
     }
 
-    .highlight img {
-      width: 100%;
-      border-radius: 24px;
-      box-shadow: 0 20px 44px rgba(12, 19, 52, 0.8);
-    }
-
-    .badge-list {
+    .prize-list li {
+      background: var(--light);
+      padding: 18px;
+      border-radius: 16px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      align-items: center;
+      gap: 12px;
     }
 
-    .badge {
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 0.95rem;
-      font-weight: 600;
+    .prize-rank {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--secondary);
+      width: 60px;
+      text-align: center;
     }
 
     .faq {
-      display: grid;
-      gap: 18px;
+      margin-top: 32px;
     }
 
-    .faq-item {
-      background: rgba(255, 255, 255, 0.04);
+    details {
+      background: var(--light);
+      padding: 18px 24px;
       border-radius: 16px;
-      padding: 20px 24px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 12px;
     }
 
-    .faq-item h4 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
+    summary {
+      font-weight: 600;
+      cursor: pointer;
     }
 
     footer {
-      padding: 36px 5vw 60px;
       text-align: center;
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.9rem;
+      padding: 40px 20px 60px;
+      color: #6c6f85;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 640px) {
       header {
+        padding: 100px 16px 120px;
+      }
+
+      section {
+        padding: 36px 24px;
+      }
+
+      .cta-buttons {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      header nav a {
-        margin: 0 12px 0 0;
-      }
-
-      .hero {
-        padding-top: 70px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="background">
-    <div class="orb"></div>
-    <div class="orb"></div>
-    <div class="orb"></div>
-  </div>
-
   <header>
-    <div class="logo">
-      <span class="tagline">AI PROMPT COMPETITION</span>
+    <div class="hero-content">
+      <p>Prompt Creators United presents</p>
+      <h1>AIプロンプト Competition 2024</h1>
+      <p>世界中のクリエイターが集う、AIプロンプトの祭典。ひらめきと実験が交差する3週間で、未来のアイデアを一緒に描こう。</p>
+      <div class="cta-buttons">
+        <a class="cta-button cta-primary" href="#entry">今すぐエントリー</a>
+        <a class="cta-button cta-secondary" href="#overview">イベント概要を見る</a>
+      </div>
     </div>
-    <nav>
-      <a href="#about">概要</a>
-      <a href="#schedule">スケジュール</a>
-      <a href="#prizes">賞品</a>
-      <a href="#faq">FAQ</a>
-      <a href="#entry">参加登録</a>
-    </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <h1>AIプロンプトで世界を驚かせよう。</h1>
-        <p>
-          生成AIの可能性を解き放つ、国内最大級のプロンプト・コンペティションが開幕！
-          テーマは「想像力のアップグレード」。トップクリエイターと共に、創造の限界を超える作品を生み出してください。
-        </p>
-        <div class="cta-group">
-          <a class="cta-primary" href="#entry">今すぐエントリー</a>
-          <a class="cta-secondary" href="#download">募集要項をダウンロード</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <h3>Key Highlights</h3>
-        <ul>
-          <li>
-            <span>50万円</span>
-            グランプリ賞金。企業コラボのチャンスも！
-          </li>
-          <li>
-            <span>3部門</span>
-            ビジュアル、テキスト、プロダクトの3カテゴリー。
-          </li>
-          <li>
-            <span>12.07 SUN</span>
-            Final Stage @ Tokyo / Live配信あり。
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="about">
-      <h2 class="section-title">コンペティション概要</h2>
-      <div class="grid grid-cols-3">
+    <section id="overview">
+      <h2>Competition Overview</h2>
+      <p>AIプロンプト Competitionは、生成AIを扱うクリエイター、エンジニア、デザイナー、そして学習者が互いにスキルを磨き合い、刺激し合うためのオンラインイベントです。AIとの共創で価値を生み出すプロンプトを募集し、アイデアの質、実用性、ストーリーテリングに至るまで、総合的に評価します。</p>
+      <div class="grid">
         <div class="card">
-          <h3>テーマ：想像力のアップグレード</h3>
-          <p>
-            最新の生成AIツールを駆使して、社会・文化・ビジネスに新しい価値をもたらすプロンプトを提案してください。
-            表現の形式は問いません。重要なのは、あなたのビジョンがどこまで未来を描けるかです。
-          </p>
+          <h3>全体テーマ</h3>
+          <p>「AIと共に描く新しい日常」<br />AIが日常生活や仕事に溶け込む未来を、自由に想像してください。</p>
         </div>
         <div class="card">
-          <h3>部門</h3>
-          <ul>
-            <li><strong>ビジュアル部門：</strong>驚きの映像・アートワーク。</li>
-            <li><strong>テキスト部門：</strong>物語、詩、コピー、企画書。</li>
-            <li><strong>プロダクト部門：</strong>サービス設計、UI/UX、体験デザイン。</li>
-          </ul>
+          <h3>応募カテゴリ</h3>
+          <p>テキスト生成 / 画像生成 / コード生成 / 実用ツールプロンプト / ワイルドカードの全5部門。</p>
         </div>
         <div class="card">
-          <h3>評価ポイント</h3>
-          <ul>
-            <li>独創性とインパクト</li>
-            <li>プロンプトの再現性・応用性</li>
-            <li>社会的意義・ビジネス価値</li>
-          </ul>
+          <h3>審査方法</h3>
+          <p>第一線で活躍するクリエイターやAI研究者による審査と、コミュニティ投票のハイブリッド方式。</p>
         </div>
       </div>
     </section>
 
-    <section id="schedule">
-      <h2 class="section-title">スケジュール</h2>
+    <section>
+      <h2>Why Join?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>世界に発信</h3>
+          <p>トップ入賞者は国際的なメディアで紹介。あなたのプロンプトが世界中のクリエイターに刺激を与えます。</p>
+        </div>
+        <div class="card">
+          <h3>専門家メンタリング</h3>
+          <p>期間中は審査員によるライブレビューや、豪華ゲストによるワークショップを開催。</p>
+        </div>
+        <div class="card">
+          <h3>コミュニティ</h3>
+          <p>Slackコミュニティで仲間と交流。即興プロンプトバトルや共同制作のチャンスも。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Timeline</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <h3>エントリー開始 — 10月1日</h3>
-          <p>特設サイトでオンライン応募。初回参加者向けのオリエンテーション動画を配信。</p>
+          <span>8月1日(木)</span>
+          <strong>Kickoff Webinar</strong>
+          <p>イベントの概要や審査基準、テーマの深堀りをライブ配信でお届けします。</p>
         </div>
         <div class="timeline-item">
-          <h3>ワークショップ週間 — 10月7日〜13日</h3>
-          <p>AIリサーチャー、プロンプトエンジニアによる集中セッション。参加者限定コミュニティで最新のTipsを共有。</p>
+          <span>8月7日(水) - 8月25日(日)</span>
+          <strong>Submission Window</strong>
+          <p>エントリーは一人3作品まで。提出フォームからAI生成結果とプロセスを共有してください。</p>
         </div>
         <div class="timeline-item">
-          <h3>作品提出締切 — 11月10日</h3>
-          <p>提出後もメンターによるフィードバックが受けられるリビジョン期間を用意。</p>
-        </div>
-        <div class="timeline-item">
-          <h3>最終審査＆ショーケース — 12月7日</h3>
-          <p>東京・虎ノ門ヒルズでのライブピッチ。各部門優秀作品は国内外のメディアに向けて発信。</p>
+          <span>8月30日(金)</span>
+          <strong>Final Showcase</strong>
+          <p>トップ10の最終プレゼンテーションと受賞者発表をオンライン配信で実施します。</p>
         </div>
       </div>
     </section>
 
-    <section id="prizes">
-      <h2 class="section-title">豪華賞品＆サポート</h2>
-      <div class="grid grid-cols-3">
-        <div class="card">
-          <h3>グランプリ</h3>
-          <p>賞金50万円＋生成AIスタートアップとの共同プロジェクト参画権。</p>
-        </div>
-        <div class="card">
-          <h3>部門賞</h3>
-          <p>各部門に賞金10万円。副賞として最新GPUクラウドクレジット、AIツール年間ライセンスを授与。</p>
-        </div>
-        <div class="card">
-          <h3>コミュニティ賞</h3>
-          <p>オンライン投票で決定。AI専門誌・Podcastでの特集出演、コミュニティスポンサーからの特別ギフト。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="highlight">
-      <div>
-        <h2 class="section-title">審査員・ゲストスピーカー</h2>
-        <p>
-          AI研究、クリエイティブ、ビジネスの最前線で活躍するトップランナーが審査に参加。
-          ドキュメンタリー監督、ゲームクリエイター、著名プロンプトエンジニアなど、多様な視点から評価します。
-        </p>
-        <div class="badge-list">
-          <span class="badge">OpenAIプロンプトリード</span>
-          <span class="badge">MITメディアラボ研究員</span>
-          <span class="badge">受賞歴多数のXRディレクター</span>
-          <span class="badge">AIスタートアップ創業者</span>
-        </div>
-      </div>
-      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="AIイベントの写真" />
-    </section>
-
-    <section id="download">
-      <h2 class="section-title">資料ダウンロード</h2>
-      <div class="card">
-        <p>
-          参加規約、提出フォーマット、審査基準の詳細をまとめた募集要項（PDF）をご用意しています。チームでの参加を予定している方は、事前に共有の上で準備を進めてください。
-        </p>
-        <a class="cta-secondary" href="#">募集要項（PDF）を受け取る</a>
-      </div>
+    <section>
+      <h2>Prizes</h2>
+      <ul class="prize-list">
+        <li>
+          <span class="prize-rank">🥇</span>
+          <div>
+            <strong>Grand Prize</strong>
+            <p>賞金30万円 + 海外AIカンファレンスへの招待 + 審査員との1on1メンタリング</p>
+          </div>
+        </li>
+        <li>
+          <span class="prize-rank">🥈</span>
+          <div>
+            <strong>Second Prize</strong>
+            <p>賞金10万円 + 国際共同プロジェクト参加権</p>
+          </div>
+        </li>
+        <li>
+          <span class="prize-rank">🥉</span>
+          <div>
+            <strong>Community Choice</strong>
+            <p>賞金5万円 + 人気クリエイターとのコラボ記事掲載</p>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <section id="entry">
-      <h2 class="section-title">エントリー方法</h2>
-      <div class="card">
-        <ol>
-          <li>下記フォームで必要事項を入力し、参加登録を完了させます。</li>
-          <li>登録完了メールのリンクから、参加者コミュニティ（Discord）に参加。</li>
-          <li>インスピレーションを広げるリソース集、ワークショップ情報をチェック。</li>
-          <li>11月10日までに作品を提出し、最終審査会でプレゼンテーション。</li>
-        </ol>
-        <a class="cta-primary" href="#">エントリーフォームを開く</a>
+      <h2>How to Enter</h2>
+      <ol>
+        <li>公式Discordコミュニティに参加し、#competition チャンネルで自己紹介。</li>
+        <li>テンプレートに沿ってプロンプトのコンセプトと生成結果をまとめる。</li>
+        <li>8月25日(日) 23:59 JST までに提出フォームからエントリー。</li>
+      </ol>
+      <p>個人でもチームでも参加OK。学生の方は「U25トラック」へ登録すると特別賞のチャンスも！</p>
+      <div class="cta-buttons" style="margin-top: 32px;">
+        <a class="cta-button cta-primary" href="https://example.com/entry" target="_blank" rel="noopener">エントリーフォームへ</a>
+        <a class="cta-button cta-secondary" href="https://example.com/discord" target="_blank" rel="noopener">Discordに参加</a>
       </div>
     </section>
 
-    <section id="faq">
-      <h2 class="section-title">FAQ</h2>
+    <section>
+      <h2>FAQ</h2>
       <div class="faq">
-        <div class="faq-item">
-          <h4>チーム参加は可能ですか？</h4>
-          <p>最大4名までのチーム参加が可能です。登録フォームで代表者情報とメンバー情報を入力してください。</p>
-        </div>
-        <div class="faq-item">
-          <h4>使用できるツールに制限はありますか？</h4>
-          <p>主要な生成AIプラットフォーム（GPT、Midjourney、Stable Diffusionなど）の利用が可能です。独自モデルの利用も歓迎します。</p>
-        </div>
-        <div class="faq-item">
-          <h4>初心者でも参加できますか？</h4>
-          <p>もちろん！ ワークショップ週間で基本的なプロンプト設計スキルを学べます。メンターが個別にサポートします。</p>
-        </div>
+        <details>
+          <summary>英語での応募は可能ですか？</summary>
+          <p>はい。日本語・英語どちらでも応募可能です。審査もバイリンガル体制で実施します。</p>
+        </details>
+        <details>
+          <summary>使用できるAIツールに制限はありますか？</summary>
+          <p>制限はありません。商用利用可能な範囲で、自由にツールを組み合わせてください。</p>
+        </details>
+        <details>
+          <summary>チーム応募の場合の人数制限は？</summary>
+          <p>1チーム最大4名まで参加可能です。チーム内で役割分担を明確にしてください。</p>
+        </details>
       </div>
     </section>
   </main>
 
   <footer>
-    主催：AI Prompt Creators Guild / 協賛：Future Creators Lab, Next Vision Studio<br />
-    お問い合わせ：info@aiprompt-competition.jp
+    <p>© 2024 Prompt Creators United. All rights reserved.</p>
   </footer>
 </body>
 </html>
