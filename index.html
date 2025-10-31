@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Prompt Competition 2024</title>
+  <title>IKEA AI Prompt Competition 2024</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       color-scheme: light;
-      --bg: radial-gradient(circle at top left, #7b61ff, #0a0f2e);
-      --accent: #f9a826;
-      --accent-light: rgba(249, 168, 38, 0.2);
-      --card-bg: rgba(12, 19, 52, 0.65);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text-main: #f5f7ff;
-      --text-dim: rgba(245, 247, 255, 0.75);
+      --bg: radial-gradient(circle at top left, #0a2f74, #02112b 60%);
+      --accent: #ffcc00;
+      --accent-light: rgba(255, 204, 0, 0.18);
+      --ikea-blue: #0058a3;
+      --ikea-blue-soft: rgba(0, 88, 163, 0.82);
+      --card-bg: rgba(4, 22, 52, 0.7);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text-main: #f7f9ff;
+      --text-dim: rgba(235, 241, 255, 0.78);
     }
 
     * {
@@ -29,6 +31,7 @@
       background: var(--bg);
       color: var(--text-main);
       min-height: 100vh;
+      position: relative;
     }
 
     .background {
@@ -37,6 +40,22 @@
       background: var(--bg);
       overflow: hidden;
       z-index: -2;
+    }
+
+    .background::before {
+      content: '';
+      position: absolute;
+      inset: -60px;
+      background-image: repeating-linear-gradient(
+          -45deg,
+          rgba(0, 88, 163, 0.14) 0,
+          rgba(0, 88, 163, 0.14) 20px,
+          transparent 20px,
+          transparent 40px
+        ),
+        radial-gradient(circle at 10% 15%, rgba(255, 204, 0, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(255, 204, 0, 0.12), transparent 40%);
+      z-index: -1;
     }
 
     .orb {
@@ -52,20 +71,20 @@
     .orb:nth-child(1) {
       top: -120px;
       left: -150px;
-      background: #8a5dff;
+      background: rgba(0, 88, 163, 0.7);
     }
 
     .orb:nth-child(2) {
       bottom: -160px;
       right: -120px;
-      background: #ff5f8a;
+      background: rgba(255, 204, 0, 0.65);
       animation-delay: 3s;
     }
 
     .orb:nth-child(3) {
       top: 40%;
       left: 60%;
-      background: #33f9c7;
+      background: rgba(0, 88, 163, 0.6);
       animation-delay: 6s;
     }
 
@@ -83,6 +102,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .ikea-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      background: var(--accent);
+      color: var(--ikea-blue);
+      box-shadow: 0 12px 28px rgba(255, 204, 0, 0.4);
     }
 
     header nav a {
@@ -120,12 +151,13 @@
     .tagline {
       display: inline-flex;
       align-items: center;
-      background: var(--accent-light);
+      background: var(--ikea-blue);
       color: var(--accent);
       padding: 6px 18px;
       border-radius: 999px;
       font-weight: 600;
       letter-spacing: 0.04em;
+      box-shadow: 0 14px 30px rgba(0, 88, 163, 0.35);
     }
 
     .cta-group {
@@ -143,9 +175,9 @@
     }
 
     .cta-primary {
-      background: linear-gradient(135deg, #ff8a3d, #ffd166);
+      background: linear-gradient(135deg, #ffcc00, #ffe873);
       color: #1a1a1a;
-      box-shadow: 0 20px 40px rgba(255, 148, 60, 0.35);
+      box-shadow: 0 20px 40px rgba(255, 204, 0, 0.32);
     }
 
     .cta-primary:hover {
@@ -154,13 +186,14 @@
     }
 
     .cta-secondary {
-      border: 1px solid rgba(255, 255, 255, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       color: var(--text-main);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      background: rgba(0, 88, 163, 0.26);
     }
 
     .hero-card {
-      background: rgba(12, 19, 52, 0.6);
+      background: linear-gradient(160deg, rgba(0, 88, 163, 0.58), rgba(3, 25, 60, 0.72));
       border: 1px solid var(--card-border);
       border-radius: 20px;
       padding: 24px;
@@ -209,12 +242,12 @@
     }
 
     .card {
-      background: var(--card-bg);
+      background: linear-gradient(155deg, rgba(0, 88, 163, 0.32), rgba(6, 18, 42, 0.82));
       border: 1px solid var(--card-border);
       border-radius: 18px;
       padding: 28px;
-      box-shadow: 0 18px 40px rgba(10, 12, 31, 0.45);
-      backdrop-filter: blur(18px);
+      box-shadow: 0 22px 42px rgba(1, 13, 35, 0.6);
+      backdrop-filter: blur(20px);
     }
 
     .card h3 {
@@ -231,7 +264,7 @@
     .timeline {
       position: relative;
       padding-left: 28px;
-      border-left: 2px dashed rgba(255, 255, 255, 0.35);
+      border-left: 2px dashed rgba(255, 204, 0, 0.55);
       display: grid;
       gap: 24px;
     }
@@ -244,7 +277,7 @@
       height: 16px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 18px rgba(249, 168, 38, 0.6);
+      box-shadow: 0 0 18px rgba(255, 204, 0, 0.7);
       margin-top: 4px;
     }
 
@@ -265,6 +298,54 @@
       box-shadow: 0 20px 44px rgba(12, 19, 52, 0.8);
     }
 
+    .ikea-experience {
+      position: relative;
+      background: linear-gradient(145deg, rgba(255, 204, 0, 0.16), rgba(0, 88, 163, 0.18));
+      border-radius: 28px;
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 28px 52px rgba(0, 16, 38, 0.5);
+      overflow: hidden;
+    }
+
+    .ikea-experience::after {
+      content: '';
+      position: absolute;
+      inset: 10% -30%;
+      background: repeating-linear-gradient(90deg, rgba(0, 88, 163, 0.18) 0, rgba(0, 88, 163, 0.18) 18px, transparent 18px, transparent 36px);
+      opacity: 0.4;
+      transform: skewY(-6deg);
+      pointer-events: none;
+    }
+
+    .ikea-experience-content {
+      position: relative;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .ikea-experience .card-mini {
+      background: rgba(2, 24, 54, 0.72);
+      border-radius: 18px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 38px rgba(1, 15, 38, 0.55);
+    }
+
+    .ikea-experience .card-mini h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    .ikea-experience .card-mini p {
+      margin: 0;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
     .badge-list {
       display: flex;
       flex-wrap: wrap;
@@ -274,7 +355,8 @@
     .badge {
       padding: 8px 16px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 204, 0, 0.16);
+      color: var(--ikea-blue);
       font-size: 0.95rem;
       font-weight: 600;
     }
@@ -285,7 +367,7 @@
     }
 
     .faq-item {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(0, 88, 163, 0.18);
       border-radius: 16px;
       padding: 20px 24px;
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -329,7 +411,8 @@
 
   <header>
     <div class="logo">
-      <span class="tagline">AI PROMPT COMPETITION</span>
+      <span class="ikea-badge">IKEA</span>
+      <span class="tagline">Hej! AI PROMPT COMPETITION</span>
     </div>
     <nav>
       <a href="#about">概要</a>
@@ -343,10 +426,11 @@
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <h1>AIプロンプトで世界を驚かせよう。</h1>
+        <h1>IKEAと描く、暮らしを変えるAIアイデア。</h1>
         <p>
-          生成AIの可能性を解き放つ、国内最大級のプロンプト・コンペティションが開幕！
-          テーマは「想像力のアップグレード」。トップクリエイターと共に、創造の限界を超える作品を生み出してください。
+          スウェーデン発のライフスタイルブランドIKEAが贈る、初のAIプロンプト・コンペティション。
+          テーマは「より良い毎日を、プロンプトから」。IKEAのデザイン哲学と北欧の遊び心を掛け合わせ、
+          住まい・コミュニティ・サステナビリティをアップデートするアイデアを生み出してください。
         </p>
         <div class="cta-group">
           <a class="cta-primary" href="#entry">今すぐエントリー</a>
@@ -358,15 +442,15 @@
         <ul>
           <li>
             <span>50万円</span>
-            グランプリ賞金。企業コラボのチャンスも！
+            グランプリ賞金＋IKEA of Swedenとの共同検討権。
           </li>
           <li>
             <span>3部門</span>
-            ビジュアル、テキスト、プロダクトの3カテゴリー。
+            スペースデザイン、デジタル体験、サステナブルライフ。
           </li>
           <li>
-            <span>12.07 SUN</span>
-            Final Stage @ Tokyo / Live配信あり。
+            <span>12.07 SAT</span>
+            Final Stage @ IKEA Tokyo-Bay / Live配信あり。
           </li>
         </ul>
       </div>
@@ -376,27 +460,47 @@
       <h2 class="section-title">コンペティション概要</h2>
       <div class="grid grid-cols-3">
         <div class="card">
-          <h3>テーマ：想像力のアップグレード</h3>
+          <h3>テーマ：より良い毎日をつくるAI</h3>
           <p>
-            最新の生成AIツールを駆使して、社会・文化・ビジネスに新しい価値をもたらすプロンプトを提案してください。
-            表現の形式は問いません。重要なのは、あなたのビジョンがどこまで未来を描けるかです。
+            IKEAのビジョン「より快適でサステナブルな暮らしを、より多くの人々に届ける」をAIでアップデート。
+            プロンプトによる体験、サービス、ストアの新しいあり方を提案してください。
           </p>
         </div>
         <div class="card">
           <h3>部門</h3>
           <ul>
-            <li><strong>ビジュアル部門：</strong>驚きの映像・アートワーク。</li>
-            <li><strong>テキスト部門：</strong>物語、詩、コピー、企画書。</li>
-            <li><strong>プロダクト部門：</strong>サービス設計、UI/UX、体験デザイン。</li>
+            <li><strong>スペースデザイン：</strong>店舗・家庭の空間を変える没入型ビジュアル。</li>
+            <li><strong>デジタル体験：</strong>IKEAアプリやオンラインサービスを拡張するUX。</li>
+            <li><strong>サステナブルライフ：</strong>循環型社会を実現するライフハックやシステム。</li>
           </ul>
         </div>
         <div class="card">
           <h3>評価ポイント</h3>
           <ul>
-            <li>独創性とインパクト</li>
-            <li>プロンプトの再現性・応用性</li>
-            <li>社会的意義・ビジネス価値</li>
+            <li>北欧デザインの精神と遊び心</li>
+            <li>暮らしをより良くする実装可能性</li>
+            <li>サステナビリティ＆社会的インパクト</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="ikea-experience">
+        <h2 class="section-title">IKEAらしさを表現する3つのヒント</h2>
+        <div class="ikea-experience-content">
+          <div class="card-mini">
+            <h3>Lagom（ラゴム）</h3>
+            <p>心地よいバランスを大切に。ユーザーの暮らしにちょうど良く寄り添うプロンプト体験を設計しましょう。</p>
+          </div>
+          <div class="card-mini">
+            <h3>Smålandの遊び心</h3>
+            <p>子ども心を忘れずに、ワクワクするストーリーテリングや探索体験を盛り込みましょう。</p>
+          </div>
+          <div class="card-mini">
+            <h3>People &amp; Planet Positive</h3>
+            <p>循環型素材や省エネアイデアなど、地球と人に優しい暮らしの提案を意識してください。</p>
+          </div>
         </div>
       </div>
     </section>
@@ -405,20 +509,20 @@
       <h2 class="section-title">スケジュール</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <h3>エントリー開始 — 10月1日</h3>
-          <p>特設サイトでオンライン応募。初回参加者向けのオリエンテーション動画を配信。</p>
+          <h3>エントリー開始 — 9月20日</h3>
+          <p>IKEA Family会員限定の先行枠あり。参加者には北欧式ブレイクタイムキットをお届け。</p>
         </div>
         <div class="timeline-item">
           <h3>ワークショップ週間 — 10月7日〜13日</h3>
-          <p>AIリサーチャー、プロンプトエンジニアによる集中セッション。参加者限定コミュニティで最新のTipsを共有。</p>
+          <p>IKEAのデザイナーとAIリサーチャーが登場。ストア体験を題材にしたライブプロンプトセッションを実施。</p>
         </div>
         <div class="timeline-item">
           <h3>作品提出締切 — 11月10日</h3>
-          <p>提出後もメンターによるフィードバックが受けられるリビジョン期間を用意。</p>
+          <p>提出後もメンターによるフィードバックを実施。IKEA Labでのプロトタイピングサポートを抽選で提供。</p>
         </div>
         <div class="timeline-item">
           <h3>最終審査＆ショーケース — 12月7日</h3>
-          <p>東京・虎ノ門ヒルズでのライブピッチ。各部門優秀作品は国内外のメディアに向けて発信。</p>
+          <p>IKEA Tokyo-Bayでのショールーム展示＋ライブピッチ。入賞作品は世界各国のIKEAデジタルメディアで発信。</p>
         </div>
       </div>
     </section>
@@ -428,15 +532,15 @@
       <div class="grid grid-cols-3">
         <div class="card">
           <h3>グランプリ</h3>
-          <p>賞金50万円＋生成AIスタートアップとの共同プロジェクト参画権。</p>
+          <p>賞金50万円＋IKEAスウェーデン本社訪問ツアー。ストア実装に向けた共同開発プログラムへ招待。</p>
         </div>
         <div class="card">
           <h3>部門賞</h3>
-          <p>各部門に賞金10万円。副賞として最新GPUクラウドクレジット、AIツール年間ライセンスを授与。</p>
+          <p>各部門に賞金10万円。副賞としてIKEAギフトカード、サステナブル素材キット、AIツール年間ライセンス。</p>
         </div>
         <div class="card">
           <h3>コミュニティ賞</h3>
-          <p>オンライン投票で決定。AI専門誌・Podcastでの特集出演、コミュニティスポンサーからの特別ギフト。</p>
+          <p>オンライン投票で決定。IKEAポップアップでの展示機会と、IKEA Familyメディアでの特集掲載。</p>
         </div>
       </div>
     </section>
@@ -445,24 +549,25 @@
       <div>
         <h2 class="section-title">審査員・ゲストスピーカー</h2>
         <p>
-          AI研究、クリエイティブ、ビジネスの最前線で活躍するトップランナーが審査に参加。
-          ドキュメンタリー監督、ゲームクリエイター、著名プロンプトエンジニアなど、多様な視点から評価します。
+          IKEAのグローバルデザインチーム、北欧の建築家、国内外で活躍するプロンプトエンジニアが集結。
+          暮らしの課題を人間らしい視点で解決するかに注目し、多様な生活者の声を尊重した評価を行います。
         </p>
         <div class="badge-list">
-          <span class="badge">OpenAIプロンプトリード</span>
-          <span class="badge">MITメディアラボ研究員</span>
-          <span class="badge">受賞歴多数のXRディレクター</span>
-          <span class="badge">AIスタートアップ創業者</span>
+          <span class="badge">IKEA of Sweden デザインチーム</span>
+          <span class="badge">OpenAI プロンプトリード</span>
+          <span class="badge">北欧建築スタジオ代表</span>
+          <span class="badge">サーキュラーエコノミー研究者</span>
         </div>
       </div>
-      <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="AIイベントの写真" />
+      <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80" alt="IKEAのショールーム" />
     </section>
 
     <section id="download">
       <h2 class="section-title">資料ダウンロード</h2>
       <div class="card">
         <p>
-          参加規約、提出フォーマット、審査基準の詳細をまとめた募集要項（PDF）をご用意しています。チームでの参加を予定している方は、事前に共有の上で準備を進めてください。
+          参加規約、提出フォーマット、審査基準の詳細をまとめた募集要項（PDF）をご用意しています。IKEAのブランドアセットやストア図面の利用ガイドラインも含まれていますので、
+          チームでの参加を予定している方は事前に共有の上で準備を進めてください。
         </p>
         <a class="cta-secondary" href="#">募集要項（PDF）を受け取る</a>
       </div>
@@ -472,10 +577,10 @@
       <h2 class="section-title">エントリー方法</h2>
       <div class="card">
         <ol>
-          <li>下記フォームで必要事項を入力し、参加登録を完了させます。</li>
+          <li>下記フォームで必要事項を入力し、IKEA Family番号を登録。</li>
           <li>登録完了メールのリンクから、参加者コミュニティ（Discord）に参加。</li>
-          <li>インスピレーションを広げるリソース集、ワークショップ情報をチェック。</li>
-          <li>11月10日までに作品を提出し、最終審査会でプレゼンテーション。</li>
+          <li>ストア視察ツアーやバーチャルショールームでインスピレーションを収集。</li>
+          <li>11月10日までに作品を提出し、最終審査会でプロンプトと成果をプレゼンテーション。</li>
         </ol>
         <a class="cta-primary" href="#">エントリーフォームを開く</a>
       </div>
@@ -486,23 +591,23 @@
       <div class="faq">
         <div class="faq-item">
           <h4>チーム参加は可能ですか？</h4>
-          <p>最大4名までのチーム参加が可能です。登録フォームで代表者情報とメンバー情報を入力してください。</p>
+          <p>最大4名までのチーム参加が可能です。登録フォームで代表者情報とメンバー情報、IKEA Family番号を入力してください。</p>
         </div>
         <div class="faq-item">
           <h4>使用できるツールに制限はありますか？</h4>
-          <p>主要な生成AIプラットフォーム（GPT、Midjourney、Stable Diffusionなど）の利用が可能です。独自モデルの利用も歓迎します。</p>
+          <p>主要な生成AIプラットフォーム（GPT、Midjourney、Stable Diffusionなど）の利用が可能です。IKEAブランドガイドラインに沿ったビジュアル・コピー表現を心掛けてください。</p>
         </div>
         <div class="faq-item">
           <h4>初心者でも参加できますか？</h4>
-          <p>もちろん！ ワークショップ週間で基本的なプロンプト設計スキルを学べます。メンターが個別にサポートします。</p>
+          <p>もちろん！ ワークショップ週間で基本的なプロンプト設計スキルを学べます。IKEAのデザイナーとメンターが暮らしの課題探索をサポートします。</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    主催：AI Prompt Creators Guild / 協賛：Future Creators Lab, Next Vision Studio<br />
-    お問い合わせ：info@aiprompt-competition.jp
+    主催：IKEA Japan / 共催：AI Prompt Creators Guild, Circular Future Lab<br />
+    お問い合わせ：hello@ikea-aiprompt.jp
   </footer>
 </body>
 </html>
