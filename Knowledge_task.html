@@ -213,8 +213,10 @@
       </header>
 
       <section>
-        <h2>現在保有しているタスク（ボリューム順）</h2>
-        <p class="lead">未完了のタスクをボリュームの大きい順にソートし、投入リソースの重さを明確に示します。</p>
+        <h2>現在保有しているタスク（As-Is／ボリューム順）</h2>
+        <p class="lead">
+          未完了のタスクをボリュームの大きい順にソートし、現状の負荷とサポート業務への偏りを可視化します。
+        </p>
         <table>
           <thead>
             <tr>
@@ -272,26 +274,54 @@
             </tr>
           </tbody>
         </table>
+        <p class="lead" style="margin-top: 20px">
+          合計ボリュームは<span class="volume">118件</span>で、そのうち<span class="volume">72件（61%）</span>がサポート業務に紐づいています。
+        </p>
       </section>
 
       <section>
-        <h2>フォーカスプロジェクト関連タスクのみ</h2>
-        <p class="lead">今後最優先で取り組むべき Project Nebula に紐づくタスクを抽出しました。</p>
+        <h2>リソース配分シナリオ比較（As-Is → To-Be）</h2>
+        <p class="lead">サポート依頼を担当部門へ戻し、Project Nebula に集中した場合のインパクトを明確化します。</p>
+        <div class="grid-two">
+          <div class="card">
+            <h3>As-Is：現状の負荷構成</h3>
+            <ul>
+              <li>総ボリューム：<span class="volume">118件</span></li>
+              <li>サポート業務：<span class="volume">72件</span>（オンボーディング45件／研修18件／レポート9件）</li>
+              <li>Focus Project：<span class="volume">46件</span>（データ統合32件／KPI要件定義14件）</li>
+              <li>結果：サポート対応に時間を取られ、Nebulaの進捗が圧迫</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>To-Be：サポート返却後の集中状態</h3>
+            <ul>
+              <li>総ボリューム：<span class="volume">46件</span>（Nebula関連のみ）</li>
+              <li>サポート業務：<span class="volume">0件</span>（依頼元が自己完結）</li>
+              <li>空きキャパシティ：<span class="volume">+72件</span>分をNebulaの前倒し・品質強化に再配分</li>
+              <li>結果：ローンチ準備の主要マイルストーンにフルフォーカス可能</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>フォーカスプロジェクトのTo-Beタスク詳細</h2>
+        <p class="lead">Project Nebula に集中した場合の具体的な前倒し計画と担当を整理しました。</p>
         <div class="grid-two">
           <div class="card">
             <h3>データ統合スプリント（32件）</h3>
             <ul>
-              <li>データマッピング検証の継続（担当：田中）</li>
-              <li>外部APIスキーマの差異洗い出しと修正案提示（担当：佐藤）</li>
-              <li>ベンダーとの接続テストスケジュール確定（担当：伊藤）</li>
+              <li>データマッピング検証の完了スケジュールを1週間前倒し（担当：田中）</li>
+              <li>外部APIスキーマの差異解消プランを詳細化し承認取得（担当：佐藤）</li>
+              <li>ベンダー接続テストの並列実施体制を整備（担当：伊藤）</li>
             </ul>
           </div>
           <div class="card">
             <h3>KPIダッシュボード要件定義（14件）</h3>
             <ul>
-              <li>ワークショップ資料のドラフト共有（担当：鈴木）</li>
-              <li>ファネル指標の定義レビュー（担当：山本）</li>
-              <li>UIモックのフィードバック回収（担当：中村）</li>
+              <li>ワークショップ資料のドラフト共有とフィードバック反映（担当：鈴木）</li>
+              <li>ファネル指標・計測仕様の確定（担当：山本）</li>
+              <li>UIモックの検証サイクル短縮（担当：中村）</li>
             </ul>
           </div>
         </div>
