@@ -1,179 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>フォーカスプロジェクト向けタスク状況共有</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #0f172a;
-        --bg-accent: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), transparent 55%),
-          radial-gradient(circle at bottom right, rgba(165, 180, 252, 0.35), transparent 60%);
-        --panel: rgba(15, 23, 42, 0.85);
-        --panel-border: rgba(255, 255, 255, 0.12);
-        --text-main: #f8fafc;
-        --text-dim: rgba(226, 232, 240, 0.78);
-        --accent: #38bdf8;
-        --accent-strong: #0ea5e9;
-        --badge: rgba(56, 189, 248, 0.2);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-        background: var(--bg);
-        color: var(--text-main);
-        min-height: 100vh;
-        position: relative;
-        padding: 0;
-      }
-
-      body::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        background: var(--bg-accent);
-        z-index: -2;
-      }
-
-      .layout {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 48px clamp(16px, 5vw, 64px) 72px;
-        display: grid;
-        gap: 48px;
-      }
-
-      header {
-        display: grid;
-        gap: 16px;
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.9rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent);
-      }
-
-      h1 {
-        font-size: clamp(2rem, 4.2vw, 3.4rem);
-        line-height: 1.2;
-        margin: 0;
-      }
-
-      .subtitle {
-        font-size: 1rem;
-        color: var(--text-dim);
-        max-width: 720px;
-      }
-
-      section {
-        background: var(--panel);
-        border: 1px solid var(--panel-border);
-        border-radius: 18px;
-        padding: clamp(24px, 4vw, 40px);
-        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.55);
-      }
-
-      h2 {
-        margin-top: 0;
-        margin-bottom: 12px;
-        font-size: clamp(1.4rem, 3vw, 2rem);
-      }
-
-      .lead {
-        color: var(--text-dim);
-        margin-bottom: 24px;
-      }
-
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        color: var(--text-main);
-      }
-
-      thead th {
-        text-align: left;
-        font-size: 0.85rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        padding-bottom: 12px;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-      }
-
-      tbody td {
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
-        vertical-align: top;
-      }
-
-      tbody tr:last-child td {
-        border-bottom: none;
-      }
-
-      .volume {
-        font-weight: 700;
-        color: var(--accent);
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.85rem;
-        color: var(--accent);
-        background: var(--badge);
-        border-radius: 999px;
-        padding: 6px 12px;
-        margin-left: 10px;
-      }
-
-      .metrics {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 16px;
-        margin-top: 24px;
-      }
-
-      .metric {
-        padding: 16px 20px;
-        background: rgba(148, 163, 184, 0.08);
-        border: 1px solid rgba(148, 163, 184, 0.18);
-        border-radius: 14px;
-      }
-
-      .metric-label {
-        font-size: 0.85rem;
-        color: var(--text-dim);
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-      }
-
-      .metric-value {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-top: 8px;
-        color: var(--text-main);
-      }
-
-      .grid-two {
+ .grid-two {
         display: grid;
         gap: clamp(20px, 4vw, 32px);
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -196,6 +21,48 @@
         margin: 0;
         padding-left: 20px;
         color: var(--text-dim);
+      }
+
+      .timeline-wrapper {
+        overflow-x: auto;
+        margin-top: 24px;
+      }
+
+      .timeline-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 640px;
+      }
+
+      .timeline-table thead th,
+      .timeline-table tbody td {
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      }
+
+      .timeline-table thead th {
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+      }
+
+      .timeline-table tbody td:first-child {
+        font-weight: 600;
+        color: var(--text-main);
+        white-space: nowrap;
+      }
+
+      .timeline-phase {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(56, 189, 248, 0.14);
+        color: var(--accent);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
       }
 
       .next-step {
@@ -223,136 +90,7 @@
         .layout {
           padding-top: 32px;
         }
-
-        section {
-          padding: 24px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="layout">
-      <header>
-        <span class="eyebrow">Quarterly Management Brief</span>
-        <h1>フォーカスプロジェクト優先のためのタスク整理</h1>
-        <p class="subtitle">
-          現在アサインされているタスクのボリュームを可視化し、今後集中すべきプロジェクトに関連する業務へリソースをリフォーカスするための資料です。
-        </p>
-      </header>
-
-      <section>
-        <h2>現在保有しているタスク（As-Is／ボリューム順）</h2>
-        <p class="lead">未完了タスクをボリューム順に並べ、どこに工数が集中しているかを一目で把握できるよう整理しました。</p>
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 12%">順位</th>
-              <th style="width: 60%">タスク</th>
-              <th style="width: 28%">ボリューム</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>
-                顧客オンボーディング支援
-                <span class="badge">サポート</span>
-              </td>
-              <td class="volume">45件</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>
-                Project Nebula：データ統合スプリント
-                <span class="badge">Focus Project</span>
-              </td>
-              <td class="volume">32件</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>
-                地域パートナー研修フォロー
-                <span class="badge">サポート</span>
-              </td>
-              <td class="volume">18件</td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>
-                Project Nebula：KPIダッシュボード要件定義
-                <span class="badge">Focus Project</span>
-              </td>
-              <td class="volume">14件</td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>
-                インシデントレポートレビュー
-                <span class="badge">サポート</span>
-              </td>
-              <td class="volume">9件</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="metrics">
-          <div class="metric">
-            <div class="metric-label">総ボリューム</div>
-            <div class="metric-value">118件</div>
-            <p class="lead" style="margin: 12px 0 0">現状のアサイン総量</p>
-          </div>
-          <div class="metric">
-            <div class="metric-label">サポート業務</div>
-            <div class="metric-value">72件</div>
-            <p class="lead" style="margin: 12px 0 0">全体の61%を占有</p>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Focus Project</div>
-            <div class="metric-value">46件</div>
-            <p class="lead" style="margin: 12px 0 0">Nebula関連タスクの現在量</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h2>リソース配分シナリオ比較（As-Is → To-Be）</h2>
-        <p class="lead">サポート依頼を担当部門へ戻すことで、Nebulaに集中した際のキャパシティシフトを明確化します。</p>
-        <div class="grid-two">
-          <div class="card">
-            <h3>As-Is：現状の負荷構成</h3>
-            <ul>
-              <li>総ボリューム：<span class="volume">118件</span></li>
-              <li>サポート業務：<span class="volume">72件</span>（オンボーディング45件／研修18件／レポート9件）</li>
-              <li>Focus Project：<span class="volume">46件</span>（データ統合32件／KPI要件定義14件）</li>
-              <li>結果：支援タスクが時間の61%を消費し、Nebulaの前倒しが困難</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>To-Be：サポート返却後の集中状態</h3>
-            <ul>
-              <li>総ボリューム：<span class="volume">46件</span>（Nebula関連のみ）</li>
-              <li>サポート業務：<span class="volume">0件</span>（依頼元が自己完結）</li>
-              <li>空きキャパシティ：<span class="volume">+72件</span>分をNebulaの前倒し・品質強化へ再配分</li>
-              <li>結果：ローンチクリティカルなマイルストーンを全員でドライブ可能</li>
-            </ul>
-          </div>
-        </div>
-        <div class="metrics" style="margin-top: 32px">
-          <div class="metric">
-            <div class="metric-label">キャパシティ解放</div>
-            <div class="metric-value">+61%</div>
-            <p class="lead" style="margin: 12px 0 0">Nebula専念で活用できる時間増</p>
-          </div>
-          <div class="metric">
-            <div class="metric-label">Nebula集中率</div>
-            <div class="metric-value">100%</div>
-            <p class="lead" style="margin: 12px 0 0">To-Beでは全工数を重点施策へ</p>
-          </div>
-          <div class="metric">
-            <div class="metric-label">完了見込み</div>
-            <div class="metric-value">2週間前倒し</div>
-            <p class="lead" style="margin: 12px 0 0">集中的なリソース投入で想定</p>
-          </div>
-        </div>
+@@ -356,49 +398,145 @@
       </section>
 
       <section>
@@ -375,6 +113,102 @@
               <li>収益効果：ローンチ前倒しで来期ARRを+1.5億円押し上げるポテンシャル</li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>今期フォーカスプロジェクト Timeline Overview（仮）</h2>
+        <p class="lead">
+          各プロジェクトの主要マイルストーンを仮置きし、今期の3か月間での進行イメージを整理しました。
+        </p>
+        <div class="timeline-wrapper">
+          <table class="timeline-table">
+            <thead>
+              <tr>
+                <th style="width: 22%">Project</th>
+                <th style="width: 26%">Month 1</th>
+                <th style="width: 26%">Month 2</th>
+                <th style="width: 26%">Month 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>GenAI Billie implementation</td>
+                <td>
+                  <span class="timeline-phase">Discovery</span>
+                  要件ヒアリングとPoC設計
+                </td>
+                <td>
+                  <span class="timeline-phase">Build</span>
+                  MVP構築と社内レビュー
+                </td>
+                <td>
+                  <span class="timeline-phase">Pilot</span>
+                  限定ユーザー展開と改善反映
+                </td>
+              </tr>
+              <tr>
+                <td>RR new CW Training Rebuild</td>
+                <td>
+                  <span class="timeline-phase">Audit</span>
+                  既存カリキュラム棚卸し
+                </td>
+                <td>
+                  <span class="timeline-phase">Design</span>
+                  コンテンツ刷新と教材制作
+                </td>
+                <td>
+                  <span class="timeline-phase">Launch</span>
+                  新研修のトライアル実施
+                </td>
+              </tr>
+              <tr>
+                <td>RS Kitchen training</td>
+                <td>
+                  <span class="timeline-phase">Plan</span>
+                  研修スケジュール調整・講師確定
+                </td>
+                <td>
+                  <span class="timeline-phase">Deliver</span>
+                  トレーニング実施と現場フォロー
+                </td>
+                <td>
+                  <span class="timeline-phase">Evaluate</span>
+                  受講者フィードバック分析
+                </td>
+              </tr>
+              <tr>
+                <td>Competence Mapping</td>
+                <td>
+                  <span class="timeline-phase">Define</span>
+                  役割別スキルフレーム整理
+                </td>
+                <td>
+                  <span class="timeline-phase">Survey</span>
+                  アセスメント配信と回収
+                </td>
+                <td>
+                  <span class="timeline-phase">Synthesize</span>
+                  ギャップ分析とロードマップ作成
+                </td>
+              </tr>
+              <tr>
+                <td>Knowledge Calibration</td>
+                <td>
+                  <span class="timeline-phase">Baseline</span>
+                  テスト項目整備と初回測定
+                </td>
+                <td>
+                  <span class="timeline-phase">Iterate</span>
+                  改善サイクルと教材更新
+                </td>
+                <td>
+                  <span class="timeline-phase">Stabilize</span>
+                  継続運用と指標モニタリング
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
