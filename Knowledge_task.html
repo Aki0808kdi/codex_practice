@@ -145,6 +145,34 @@
         margin-left: 10px;
       }
 
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .metric {
+        padding: 16px 20px;
+        background: rgba(148, 163, 184, 0.08);
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        border-radius: 14px;
+      }
+
+      .metric-label {
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .metric-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 8px;
+        color: var(--text-main);
+      }
+
       .grid-two {
         display: grid;
         gap: clamp(20px, 4vw, 32px);
@@ -214,74 +242,80 @@
 
       <section>
         <h2>現在保有しているタスク（As-Is／ボリューム順）</h2>
-        <p class="lead">
-          未完了のタスクをボリュームの大きい順にソートし、現状の負荷とサポート業務への偏りを可視化します。
-        </p>
+        <p class="lead">未完了タスクをボリューム順に並べ、どこに工数が集中しているかを一目で把握できるよう整理しました。</p>
         <table>
           <thead>
             <tr>
-              <th style="width: 42%">タスク / イニシアチブ</th>
-              <th style="width: 30%">目的・状況</th>
-              <th style="width: 18%">ステージ</th>
-              <th style="width: 10%">ボリューム</th>
+              <th style="width: 12%">順位</th>
+              <th style="width: 60%">タスク</th>
+              <th style="width: 28%">ボリューム</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>1</td>
               <td>
-                顧客オンボーディング支援（サポート依頼）
-                <span class="badge">サポート業務</span>
+                顧客オンボーディング支援
+                <span class="badge">サポート</span>
               </td>
-              <td>新規顧客30社からの設定代行依頼。サクセスチームが完了すべき作業。</td>
-              <td>進行中</td>
               <td class="volume">45件</td>
             </tr>
             <tr>
+              <td>2</td>
               <td>
-                Project Nebula: データ統合スプリント
+                Project Nebula：データ統合スプリント
                 <span class="badge">Focus Project</span>
               </td>
-              <td>来期ローンチ向けのマスターデータ整備。現在はマッピング検証フェーズ。</td>
-              <td>進行中</td>
               <td class="volume">32件</td>
             </tr>
             <tr>
+              <td>3</td>
               <td>
-                地域パートナー研修の個別フォロー
-                <span class="badge">サポート業務</span>
+                地域パートナー研修フォロー
+                <span class="badge">サポート</span>
               </td>
-              <td>研修未参加のパートナー12社へのキャッチアップ対応。</td>
-              <td>ToDo</td>
               <td class="volume">18件</td>
             </tr>
             <tr>
+              <td>4</td>
               <td>
-                Project Nebula: KPIダッシュボード要件定義
+                Project Nebula：KPIダッシュボード要件定義
                 <span class="badge">Focus Project</span>
               </td>
-              <td>ステークホルダーとの定義ワークショップ調整と資料化。</td>
-              <td>ToDo</td>
               <td class="volume">14件</td>
             </tr>
             <tr>
+              <td>5</td>
               <td>
                 インシデントレポートレビュー
-                <span class="badge">サポート業務</span>
+                <span class="badge">サポート</span>
               </td>
-              <td>過去四半期のエスカレーション報告の承認待ち。</td>
-              <td>待機</td>
               <td class="volume">9件</td>
             </tr>
           </tbody>
         </table>
-        <p class="lead" style="margin-top: 20px">
-          合計ボリュームは<span class="volume">118件</span>で、そのうち<span class="volume">72件（61%）</span>がサポート業務に紐づいています。
-        </p>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">総ボリューム</div>
+            <div class="metric-value">118件</div>
+            <p class="lead" style="margin: 12px 0 0">現状のアサイン総量</p>
+          </div>
+          <div class="metric">
+            <div class="metric-label">サポート業務</div>
+            <div class="metric-value">72件</div>
+            <p class="lead" style="margin: 12px 0 0">全体の61%を占有</p>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Focus Project</div>
+            <div class="metric-value">46件</div>
+            <p class="lead" style="margin: 12px 0 0">Nebula関連タスクの現在量</p>
+          </div>
+        </div>
       </section>
 
       <section>
         <h2>リソース配分シナリオ比較（As-Is → To-Be）</h2>
-        <p class="lead">サポート依頼を担当部門へ戻し、Project Nebula に集中した場合のインパクトを明確化します。</p>
+        <p class="lead">サポート依頼を担当部門へ戻すことで、Nebulaに集中した際のキャパシティシフトを明確化します。</p>
         <div class="grid-two">
           <div class="card">
             <h3>As-Is：現状の負荷構成</h3>
@@ -289,7 +323,7 @@
               <li>総ボリューム：<span class="volume">118件</span></li>
               <li>サポート業務：<span class="volume">72件</span>（オンボーディング45件／研修18件／レポート9件）</li>
               <li>Focus Project：<span class="volume">46件</span>（データ統合32件／KPI要件定義14件）</li>
-              <li>結果：サポート対応に時間を取られ、Nebulaの進捗が圧迫</li>
+              <li>結果：支援タスクが時間の61%を消費し、Nebulaの前倒しが困難</li>
             </ul>
           </div>
           <div class="card">
@@ -297,31 +331,48 @@
             <ul>
               <li>総ボリューム：<span class="volume">46件</span>（Nebula関連のみ）</li>
               <li>サポート業務：<span class="volume">0件</span>（依頼元が自己完結）</li>
-              <li>空きキャパシティ：<span class="volume">+72件</span>分をNebulaの前倒し・品質強化に再配分</li>
-              <li>結果：ローンチ準備の主要マイルストーンにフルフォーカス可能</li>
+              <li>空きキャパシティ：<span class="volume">+72件</span>分をNebulaの前倒し・品質強化へ再配分</li>
+              <li>結果：ローンチクリティカルなマイルストーンを全員でドライブ可能</li>
             </ul>
+          </div>
+        </div>
+        <div class="metrics" style="margin-top: 32px">
+          <div class="metric">
+            <div class="metric-label">キャパシティ解放</div>
+            <div class="metric-value">+61%</div>
+            <p class="lead" style="margin: 12px 0 0">Nebula専念で活用できる時間増</p>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Nebula集中率</div>
+            <div class="metric-value">100%</div>
+            <p class="lead" style="margin: 12px 0 0">To-Beでは全工数を重点施策へ</p>
+          </div>
+          <div class="metric">
+            <div class="metric-label">完了見込み</div>
+            <div class="metric-value">2週間前倒し</div>
+            <p class="lead" style="margin: 12px 0 0">集中的なリソース投入で想定</p>
           </div>
         </div>
       </section>
 
       <section>
-        <h2>フォーカスプロジェクトのTo-Beタスク詳細</h2>
-        <p class="lead">Project Nebula に集中した場合の具体的な前倒し計画と担当を整理しました。</p>
+        <h2>Project Nebula：To-Be集中プランと期待効果</h2>
+        <p class="lead">解放されたキャパシティをどのタスクに投資し、どのような成果が期待できるかを明確にします。</p>
         <div class="grid-two">
           <div class="card">
-            <h3>データ統合スプリント（32件）</h3>
+            <h3>To-Beで即着手するハイライトタスク</h3>
             <ul>
-              <li>データマッピング検証の完了スケジュールを1週間前倒し（担当：田中）</li>
-              <li>外部APIスキーマの差異解消プランを詳細化し承認取得（担当：佐藤）</li>
-              <li>ベンダー接続テストの並列実施体制を整備（担当：伊藤）</li>
+              <li>データ統合スプリント：マッピング検証を1週間前倒しし、外部API差異を同時解消</li>
+              <li>KPIダッシュボード：ワークショップ→要件確定→UIモック検証を2スプリントで完遂</li>
+              <li>ローンチ準備：ベンダー接続テストの並列実行と品質ゲートを整備し、安定稼働を担保</li>
             </ul>
           </div>
           <div class="card">
-            <h3>KPIダッシュボード要件定義（14件）</h3>
+            <h3>Nebulaへの期待インパクト</h3>
             <ul>
-              <li>ワークショップ資料のドラフト共有とフィードバック反映（担当：鈴木）</li>
-              <li>ファネル指標・計測仕様の確定（担当：山本）</li>
-              <li>UIモックの検証サイクル短縮（担当：中村）</li>
+              <li>意思決定スピード：統合ダッシュボード稼働で週次レビューが30分短縮</li>
+              <li>顧客価値：データ統合リードタイムを40%短縮し、導入満足度向上を見込む</li>
+              <li>収益効果：ローンチ前倒しで来期ARRを+1.5億円押し上げるポテンシャル</li>
             </ul>
           </div>
         </div>
