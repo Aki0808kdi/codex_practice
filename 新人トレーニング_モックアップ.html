@@ -1,0 +1,208 @@
+root@5c721a5faf3d:/workspace/codex_practice# sed -n '1,200p' 新人トレーニング_モックアップ.html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>新人トレーニング モックアップ</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 16px 64px;
+      background: radial-gradient(circle at top, rgba(96, 165, 250, 0.15), transparent 55%),
+        linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%);
+    }
+
+    header {
+      max-width: 1024px;
+      margin: 0 auto 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: clamp(24px, 5vw, 36px);
+      color: #1f2937;
+      letter-spacing: 0.04em;
+    }
+
+    header p {
+      margin: 0;
+      color: #4b5563;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .deck {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: grid;
+      gap: 28px;
+    }
+
+    .slide {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: clamp(24px, 4vw, 40px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .slide h2 {
+      margin: 0;
+      font-size: clamp(22px, 4vw, 30px);
+      color: #111827;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .columns {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .footnote {
+      margin-top: auto;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+
+      header {
+        display: none;
+      }
+
+      .slide {
+        box-shadow: none;
+        border: 1px solid #d1d5db;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>新人トレーニング モックアップ</h1>
+    <p>
+      5枚構成のオリエンテーション資料をブラウザで確認できるよう再構成しました。
+      印刷（Ctrl+P）してPDFに書き出すこともできます。
+    </p>
+  </header>
+
+  <main class="deck">
+    <section class="slide">
+      <h2>新人トレーニングへようこそ</h2>
+      <p class="subtitle">本日のゴールとアジェンダの概要</p>
+      <ul>
+        <li>チームと企業文化に触れ、安心してスタートする</li>
+        <li>初日のスケジュールとフォローアップの流れを共有</li>
+        <li>サポート窓口や今後の学習計画を把握する</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>本日のアジェンダ</h2>
+      <div class="columns">
+        <ul>
+          <li>オープニング &amp; 自己紹介</li>
+          <li>会社概要とミッション</li>
+          <li>組織体制・主要部署の紹介</li>
+        </ul>
+        <ul>
+          <li>業務プロセスと使用ツール</li>
+          <li>コンプライアンス / 情報セキュリティ</li>
+          <li>キャリア支援とリソース案内</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>会社概要 &amp; ミッション</h2>
+      <div class="columns">
+        <ul>
+          <li>設立：2005年 / 従業員数：350名</li>
+          <li>拠点：東京・大阪・福岡</li>
+          <li>主要サービス：DXコンサル、SaaS導入支援</li>
+        </ul>
+        <ul>
+          <li>ミッション：テクノロジーで顧客の挑戦を支援</li>
+          <li>価値観：信頼・挑戦・共創</li>
+          <li>中期目標：国内トップクラスのパートナー評価</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>業務プロセスと主要ツール</h2>
+      <div class="columns">
+        <ul>
+          <li>1. 要件ヒアリング / 課題分析</li>
+          <li>2. 提案作成・見積もり</li>
+          <li>3. プロジェクト計画とキックオフ</li>
+          <li>4. 実装・検証・成果報告</li>
+          <li>5. 振り返り・継続改善</li>
+        </ul>
+        <ul>
+          <li>Slack：コミュニケーション</li>
+          <li>Notion：ナレッジ共有</li>
+          <li>Jira：タスク・進捗管理</li>
+          <li>Power BI：レポーティング</li>
+          <li>Zoom / Teams：顧客打ち合わせ</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="slide">
+      <h2>次のステップとサポート</h2>
+      <ul>
+        <li>オンライン研修モジュールの受講（今週中）</li>
+        <li>メンターとの1on1（来週月曜）</li>
+        <li>配属前課題：プロジェクトケーススタディ</li>
+        <li>サポート窓口：people@company.co.jp / #onboarding チャンネル</li>
+      </ul>
+root@5c721a5faf3d:/workspace/codex_practice# sed -n '200,400p' 新人トレーニング_モックアップ.html
+      </ul>
+      <p class="footnote">疑問点があればお気軽にメンターもしくは人事までご相談ください。</p>
+    </section>
+  </main>
+</body>
+</html>
