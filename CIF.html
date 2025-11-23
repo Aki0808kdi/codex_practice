@@ -3,796 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XD Portfolio Presentation</title>
+    <title>XD Update & CIF - Mgmt Presentation Simulation</title>
     <style>
-        * {
+        /* General Reset and Dark Mode Setup */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a; /* Dark Background */
+            color: #f0f0f0; /* Light Text */
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            line-height: 1.6;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .scroll-container {
-            height: 80vh;
-            overflow-y: scroll;
-            scroll-behavior: smooth;
-        }
-
-        .scroll-container::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .scroll-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .scroll-container::-webkit-scrollbar-thumb {
-            background: #667eea;
-            border-radius: 4px;
-        }
-
-        /* Slide Styles */
         .slide {
-            min-height: 100vh;
-            padding: 60px 40px;
+            height: 100vh;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            scroll-snap-align: start;
+            align-items: flex-start;
+            padding: 5% 8%;
+            box-sizing: border-box;
+            border-bottom: 5px solid #333; /* Slide separator */
         }
 
-        .slide.cover {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            justify-content: space-around;
+        /* Typography */
+        h1 {
+            font-size: 3.5em;
+            color: #007bff; /* IKEA Blue/Accent */
+            margin-bottom: 0.2em;
         }
 
-        .slide.cover h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
+        h2 {
+            font-size: 2.2em;
+            color: #fff;
+            border-left: 8px solid #ffcc00; /* Yellow Accent */
+            padding-left: 15px;
+            margin-top: 0;
         }
 
-        .slide.cover .meta {
-            font-size: 18px;
-            opacity: 0.9;
-            line-height: 1.8;
+        .subtitle {
+            font-size: 1.5em;
+            color: #aaa;
+            margin-top: 0;
         }
 
-        .slide h2 {
-            font-size: 36px;
-            color: #667eea;
-            margin-bottom: 30px;
-            font-weight: 700;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 15px;
-        }
+        /* Utility Colors */
+        .green { color: #4CAF50; }
+        .red { color: #F44336; }
+        .yellow { color: #ffcc00; }
+        .impact-text { font-size: 4em; font-weight: bold; }
 
-        .slide.dashboard {
-            background: #f8f9ff;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section h3 {
-            font-size: 18px;
-            color: #333;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-
-        .bullet-list {
-            list-style: none;
-            margin-left: 0;
-        }
-
-        .bullet-list li {
-            margin-bottom: 12px;
-            padding-left: 24px;
-            position: relative;
-            line-height: 1.6;
-            color: #444;
-        }
-
-        .bullet-list li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .metrics-grid {
+        /* Slide Specific Styles */
+        /* Slide 2: KPI Grid */
+        .kpi-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .metric-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            border-left: 4px solid #667eea;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .metric-card .value {
-            font-size: 24px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-
-        .metric-card .label {
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .risks-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 15px;
-        }
-
-        .risk-badge {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px;
-            background: white;
-            border-radius: 8px;
-            font-size: 13px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-        }
-
-        .risk-icon {
-            font-size: 20px;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .initiative-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #667eea;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .initiative-card.on-track {
-            border-left-color: #10b981;
-        }
-
-        .initiative-card.risk {
-            border-left-color: #f59e0b;
-        }
-
-        .initiative-card.issue {
-            border-left-color: #ef4444;
-        }
-
-        .initiative-card.new {
-            border-left-color: #3b82f6;
-        }
-
-        .initiative-card.parked {
-            border-left-color: #9ca3af;
-        }
-
-        .initiative-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 10px;
-        }
-
-        .status-badge.on-track {
-            background: #d1fae5;
-            color: #065f46;
-        }
-
-        .status-badge.risk {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        .status-badge.issue {
-            background: #fee2e2;
-            color: #7f1d1d;
-        }
-
-        .status-badge.new {
-            background: #dbeafe;
-            color: #1e3a8a;
-        }
-
-        .status-badge.parked {
-            background: #f3f4f6;
-            color: #374151;
-        }
-
-        .progress-bar {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
             width: 100%;
-            height: 6px;
-            background: #e5e7eb;
-            border-radius: 3px;
-            margin-bottom: 8px;
-            overflow: hidden;
+            margin-top: 30px;
         }
-
-        .progress-fill {
-            height: 100%;
-            background: #667eea;
-            border-radius: 3px;
-        }
-
-        .card-detail {
-            font-size: 12px;
-            color: #666;
-            line-height: 1.5;
-            margin-top: 8px;
-        }
-
-        .role-section {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .role-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .team-members {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .member-tag {
-            background: #f0f4ff;
-            color: #667eea;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .decision-box {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .decision-box strong {
-            display: block;
-            margin-bottom: 8px;
-            color: #856404;
-        }
-
-        .priority-list {
-            list-style: none;
-            counter-reset: priority;
-            margin-top: 15px;
-        }
-
-        .priority-list li {
-            counter-increment: priority;
-            padding-left: 40px;
-            position: relative;
-            margin-bottom: 15px;
-            line-height: 1.6;
-            color: #444;
-        }
-
-        .priority-list li:before {
-            content: counter(priority);
-            position: absolute;
-            left: 0;
-            width: 28px;
-            height: 28px;
-            background: #667eea;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 12px;
-        }
-
-        .kpi-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .kpi-card {
-            background: white;
-            padding: 16px;
+        .kpi-box {
+            padding: 25px;
             border-radius: 10px;
-            border-top: 3px solid #667eea;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            background-color: #2c2c2c;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .kpi-box h3 {
+            font-size: 1.8em;
+            margin-top: 0;
+            border-bottom: 2px solid #555;
+            padding-bottom: 10px;
+        }
+        .highlight { border-left: 6px solid #4CAF50; }
+        .issue { border-left: 6px solid #F44336; }
+
+        /* Slide 3: Status Table */
+        .status-table {
+            width: 80%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        .status-table th, .status-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+        .status-table th { background-color: #333; }
+        .done { color: #4CAF50; font-weight: bold; }
+        .ongoing { color: #ffcc00; font-weight: bold; }
+
+        /* Slide 4: Alert Box */
+        .alert-box {
+            background-color: #381e1e;
+            border: 4px solid #F44336;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            width: 90%;
         }
 
-        .kpi-label {
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
-
-        .kpi-value {
-            font-size: 22px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: #999;
-            font-size: 13px;
+        /* Slide 6: Big Number */
+        .big-number {
+            font-size: 8em;
+            font-weight: 900;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="scroll-container">
-            <!-- COVER -->
-            <div class="slide cover">
-                <div>
-                    <h1>XD Portfolio</h1>
-                    <p style="font-size: 24px; margin-bottom: 20px; opacity: 0.8;">Monthly Review</p>
-                </div>
-                <div class="meta">
-                    <p style="margin-bottom: 20px;">November 2025</p>
-                    <p>Experience Design Team</p>
-                </div>
-            </div>
 
-            <!-- DASHBOARD -->
-            <div class="slide dashboard">
-                <h2>Executive Summary</h2>
+<section class="slide" style="align-items: center;">
+    <h1 style="font-size: 5em;">XD Update & CIF</h1>
+    <p class="subtitle" style="font-size: 2em;">経営層向け戦略的ハイライト</p>
+    <div style="margin-top: 100px; text-align: center;">
+        <p style="font-size: 1.5em; color: #777;">[AI生成画像: 抽象的なデジタル変革とチームワーク]</p>
+        <p style="font-size: 1.2em; margin-top: 30px;">November 5, 2025 | Facilitator: Jamie</p>
+    </div>
+</section>
 
-                <div class="section">
-                    <h3>This Month's Objectives</h3>
-                    <ul class="bullet-list">
-                        <li>Finalize RCMP integration roadmap and secure stakeholder buy-in</li>
-                        <li>Achieve 85% CSAT on new user onboarding flow</li>
-                        <li>Complete quality audit across 3 active initiatives</li>
-                    </ul>
-                </div>
-
-                <div class="section">
-                    <h3>Business Impact Achieved</h3>
-                    <div class="metrics-grid">
-                        <div class="metric-card">
-                            <div class="value">+23%</div>
-                            <div class="label">Adoption Rate</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="value">4.2/5.0</div>
-                            <div class="label">CSAT Score</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="value">-18%</div>
-                            <div class="label">Cycle Time</div>
-                        </div>
-                        <div class="metric-card">
-                            <div class="value">92%</div>
-                            <div class="label">Quality Pass</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h3>Key Risks</h3>
-                    <div class="risks-container">
-                        <div class="risk-badge">
-                            <span class="risk-icon">⚠️</span>
-                            <span>Resource capacity</span>
-                        </div>
-                        <div class="risk-badge">
-                            <span class="risk-icon">⏱️</span>
-                            <span>Timeline pressure</span>
-                        </div>
-                        <div class="risk-badge">
-                            <span class="risk-icon">🔄</span>
-                            <span>Dependency delays</span>
-                        </div>
-                        <div class="risk-badge">
-                            <span class="risk-icon">🎯</span>
-                            <span>Scope creep</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="decision-box">
-                    <strong>⚡ Decisions Needed</strong>
-                    Approval needed on Phase 2 RCMP roadmap by Nov 30. Budget allocation for Q1 training program requires CFO sign-off.
-                </div>
-            </div>
-
-            <!-- PORTFOLIO OVERVIEW -->
-            <div class="slide">
-                <h2>Portfolio Overview</h2>
-                <p style="color: #666; margin-bottom: 20px; font-size: 14px;">All active initiatives across the XD organization</p>
-
-                <div class="portfolio-grid">
-                    <div class="initiative-card on-track">
-                        <span class="status-badge on-track">On Track</span>
-                        <div class="initiative-title">RCMP Platform UX Redesign</div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 72%;"></div></div>
-                        <div class="card-detail"><strong>Progress:</strong> 72% | <strong>Owner:</strong> Kuriki | <strong>Due:</strong> Dec 15</div>
-                    </div>
-
-                    <div class="initiative-card risk">
-                        <span class="status-badge risk">Risk</span>
-                        <div class="initiative-title">Mobile App Performance Optimization</div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 58%; background: #f59e0b;"></div></div>
-                        <div class="card-detail"><strong>Progress:</strong> 58% | <strong>Owner:</strong> Jamie | <strong>Due:</strong> Nov 25</div>
-                    </div>
-
-                    <div class="initiative-card on-track">
-                        <span class="status-badge on-track">On Track</span>
-                        <div class="initiative-title">Quality Framework Implementation</div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
-                        <div class="card-detail"><strong>Progress:</strong> 65% | <strong>Owner:</strong> Usui | <strong>Due:</strong> Jan 10</div>
-                    </div>
-
-                    <div class="initiative-card new">
-                        <span class="status-badge new">New</span>
-                        <div class="initiative-title">Knowledge Base Migration</div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 15%; background: #3b82f6;"></div></div>
-                        <div class="card-detail"><strong>Progress:</strong> 15% | <strong>Owner:</strong> Soeda | <strong>Due:</strong> Feb 28</div>
-                    </div>
-
-                    <div class="initiative-card issue">
-                        <span class="status-badge issue">Issue</span>
-                        <div class="initiative-title">Analytics Dashboard Update</div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 42%; background: #ef4444;"></div></div>
-                        <div class="card-detail"><strong>Progress:</strong> 42% | <strong>Owner:</strong> Warren | <strong>Due:</strong> Nov 20</div>
-                    </div>
-
-                    <div class="initiative-card parked">
-                        <span class="status-badge parked">Parked</span>
-                        <div class="initiative-title">Design System v3 Release</div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 40%; background: #9ca3af;"></div></div>
-                        <div class="card-detail"><strong>Progress:</strong> 40% | <strong>Owner:</strong> Hiroko | <strong>Due:</strong> TBD</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EXPERIENCE DESIGN SPECIALIST -->
-            <div class="slide">
-                <h2>Experience Design Specialist</h2>
-
-                <div class="role-section">
-                    <div class="role-title">👤 Team Members</div>
-                    <div class="team-members">
-                        <div class="member-tag">Kuriki</div>
-                        <div class="member-tag">Jamie</div>
-                        <div class="member-tag">Hiroko</div>
-                    </div>
-                </div>
-
-                <div class="initiative-card on-track">
-                    <span class="status-badge on-track">On Track</span>
-                    <div class="initiative-title">RCMP Platform UX Redesign</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 72%;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Sep – Dec 2025</div>
-                    <div class="card-detail"><strong>Results:</strong> 3 user research rounds completed, 8 design iterations</div>
-                    <div class="card-detail"><strong>Risks:</strong> Stakeholder alignment on navigation changes</div>
-                    <div class="card-detail"><strong>Ask:</strong> Confirm final content architecture by Nov 25</div>
-                </div>
-
-                <div class="initiative-card on-track">
-                    <span class="status-badge on-track">On Track</span>
-                    <div class="initiative-title">Mobile App Performance Optimization</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Oct – Nov 2025</div>
-                    <div class="card-detail"><strong>Results:</strong> 35% reduction in load time, improved gesture interactions</div>
-                    <div class="card-detail"><strong>Risks:</strong> Browser compatibility on older devices</div>
-                    <div class="card-detail"><strong>Ask:</strong> QA testing sign-off needed by Nov 28</div>
-                </div>
-
-                <div class="initiative-card parked">
-                    <span class="status-badge parked">Parked</span>
-                    <div class="initiative-title">Design System v3 Release</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 40%; background: #9ca3af;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Paused – resuming Q1 2026</div>
-                    <div class="card-detail"><strong>Results:</strong> Component library 40% complete</div>
-                    <div class="card-detail"><strong>Blocker:</strong> Awaiting design governance framework</div>
-                </div>
-            </div>
-
-            <!-- EXPERIENCE QUALITY SPECIALIST -->
-            <div class="slide">
-                <h2>Experience Quality Specialist</h2>
-
-                <div class="role-section">
-                    <div class="role-title">👤 Team Members</div>
-                    <div class="team-members">
-                        <div class="member-tag">Usui</div>
-                        <div class="member-tag">Horiuchi</div>
-                    </div>
-                </div>
-
-                <div class="initiative-card on-track">
-                    <span class="status-badge on-track">On Track</span>
-                    <div class="initiative-title">Quality Framework Implementation</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Oct 2025 – Jan 2026</div>
-                    <div class="card-detail"><strong>Results:</strong> Quality checklist finalized, training delivered to 2 teams</div>
-                    <div class="card-detail"><strong>Risks:</strong> Adoption resistance from legacy workflows</div>
-                    <div class="card-detail"><strong>Ask:</strong> Executive endorsement for mandatory compliance by Dec 5</div>
-                </div>
-
-                <div class="initiative-card on-track">
-                    <span class="status-badge on-track">On Track</span>
-                    <div class="initiative-title">Monthly Quality Audits</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 80%;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Ongoing – Nov audits in progress</div>
-                    <div class="card-detail"><strong>Results:</strong> 92% quality pass rate across portfolio</div>
-                    <div class="card-detail"><strong>Risks:</strong> None</div>
-                    <div class="card-detail"><strong>Ask:</strong> Monthly report to be shared with leadership by Nov 30</div>
-                </div>
-            </div>
-
-            <!-- KNOWLEDGE SPECIALIST -->
-            <div class="slide">
-                <h2>Knowledge Specialist</h2>
-
-                <div class="role-section">
-                    <div class="role-title">👤 Team Members</div>
-                    <div class="team-members">
-                        <div class="member-tag">Soeda</div>
-                        <div class="member-tag">Yonezawa</div>
-                    </div>
-                </div>
-
-                <div class="initiative-card new">
-                    <span class="status-badge new">New</span>
-                    <div class="initiative-title">Knowledge Base Migration</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 15%; background: #3b82f6;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Nov 2025 – Feb 2026</div>
-                    <div class="card-detail"><strong>Results:</strong> Requirements gathering 100% complete</div>
-                    <div class="card-detail"><strong>Risks:</strong> Data mapping complexity, stakeholder alignment</div>
-                    <div class="card-detail"><strong>Ask:</strong> Technical architecture sign-off by Dec 10</div>
-                </div>
-
-                <div class="initiative-card on-track">
-                    <span class="status-badge on-track">On Track</span>
-                    <div class="initiative-title">Documentation Updates & Governance</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 78%;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Ongoing</div>
-                    <div class="card-detail"><strong>Results:</strong> 78% of portfolio docs updated with current practices</div>
-                    <div class="card-detail"><strong>Risks:</strong> Maintaining freshness across rapid iterations</div>
-                    <div class="card-detail"><strong>Ask:</strong> Monthly doc review cycles by all teams</div>
-                </div>
-            </div>
-
-            <!-- REMOTE ANALYTICS SPECIALIST -->
-            <div class="slide">
-                <h2>Remote Analytics Specialist</h2>
-
-                <div class="role-section">
-                    <div class="role-title">👤 Team Member</div>
-                    <div class="team-members">
-                        <div class="member-tag">Warren</div>
-                    </div>
-                </div>
-
-                <div class="initiative-card issue">
-                    <span class="status-badge issue">Issue</span>
-                    <div class="initiative-title">Analytics Dashboard Update</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 42%; background: #ef4444;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Oct – Nov 2025</div>
-                    <div class="card-detail"><strong>Results:</strong> 42% data pipeline complete</div>
-                    <div class="card-detail"><strong>Risks:</strong> API integration delays from backend team</div>
-                    <div class="card-detail"><strong>Ask:</strong> Backend API specs confirmation by Nov 22</div>
-                </div>
-
-                <div class="initiative-card on-track">
-                    <span class="status-badge on-track">On Track</span>
-                    <div class="initiative-title">RCMP Adoption Tracking</div>
-                    <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
-                    <div class="card-detail"><strong>Timeline:</strong> Ongoing</div>
-                    <div class="card-detail"><strong>Results:</strong> Real-time adoption dashboard live, 23% adoption gain</div>
-                    <div class="card-detail"><strong>Risks:</strong> None</div>
-                    <div class="card-detail"><strong>Ask:</strong> Weekly reporting cadence to Product lead</div>
-                </div>
-            </div>
-
-            <!-- METRICS & OUTCOMES -->
-            <div class="slide">
-                <h2>Metrics & Outcomes</h2>
-                <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Tied to RCMP goals</p>
-
-                <div class="kpi-row">
-                    <div class="kpi-card">
-                        <div class="kpi-label">Platform Adoption</div>
-                        <div class="kpi-value">23%</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-label">Customer Satisfaction</div>
-                        <div class="kpi-value">4.2/5.0</div>
-                    </div>
-                </div>
-
-                <div class="kpi-row">
-                    <div class="kpi-card">
-                        <div class="kpi-label">Quality Adherence</div>
-                        <div class="kpi-value">92%</div>
-                    </div>
-                    <div class="kpi-card">
-                        <div class="kpi-label">Cycle Time Reduction</div>
-                        <div class="kpi-value">-18%</div>
-                    </div>
-                </div>
-
-                <div class="kpi-row">
-                    <div class="kpi-card">
-                        <div class="kpi-label">Training Completion</div>
-                        <div class="kpi-value">87%</div>
-                    </div>
-                </div>
-
-                <div style="background: #f0f4ff; padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 13px; color: #555; line-height: 1.6;">
-                    <strong style="color: #667eea;">Trend Analysis:</strong> All metrics trending positively YoY. Adoption acceleration supported by improved onboarding. Quality gains reflect framework implementation. Cycle time reduction driven by design efficiency improvements.
-                </div>
-            </div>
-
-            <!-- DEPENDENCIES & UNBLOCKERS -->
-            <div class="slide">
-                <h2>Dependencies & Unblockers</h2>
-
-                <div class="section">
-                    <h3>Cross-Team Handoffs</h3>
-                    <ul class="bullet-list">
-                        <li><strong>Backend Team:</strong> Analytics API specs (blocking Warren's dashboard update)</li>
-                        <li><strong>Product Team:</strong> Final content architecture sign-off for RCMP redesign</li>
-                        <li><strong>Infrastructure:</strong> Knowledge base migration infrastructure provisioning</li>
-                        <li><strong>Executive Team:</strong> Quality framework mandatory compliance approval</li>
-                    </ul>
-                </div>
-
-                <div class="section">
-                    <h3>Decisions Required from Management</h3>
-                    <ul class="bullet-list">
-                        <li><strong>By Nov 25:</strong> Approve RCMP Phase 2 roadmap and resource allocation</li>
-                        <li><strong>By Nov 30:</strong> Confirm Q1 2026 budget for expanded training program</li>
-                        <li><strong>By Dec 5:</strong> Endorse Quality Framework as mandatory across portfolio</li>
-                        <li><strong>By Dec 10:</strong> Sign off on Knowledge Base Migration technical architecture</li>
-                    </ul>
-                </div>
-
-                <div style="background: #f3f4f6; padding: 15px; border-radius: 10px; margin-top: 20px; font-size: 13px; color: #555; line-height: 1.6;">
-                    <strong style="color: #333;">Status:</strong> Most cross-team dependencies in progress. Critical path: Backend API specs (highest risk). Management approvals on track for timely decision-making.
-                </div>
-            </div>
-
-            <!-- NEXT MONTH PLAN -->
-            <div class="slide">
-                <h2>Next Month Plan</h2>
-
-                <div class="section">
-                    <h3>Top 3 Priorities</h3>
-                    <ol class="priority-list">
-                        <li>
-                            <strong>Complete RCMP Platform Redesign (Phase 1)</strong><br>
-                            <span style="opacity: 0.8;">Finalize all design reviews, conduct final usability testing, prepare for dev handoff</span>
-                        </li>
-                        <li>
-                            <strong>Quality Framework Rollout to All Teams</strong><br>
-                            <span style="opacity: 0.8;">Deliver training to remaining 3 teams, implement tracking mechanisms, establish compliance baseline</span>
-                        </li>
-                        <li>
-                            <strong>Unblock Analytics Dashboard (Issue Resolution)</strong><br>
-                            <span style="opacity: 0.8;">Secure backend API specs, complete data pipeline integration, launch beta dashboard</span>
-                        </li>
-                    </ol>
-                </div>
-
-                <div class="section">
-                    <h3>Expected Outcomes</h3>
-                    <ul class="bullet-list">
-                        <li>RCMP Phase 1 design 100% complete, ready for development handoff by Dec 15</li>
-                        <li>Quality framework adoption at 100% across all active initiatives</li>
-                        <li>Analytics dashboard 90% complete with full data pipeline operational</li>
-                        <li>Knowledge base migration requirements validated with all stakeholders</li>
-                        <li>Team training completion rate reaches 95% across portfolio</li>
-                    </ul>
-                </div>
-
-                <div class="section">
-                    <h3>Key Milestones</h3>
-                    <ul class="bullet-list">
-                        <li><strong>Dec 5:</strong> Quality framework training completed for all teams</li>
-                        <li><strong>Dec 10:</strong> Analytics dashboard beta launch to core users</li>
-                        <li><strong>Dec 12:</strong> RCMP Phase 1 design final review with product team</li>
-                        <li><strong>Dec 15:</strong> RCMP Phase 1 design handoff to development</li>
-                        <li><strong>Dec 20:</strong> Q1 2026 planning sessions with all roles</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- CLOSING -->
-            <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center;">
-                <div>
-                    <h2 style="color: white; border-color: white; margin-bottom: 30px;">Thank You</h2>
-                    <p style="font-size: 18px; margin-bottom: 40px; opacity: 0.9;">Questions & Discussion</p>
-                    <div style="opacity: 0.8; font-size: 14px; line-height: 1.8;">
-                        <p>Next Review: December 20, 2025</p>
-                        <p style="margin-top: 15px;">Experience Design Team</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer">
-                <p>XD Portfolio Monthly Review | November 2025 | Confidential</p>
-            </div>
+<section class="slide">
+    <h2>成果と次の注力分野：XDの戦略的ハイライト</h2>
+    <p class="subtitle">最重要KPIと戦略的フォーカスの概要</p>
+    <div class="kpi-grid">
+        <div class="kpi-box highlight">
+            <h3 class="green">✅ SSCグローバル順位</h3>
+            <span class="impact-text">#3</span>
+            <p>(比較対象国中 **#2**)</p>
+        </div>
+        <div class="kpi-box issue">
+            <h3 class="red">🚨 RR TL 品質評価の乖離</h3>
+            <span class="impact-text red">15%</span>
+            <p>(目標 < 5%)</p>
+        </div>
+        <div class="kpi-box highlight">
+            <h3 class="green">📈 CX向上</h3>
+            <span class="impact-text">87.6%</span>
+            <p>HCS (↑トレンド継続)</p>
+        </div>
+        <div class="kpi-box issue">
+            <h3 class="red">⚠️ RS 録音システムの問題</h3>
+            <p>オンラインプランニングHCSへの影響。迅速な対応が必須。</p>
         </div>
     </div>
+</section>
+
+<section class="slide">
+    <h2>完了 vs. 継続中：実行フェーズの進捗</h2>
+    <p class="subtitle">実行中の課題（継続中）にリソースを集中</p>
+    <div style="width: 100%;">
+        <div style="background-color: #333; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+            <p style="font-size: 1.5em; text-align: center;">[視覚化: ドーナツグラフ] 完了 (56%) / 継続中 (44%) の割合</p>
+        </div>
+        <table class="status-table">
+            <thead>
+                <tr>
+                    <th>アクション（重点）</th>
+                    <th>オーナー</th>
+                    <th>ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>エスカレーション対応の質向上 (詳細キャプチャ)</td>
+                    <td>Yoichi Yuko</td>
+                    <td class="ongoing">継続中</td>
+                </tr>
+                <tr>
+                    <td>Kitchen ナレッジのVETA移行検討</td>
+                    <td>Knowledge Specialist</td>
+                    <td class="ongoing">継続中</td>
+                </tr>
+                <tr>
+                    <td>BONX インストール状況の確認</td>
+                    <td>IT/Warren</td>
+                    <td class="ongoing">継続中</td>
+                </tr>
+                <tr>
+                    <td>SSC連携に関する提言</td>
+                    <td>Warren</td>
+                    <td class="done">完了</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="slide">
+    <h2>RRパフォーマンス：CXは改善傾向、内部品質に課題</h2>
+    <p class="subtitle">顧客満足度は回復基調。最優先課題はTL間評価のキャリブレーション。</p>
+
+    <div style="width: 100%;">
+        <p style="font-size: 1.8em; margin-bottom: 10px;">[視覚化: 折れ線グラフ] HCS、Competent、Friendlyの過去10ヶ月間の推移</p>
+        <p style="font-size: 1.5em;"><span class="green">HCS 87.6%</span> / <span class="green">Friendly 90.4%</span></p>
+    </div>
+
+    <div class="alert-box">
+        <h3 style="color: #F44336; font-size: 2em; margin-top: 0;">🚨 内部品質の深刻な乖離</h3>
+        <p class="impact-text red" style="font-size: 5em;">15%</p>
+        <p style="font-size: 1.5em;">TL間の評価乖離が目標（5%未満）を大幅に超過。11月に**1対1キャリブレーションセッション**を集中実施。</p>
+    </div>
+</section>
+
+<section class="slide">
+    <h2>RS品質戦略：「販売品質」の3つの柱と効率化</h2>
+    <p class="subtitle">専門性と効率を両立し、売上損失を防ぐ</p>
+
+    <div style="display: flex; gap: 30px; margin-top: 30px; width: 100%;">
+        <div style="flex: 1; text-align: center; padding: 20px; background-color: #333; border-radius: 8px;">
+            <p style="font-size: 1.8em; margin-top: 0; color: #ffcc00;">[Icon: Skills]</p>
+            <h3>Soft Skills</h3>
+        </div>
+        <div style="flex: 1; text-align: center; padding: 20px; background-color: #333; border-radius: 8px;">
+            <p style="font-size: 1.8em; margin-top: 0; color: #ffcc00;">[Icon: Knowledge]</p>
+            <h3>Product Knowledge</h3>
+        </div>
+        <div style="flex: 1; text-align: center; padding: 20px; background-color: #333; border-radius: 8px;">
+            <p style="font-size: 1.8em; margin-top: 0; color: #ffcc00;">[Icon: Sales]</p>
+            <h3>Sales Solution Skills</h3>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">ロードマップ：Specialist Role品質スコア</h3>
+    <p style="font-size: 1.5em;"><span class="yellow">目標:</span> スコア確定と運用開始 → <span class="green">2月 (ピークシーズン前)</span></p>
+</section>
+
+<section class="slide">
+    <h2>SSC：日本はグローバルリーダー、次の成長ドライバーへ</h2>
+    <p class="subtitle">グローバルでの貢献度を最大化</p>
+    
+    <div style="display: flex; align-items: center; margin-bottom: 40px; gap: 40px;">
+        <span class="big-number">#3</span>
+        <div>
+            <p style="font-size: 2.5em; font-weight: bold; color: #fff;">グローバル順位</p>
+            <p style="font-size: 1.5em; color: #aaa;">(比較対象国中 <span class="green">#2</span>)</p>
+        </div>
+    </div>
+
+    <div style="width: 70%;">
+        <p style="font-size: 1.5em;">FY26 YTD **36.58%** (前年比 +1.35pt)</p>
+        <div style="height: 20px; background-color: #333; border-radius: 10px; margin-top: 10px;">
+            <div style="width: 36.58%; height: 100%; background-color: #007bff; border-radius: 10px;"></div>
+        </div>
+    </div>
+
+    <h3 style="margin-top: 50px;">次の成長ステップ (Next Step)</h3>
+    <p style="font-size: 1.3em;">**SSCオーナーの確立** → **ツールごとの目標設定** → **継続的なレビュー体制**</p>
+</section>
+
+<section class="slide">
+    <h2>ナレッジ目標：CXインパクトと「真の専門性」への集中</h2>
+    <p class="subtitle">影響力の高い業務へリソースをシフト</p>
+
+    <div style="display: flex; gap: 20px; margin-top: 30px; width: 100%; text-align: center;">
+        <div class="kpi-box" style="flex: 1;">
+            <p style="font-size: 1.2em; color: #aaa;">Veta Positive Reaction</p>
+            <p class="impact-text"><span class="green">58%</span></p>
+            <p style="font-size: 1em;">(現行 55.2%)</p>
+        </div>
+        <div class="kpi-box" style="flex: 1;">
+            <p style="font-size: 1.2em; color: #aaa;">エスカレーション率</p>
+            <p class="impact-text"><span class="red">15%へ</span></p>
+            <p style="font-size: 1em;">(現行 20%)</p>
+        </div>
+        <div class="kpi-box" style="flex: 1;">
+            <p style="font-size: 1.2em; color: #aaa;">RS Feedback Close</p>
+            <p class="impact-text"><span class="yellow">5日以内</span></p>
+            <p style="font-size: 1em;">(現行 10.59日)</p>
+        </div>
+    </div>
+    
+    <h3 style="margin-top: 50px;">戦略的リソースシフト</h3>
+    <p style="font-size: 1.5em;"><span style="color: #F44336; font-weight: bold;">[STOP] SPサポート</span> → <span style="color: #4CAF50; font-weight: bold;">[FOCUS] トレーニング品質/キャリブレーション</span></p>
+</section>
+
+<section class="slide">
+    <h2>AI/RPA：デジタル技術による業務効率化と顧客体験の向上</h2>
+    <p class="subtitle">主要なAI・自動化プロジェクトの進捗とビジネスインパクト</p>
+    
+    <table class="status-table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>プロジェクト</th>
+                <th>ステータス</th>
+                <th>ビジネスインパクト目標</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>**GenAI Billie** (AI)</td>
+                <td>ピークシーズン前にローンチ目標</td>
+                <td>問合せ対応率 <span class="green">95%へ向上</span></td>
+            </tr>
+            <tr>
+                <td>**My AI Portal** (AI)</td>
+                <td>11月後半 日本でローンチ</td>
+                <td>12月からオペレーションチームと協業開始</td>
+            </tr>
+            <tr>
+                <td>**Self-serve Deviation 1.2** (RPA)</td>
+                <td>10月WR **100%をロボットが処理** (確認中)</td>
+                <td>WR手動作業の <span class="green">20%削減</span></td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="slide">
+    <h2>顧客体験の変革：重要プロジェクトの進捗</h2>
+    <p class="subtitle">顧客体験を直接改善する重点プロジェクト</p>
+
+    <div style="margin-top: 30px; width: 100%;">
+        <div class="kpi-box highlight" style="margin-bottom: 20px;">
+            <h3 style="color: #007bff;">Complete Kitchen Price</h3>
+            <p style="font-size: 1.3em;">Webで価格透明化・予約促進 → **アポイント予約 <span class="green">+15%増加</span>**が目標</p>
+        </div>
+        <div class="kpi-box highlight" style="margin-bottom: 20px;">
+            <h3 style="color: #007bff;">RR New Co-worker Onboarding</h3>
+            <p style="font-size: 1.3em;">トレーニングを再設計 → **<span class="yellow">1ヶ月での独立</span>**を目標に2月ローンチ</p>
+        </div>
+        <div class="kpi-box highlight">
+            <h3 style="color: #007bff;">SAC Case Status online (Phase 2)</h3>
+            <p style="font-size: 1.3em;">顧客がオンラインでステータスを確認可能に → 月**<span class="green">363件</span>**のフォローアップ削減に貢献</p>
+        </div>
+    </div>
+</section>
+
+<section class="slide" style="align-items: center; text-align: center;">
+    <h1>Next Step: 実行とインパクトの最大化</h1>
+    <div style="margin-top: 50px;">
+        <p style="font-size: 3em; color: #ffcc00; font-weight: bold;">[Icon: 🚀]</p>
+        <p style="font-size: 1.8em; width: 80%; margin: 0 auto;">
+            戦略的フォーカスを継続し、設定したKPI目標の達成にコミットします。
+        </p>
+    </div>
+    
+    <div style="margin-top: 100px;">
+        <h2 style="font-size: 4em; border-left: none; padding-left: 0; color: #fff;">Q&A</h2>
+    </div>
+</section>
+
 </body>
 </html>
