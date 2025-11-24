@@ -3,391 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XD Team Monthly Report</title>
+    <title>Executive Summary - Impact Focused</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
-        .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .status-badge { padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
-        .status-green { background-color: #d1fae5; color: #065f46; }
-        .status-amber { background-color: #fef3c7; color: #92400e; }
-        .status-red { background-color: #fee2e2; color: #991b1b; }
-        .status-blue { background-color: #dbeafe; color: #1e40af; }
-        .section-header { border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+        body { font-family: 'Inter', sans-serif; background-color: #f7f7f7; }
+        .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); padding: 1.5rem; }
+        .metric-value { font-size: 1.875rem; font-weight: 800; line-height: 1; }
     </style>
 </head>
-<body class="text-gray-800 p-6">
+<body class="p-8">
 
     <div class="max-w-7xl mx-auto space-y-8">
 
-        <header class="bg-white p-8 rounded-xl shadow-sm border-l-8 border-blue-600 flex justify-between items-center">
-            <div>
-                <h1 class="text-3xl font-bold text-gray-900">XD Team Monthly Report</h1>
-                <p class="text-gray-500 mt-2"><i class="far fa-calendar-alt mr-2"></i>[Month, Year] | <i class="far fa-clock mr-2"></i>[Date]</p>
-            </div>
-            <div class="text-right">
-                <p class="text-sm text-gray-400 uppercase tracking-wide">Presenter</p>
-                <p class="font-semibold text-lg">Naito Akiko</p>
-                <p class="text-sm text-gray-600">Experience Design Manager</p>
-            </div>
+        <header class="mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-900">Executive Summary</h1>
+            <p class="text-xl text-gray-500 mt-2">目標達成と重要課題への対応状況</p>
         </header>
 
-        <section>
-            <div class="section-header">
-                <i class="fas fa-chart-pie text-blue-600 text-xl"></i>
-                <h2 class="text-2xl font-bold">Executive Summary Dashboard</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card p-6 border-t-4 border-indigo-500">
-                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-bullseye text-indigo-500 mr-2"></i>Objectives</h3>
-                    <ul class="text-sm space-y-2 list-disc list-inside text-gray-600">
-                        <li>Drive global XD initiatives (95%+ adoption)</li>
-                        <li>Enhance customer experience via journey monitoring</li>
-                        <li>Strengthen knowledge base & chatbot</li>
-                    </ul>
-                </div>
-                <div class="card p-6 border-t-4 border-green-500">
-                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-chart-line text-green-500 mr-2"></i>Business Impact</h3>
-                    <div class="space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">CSAT</span>
-                            <span class="font-bold text-green-600">[X]% (+[Y]%)</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Quality Adherence</span>
-                            <span class="font-bold text-gray-800">[X]%</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm text-gray-600">Training Comp.</span>
-                            <span class="font-bold text-gray-800">[X]%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card p-6 border-t-4 border-red-500">
-                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Key Risks</h3>
-                    <ul class="text-sm space-y-2">
-                        <li class="flex items-start gap-2"><span class="text-red-500 text-xs mt-1">●</span> High: Vendor timelines</li>
-                        <li class="flex items-start gap-2"><span class="text-yellow-500 text-xs mt-1">●</span> Med: Resource constraints</li>
-                        <li class="flex items-start gap-2"><span class="text-yellow-500 text-xs mt-1">●</span> Med: Change fatigue</li>
-                    </ul>
-                </div>
-                <div class="card p-6 border-t-4 border-blue-500">
-                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-gavel text-blue-500 mr-2"></i>Decisions Needed</h3>
-                    <ul class="text-sm space-y-2 text-gray-600">
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> Budget for Q[X]</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> Prioritization (A vs B)</li>
-                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> Collab Framework</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-        <section>
-            <div class="section-header">
-                <i class="fas fa-tasks text-blue-600 text-xl"></i>
-                <h2 class="text-2xl font-bold">Portfolio Overview (XD-Wide)</h2>
-            </div>
-            <div class="overflow-x-auto bg-white rounded-lg shadow">
-                <table class="min-w-full text-sm text-left text-gray-500">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
-                        <tr>
-                            <th class="px-6 py-3">Initiative</th>
-                            <th class="px-6 py-3">Owner</th>
-                            <th class="px-6 py-3">Status</th>
-                            <th class="px-6 py-3">Timeline</th>
-                            <th class="px-6 py-3">Next Milestone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="px-6 py-4 font-medium text-gray-900">Global Journey Redesign</td>
-                            <td class="px-6 py-4">Kuriki, Jamie, Hiroko</td>
-                            <td class="px-6 py-4"><span class="status-badge status-green">On Track</span></td>
-                            <td class="px-6 py-4">Q[X] 2025</td>
-                            <td class="px-6 py-4">UAT completion</td>
-                        </tr>
-                        <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="px-6 py-4 font-medium text-gray-900">Quality Standards Calibration</td>
-                            <td class="px-6 py-4">Usui, Horiuchi</td>
-                            <td class="px-6 py-4"><span class="status-badge status-green">On Track</span></td>
-                            <td class="px-6 py-4">Ongoing</td>
-                            <td class="px-6 py-4">Monthly session</td>
-                        </tr>
-                        <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="px-6 py-4 font-medium text-gray-900">Knowledge Base Localization</td>
-                            <td class="px-6 py-4">Soeda, Yonezawa</td>
-                            <td class="px-6 py-4"><span class="status-badge status-amber">At Risk</span></td>
-                            <td class="px-6 py-4">Q[X] 2025</td>
-                            <td class="px-6 py-4">Translation backlog</td>
-                        </tr>
-                        <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="px-6 py-4 font-medium text-gray-900">Analytics Dashboard Enhancement</td>
-                            <td class="px-6 py-4">Warren</td>
-                            <td class="px-6 py-4"><span class="status-badge status-green">On Track</span></td>
-                            <td class="px-6 py-4">Q[X] 2025</td>
-                            <td class="px-6 py-4">Stakeholder demo</td>
-                        </tr>
-                        <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="px-6 py-4 font-medium text-gray-900">Digital Tool Optimization</td>
-                            <td class="px-6 py-4">Kuriki</td>
-                            <td class="px-6 py-4"><span class="status-badge status-blue">New</span></td>
-                            <td class="px-6 py-4">Q[X] 2025</td>
-                            <td class="px-6 py-4">Scope definition</td>
-                        </tr>
-                        <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="px-6 py-4 font-medium text-gray-900">Remote Partner Integration</td>
-                            <td class="px-6 py-4">All Specialists</td>
-                            <td class="px-6 py-4"><span class="status-badge status-amber">At Risk</span></td>
-                            <td class="px-6 py-4">Q[X] 2025</td>
-                            <td class="px-6 py-4">Dependency resolution</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+            <div class="card border-t-8 border-green-500">
+                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i> 🟢 Highlights (達成・順調な領域)
+                </h2>
 
-        <section>
-            <div class="section-header">
-                <i class="fas fa-users text-blue-600 text-xl"></i>
-                <h2 class="text-2xl font-bold">Role Spotlights</h2>
-            </div>
+                <div class="space-y-6">
+                    <div class="border-l-4 border-green-400 pl-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">顧客満足度 (HCS & SSC) の安定</h3>
+                        <p class="text-sm text-gray-600 mb-3">新人向けソフトスキルトレーニング導入により、質の高い初期対応が実現し、HCS・SSCともに目標を上回って安定しています。</p>
+                        <div class="flex space-x-4 text-sm font-medium">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">HCS: 86 (Goal 82)</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">SSC: 36% (Goal 35%)</span>
+                        </div>
+                    </div>
 
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex items-center justify-between mb-4 border-b pb-2">
-                        <h3 class="text-lg font-bold text-blue-800">Experience Design Specialist</h3>
-                        <span class="text-xs text-gray-500">Kuriki, Jamie, Hiroko</span>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h4 class="font-bold text-sm">🎯 Global Initiative Adaptation</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: 75% | Timeline: Ongoing</div>
-                            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
-                                <li>Adapted [X] global initiatives</li>
-                                <li>100% RCMP coverage in comms</li>
-                            </ul>
-                            <div class="text-xs font-semibold text-red-600">Risks: Tight timeline, Approvals</div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
-                            <h4 class="font-bold text-sm">🛠️ Digital Tool Enhancement</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: 40% | Timeline: Q[X] 2025</div>
-                            <p class="text-xs text-gray-700 mb-2">Submitted [X] change requests & updated tools.</p>
-                            <div class="text-xs font-semibold text-blue-600">Asks: Escalation support for vendor</div>
+                    <div class="border-l-4 border-green-400 pl-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">定着率 (Transfer Rate) の目標達成</h3>
+                        <p class="text-sm text-gray-600 mb-3">RS Growth Sessionへの参加など、co-workerエンゲージメント施策が奏功し、離職率を低く抑えることができています。</p>
+                        <div class="flex space-x-4 text-sm font-medium">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">Transfer Rate: 12% (Goal <15%)</span>
                         </div>
                     </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex items-center justify-between mb-4 border-b pb-2">
-                        <h3 class="text-lg font-bold text-indigo-800">Experience Quality Specialist</h3>
-                        <span class="text-xs text-gray-500">Usui, Horiuchi</span>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h4 class="font-bold text-sm">🔍 Quality Monitoring & RCA</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: On Track | Timeline: Ongoing</div>
-                            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
-                                <li>[X] proactive root cause analyses</li>
-                                <li>[X] end-to-end monitoring sessions</li>
-                            </ul>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h4 class="font-bold text-sm">🎓 Calibration & Best Practice</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: [X] sessions | Timeline: Monthly</div>
-                            <p class="text-xs text-gray-700 mb-2">Quality adherence improved by [X]%.</p>
-                            <div class="text-xs font-semibold text-orange-600">Risks: Remote Partner engagement</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex items-center justify-between mb-4 border-b pb-2">
-                        <h3 class="text-lg font-bold text-teal-800">Knowledge Specialist</h3>
-                        <span class="text-xs text-gray-500">Soeda, Yonezawa</span>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-500">
-                            <h4 class="font-bold text-sm">📚 KB Localization & Maintenance</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: 80% | Timeline: Ongoing</div>
-                            <p class="text-xs text-gray-700 mb-2">Maintained [X]% accuracy. High volume backlog.</p>
-                            <div class="text-xs font-semibold text-blue-600">Asks: Temporary translation support</div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h4 class="font-bold text-sm">🤖 Chatbot Optimization</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: 60% | Timeline: Q[X] 2025</div>
-                            <p class="text-xs text-gray-700">Reduced customer escalation by [X]%.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex items-center justify-between mb-4 border-b pb-2">
-                        <h3 class="text-lg font-bold text-purple-800">Remote Analytics Specialist</h3>
-                        <span class="text-xs text-gray-500">Warren Daniels</span>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
-                            <h4 class="font-bold text-sm">📈 Performance Analytics</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: On Track | Timeline: Ongoing</div>
-                            <p class="text-xs text-gray-700">Generated [X] insights & [X] country reports.</p>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-500">
-                            <h4 class="font-bold text-sm">🛠️ Analytics Tool Development</h4>
-                            <div class="text-xs text-gray-500 mb-2">Progress: 50% | Timeline: Q[X] 2025</div>
-                            <p class="text-xs text-gray-700 mb-2">Automated [X] processes. IT dependency.</p>
-                            <div class="text-xs font-semibold text-blue-600">Asks: IT prioritization</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div class="lg:col-span-2">
-                <div class="section-header">
-                    <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
-                    <h2 class="text-2xl font-bold">Key Performance Indicators</h2>
-                </div>
-                <div class="bg-white rounded-lg shadow overflow-hidden">
-                    <table class="min-w-full text-sm text-left text-gray-500">
-                        <thead class="bg-gray-100 text-gray-700">
-                            <tr>
-                                <th class="px-4 py-2">KPI</th>
-                                <th class="px-4 py-2">Target</th>
-                                <th class="px-4 py-2">Actual</th>
-                                <th class="px-4 py-2">Trend</th>
-                                <th class="px-4 py-2">Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            <tr class="bg-white">
-                                <td class="px-4 py-2 font-medium text-gray-900">Adoption Rate</td>
-                                <td class="px-4 py-2">95%</td>
-                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
-                                <td class="px-4 py-2 text-green-500">↗️</td>
-                                <td class="px-4 py-2 text-xs">On track</td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-4 py-2 font-medium text-gray-900">CSAT Score</td>
-                                <td class="px-4 py-2">[X]%</td>
-                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
-                                <td class="px-4 py-2 text-green-500">↗️</td>
-                                <td class="px-4 py-2 text-xs">+[Y]% vs last month</td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-4 py-2 font-medium text-gray-900">Quality Adherence</td>
-                                <td class="px-4 py-2">[X]%</td>
-                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
-                                <td class="px-4 py-2 text-gray-500">→</td>
-                                <td class="px-4 py-2 text-xs">Stable</td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-4 py-2 font-medium text-gray-900">First Contact Res.</td>
-                                <td class="px-4 py-2">[X]%</td>
-                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
-                                <td class="px-4 py-2 text-green-500">↗️</td>
-                                <td class="px-4 py-2 text-xs">Chatbot impact</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div>
-                <div class="section-header">
-                    <i class="fas fa-bullseye text-blue-600 text-xl"></i>
-                    <h2 class="text-2xl font-bold">Goal Alignment</h2>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow space-y-4">
-                    <div class="flex gap-3">
-                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-sm">CX Excellence</h4>
-                            <p class="text-xs text-gray-600">Directly supports seamless remote meetings.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-3">
-                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-sm">Co-worker Enablement</h4>
-                            <p class="text-xs text-gray-600">Training & KB accuracy empower success.</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-3">
-                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
-                        <div>
-                            <h4 class="font-bold text-sm">Operational Efficiency</h4>
-                            <p class="text-xs text-gray-600">Lower AHT and higher FCR drive growth.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div>
-                <div class="section-header">
-                    <i class="fas fa-link text-blue-600 text-xl"></i>
-                    <h2 class="text-2xl font-bold">Dependencies</h2>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow mb-6">
-                    <h3 class="font-bold text-gray-700 mb-3">Blockers to Resolve</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex items-center text-red-700 bg-red-50 p-2 rounded"><i class="fas fa-times-circle mr-2"></i> Critical: [Specific blocker] - Immediate intervention</li>
-                        <li class="flex items-center text-yellow-700 bg-yellow-50 p-2 rounded"><i class="fas fa-exclamation-circle mr-2"></i> Important: Translation resource gap</li>
-                        <li class="flex items-center text-yellow-700 bg-yellow-50 p-2 rounded"><i class="fas fa-exclamation-circle mr-2"></i> Important: IT infra prioritization</li>
-                    </ul>
                 </div>
             </div>
 
-            <div>
-                <div class="section-header">
-                    <i class="fas fa-rocket text-blue-600 text-xl"></i>
-                    <h2 class="text-2xl font-bold">Next Month Priorities</h2>
-                </div>
-                <div class="space-y-4">
-                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
-                        <h3 class="font-bold text-blue-900">1. Complete Global Initiative Rollout</h3>
-                        <p class="text-sm text-gray-700 mt-1">Target: 100% implementation. UAT & Training completion.</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-gray-800">2. Enhance Quality Standards Adherence</h3>
-                        <p class="text-sm text-gray-600 mt-1">Target: [X]% adherence. Calibration & improvement actions.</p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
-                        <h3 class="font-bold text-gray-800">3. Optimize Knowledge & Analytics</h3>
-                        <p class="text-sm text-gray-600 mt-1">Clear translation backlog & Deploy Analytics Dashboard v2.0.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <div class="card border-t-8 border-red-500">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <i class="fas fa-exclamation-triangle mr-3"></i> 🔴 Focus Areas (重要課題と対策)
+                </h2>
 
-        <footer class="bg-gray-800 text-white p-8 rounded-xl shadow-lg mt-8">
-            <h2 class="text-xl font-bold mb-4 border-b border-gray-600 pb-2">👏 Team Highlights</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
-                <div>
-                    <strong class="text-white block mb-1">XD Specialists:</strong>
-                    Managed [X] complex implementations with strong stakeholder engagement.
-                </div>
-                <div>
-                    <strong class="text-white block mb-1">Quality Specialists:</strong>
-                    Demonstrated analytical rigor driving measurable quality improvements.
-                </div>
-                <div>
-                    <strong class="text-white block mb-1">Knowledge Specialists:</strong>
-                    Maintained high standards & delivered engaging internal comms.
-                </div>
-                <div>
-                    <strong class="text-white block mb-1">Remote Analytics:</strong>
-                    Provided critical insights enabling informed decision-making.
+                <div class="space-y-6">
+                    <div class="border-l-4 border-red-400 pl-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">応対時間 (AHT) の増加</h3>
+                        <div class="flex space-x-4 text-sm font-medium mb-2">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full">AHT: 1400秒 (Goal 1250秒)</span>
+                        </div>
+                        <p class="text-sm text-gray-600">昨年比+100秒と大幅に増加しています。これに対し、現在**Biz1モニタリング支援**を開始し、根本原因の特定と削減に向けたアクションを策定中です。</p>
+                    </div>
+
+                    <div class="border-l-4 border-yellow-400 pl-4">
+                        <h3 class="font-semibold text-lg text-gray-800 mb-1">デジタル化・評価フィードバックの遅れ</h3>
+                        <div class="flex space-x-4 text-sm font-medium mb-2">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">AI Adoption: 10% (Goal 80%)</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">Evaluation/cw: 1.8 (Goal 2.0)</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">Survey Response: 8% (Goal 10%)</span>
+                        </div>
+                        <p class="text-sm text-gray-600">AIの導入とSurvey Responseが低迷しています。評価スコア(Evaluation/cw)改善のため、今月**New CW training restructure**をキックオフしました。AI導入については、来月以降の最優先課題としてボトルネックを解消します。</p>
+                    </div>
                 </div>
             </div>
-            <div class="text-center text-xs text-gray-500 mt-8">
-                Report prepared by Naito Akiko. For questions, contact the XD Team.
-            </div>
-        </footer>
+        </div>
+        
+        <div class="mt-8 pt-6 border-t border-gray-200">
+            <h2 class="text-xl font-bold text-gray-800 mb-3">Next Step: 課題領域への注力</h2>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li><strong class="text-red-600">AHT (1400秒):</strong> Biz1モニタリングの結果に基づき、次週までにAHT短縮のための改善施策（トレーニング、ツールなど）を策定します。</li>
+                <li><strong class="text-red-600">AI Adoption (10%):</strong> 導入の阻害要因を特定し、AI活用を促進するための具体的なコミュニケーション・トレーニングプランを策定します。</li>
+                <li>**XDポートフォリオ (次ページ):** これらの課題解決に貢献する進行中のイニシアチブ（例：デジタルツール最適化、トレーニングプログラム再構築）の詳細を、この後ご説明します。</li>
+            </ul>
+        </div>
 
     </div>
 </body>
