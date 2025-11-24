@@ -1,276 +1,394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XD & CIF Management Review - IKEA Style</title>
+    <title>XD Team Monthly Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* IKEA Color Palette & Typography (Simplified) */
-        :root {
-            --ikea-blue: #0058a3;
-            --ikea-yellow: #ffcc00;
-            --dark-bg: #1e1e1e;
-            --light-text: #f0f0f0;
-            --success: #4CAF50;
-            --alert: #f44336;
-        }
-
-        /* General Styling */
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--light-text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.5;
-        }
-
-        .slide {
-            height: 100vh;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 5% 8%;
-            box-sizing: border-box;
-            border-bottom: 5px solid #333;
-        }
-
-        /* Headings & Impact Text */
-        h1 {
-            font-size: 4em;
-            color: var(--ikea-blue);
-            margin-bottom: 0.1em;
-            text-transform: uppercase;
-        }
-
-        h2 {
-            font-size: 2.5em;
-            color: var(--ikea-yellow);
-            border-left: 10px solid var(--ikea-blue);
-            padding-left: 20px;
-            margin-top: 0;
-            margin-bottom: 0.5em;
-        }
-
-        .subtitle {
-            font-size: 1.5em;
-            color: #aaa;
-            margin-top: 0;
-        }
-        
-        .impact-number {
-            font-size: 6em;
-            font-weight: 900;
-            line-height: 1;
-        }
-
-        /* Utility Classes */
-        .green { color: var(--success); }
-        .red { color: var(--alert); }
-        .yellow-text { color: var(--ikea-yellow); }
-        .blue-text { color: var(--ikea-blue); }
-
-        /* Slide Specific Styles */
-        
-        /* Slide 2: KPI Grid */
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            width: 90%;
-            margin-top: 40px;
-        }
-        .kpi-box {
-            padding: 30px;
-            border-radius: 5px;
-            background-color: #2a2a2a;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-        }
-        .kpi-box h3 {
-            font-size: 1.6em;
-            margin-top: 0;
-            border-bottom: 3px solid #444;
-            padding-bottom: 10px;
-        }
-
-        /* Slide 4: Alert Box */
-        .alert-box {
-            background-color: #381e1e;
-            border-left: 8px solid var(--alert);
-            padding: 25px;
-            margin-top: 40px;
-            width: 90%;
-        }
-
-        /* Slide 5: Pillars */
-        .pillar-container {
-            display: flex;
-            gap: 30px;
-            margin-top: 30px;
-            width: 90%;
-            text-align: center;
-        }
-        .pillar {
-            flex: 1;
-            background-color: #333;
-            padding: 20px;
-            border-radius: 5px;
-            border-bottom: 5px solid var(--ikea-yellow);
-        }
-        .pillar h3 {
-            color: var(--light-text);
-            font-size: 1.4em;
-        }
-
-        /* Slide 6: Big Number */
-        .big-number-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        .rank {
-            font-size: 10em;
-            font-weight: bold;
-            color: var(--ikea-blue);
-            line-height: 1;
-        }
-        .rank-context {
-            font-size: 2em;
-            margin-left: 20px;
-            font-weight: 300;
-        }
-
-        /* Slide 8: Table */
-        .data-table {
-            width: 100%;
-            margin-top: 30px;
-            border-collapse: collapse;
-        }
-        .data-table th, .data-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #444;
-        }
-        .data-table th { background-color: #2c2c2c; }
-        .data-table td strong { color: var(--ikea-yellow); }
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .status-badge { padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+        .status-green { background-color: #d1fae5; color: #065f46; }
+        .status-amber { background-color: #fef3c7; color: #92400e; }
+        .status-red { background-color: #fee2e2; color: #991b1b; }
+        .status-blue { background-color: #dbeafe; color: #1e40af; }
+        .section-header { border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
     </style>
 </head>
-<body>
+<body class="text-gray-800 p-6">
 
-<section class="slide" style="align-items: center; background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('background_image_placeholder.jpg'); background-size: cover;">
-    <h1 style="font-size: 6em; color: var(--ikea-yellow);">XD & CIF Update</h1>
-    <h1 style="font-size: 5em; margin-top: -20px;">Better Everyday Life</h1>
-    <p class="subtitle" style="font-size: 1.8em; margin-top: 50px;">Strategic Management Review</p>
-    <p style="font-size: 1.2em; color: #aaa; position: absolute; bottom: 50px;">November 5, 2025 | Facilitator: Jamie</p>
-</section>
+    <div class="max-w-7xl mx-auto space-y-8">
 
-<section class="slide">
-    <h2>Our Strategic Focus: Highlights & Challenges</h2>
-    <p class="subtitle">Green for Success, Red for Action.</p>
-    <div class="kpi-grid">
-        <div class="kpi-box" style="border-top: 5px solid var(--success);">
-            <h3 class="green">✅ Self-Service Champion</h3>
-            <span class="impact-number blue-text">#3</span>
-            <p style="font-size: 1.3em;">Global Rank (Comp. Group <span class="green">#2</span>)</p>
-        </div>
-        <div class="kpi-box" style="border-top: 5px solid var(--alert);">
-            <h3 class="red">🚩 Quality Calibration Gap</h3>
-            <span class="impact-number red">15%</span>
-            <p style="font-size: 1.3em;">TL Evaluation Disparity (Target < 5%)</p>
-        </div>
-        <div class="kpi-box" style="border-top: 5px solid var(--success);">
-            <h3 class="green">📈 CX Recovery</h3>
-            <span class="impact-number yellow-text">87.6%</span>
-            <p style="font-size: 1.3em;">HCS (Positive Trend)</p>
-        </div>
-        <div class="kpi-box" style="border-top: 5px solid var(--alert);">
-            <h3 class="red">🚨 RS Technical Issue</h3>
-            <p style="font-size: 1.3em;">Recording system defects impacting online planning HCS. Immediate fix required.</p>
-        </div>
+        <header class="bg-white p-8 rounded-xl shadow-sm border-l-8 border-blue-600 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900">XD Team Monthly Report</h1>
+                <p class="text-gray-500 mt-2"><i class="far fa-calendar-alt mr-2"></i>[Month, Year] | <i class="far fa-clock mr-2"></i>[Date]</p>
+            </div>
+            <div class="text-right">
+                <p class="text-sm text-gray-400 uppercase tracking-wide">Presenter</p>
+                <p class="font-semibold text-lg">Naito Akiko</p>
+                <p class="text-sm text-gray-600">Experience Design Manager</p>
+            </div>
+        </header>
+
+        <section>
+            <div class="section-header">
+                <i class="fas fa-chart-pie text-blue-600 text-xl"></i>
+                <h2 class="text-2xl font-bold">Executive Summary Dashboard</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card p-6 border-t-4 border-indigo-500">
+                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-bullseye text-indigo-500 mr-2"></i>Objectives</h3>
+                    <ul class="text-sm space-y-2 list-disc list-inside text-gray-600">
+                        <li>Drive global XD initiatives (95%+ adoption)</li>
+                        <li>Enhance customer experience via journey monitoring</li>
+                        <li>Strengthen knowledge base & chatbot</li>
+                    </ul>
+                </div>
+                <div class="card p-6 border-t-4 border-green-500">
+                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-chart-line text-green-500 mr-2"></i>Business Impact</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">CSAT</span>
+                            <span class="font-bold text-green-600">[X]% (+[Y]%)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Quality Adherence</span>
+                            <span class="font-bold text-gray-800">[X]%</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-600">Training Comp.</span>
+                            <span class="font-bold text-gray-800">[X]%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-6 border-t-4 border-red-500">
+                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Key Risks</h3>
+                    <ul class="text-sm space-y-2">
+                        <li class="flex items-start gap-2"><span class="text-red-500 text-xs mt-1">●</span> High: Vendor timelines</li>
+                        <li class="flex items-start gap-2"><span class="text-yellow-500 text-xs mt-1">●</span> Med: Resource constraints</li>
+                        <li class="flex items-start gap-2"><span class="text-yellow-500 text-xs mt-1">●</span> Med: Change fatigue</li>
+                    </ul>
+                </div>
+                <div class="card p-6 border-t-4 border-blue-500">
+                    <h3 class="font-bold text-gray-700 mb-3"><i class="fas fa-gavel text-blue-500 mr-2"></i>Decisions Needed</h3>
+                    <ul class="text-sm space-y-2 text-gray-600">
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> Budget for Q[X]</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> Prioritization (A vs B)</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-blue-400"></i> Collab Framework</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <i class="fas fa-tasks text-blue-600 text-xl"></i>
+                <h2 class="text-2xl font-bold">Portfolio Overview (XD-Wide)</h2>
+            </div>
+            <div class="overflow-x-auto bg-white rounded-lg shadow">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b">
+                        <tr>
+                            <th class="px-6 py-3">Initiative</th>
+                            <th class="px-6 py-3">Owner</th>
+                            <th class="px-6 py-3">Status</th>
+                            <th class="px-6 py-3">Timeline</th>
+                            <th class="px-6 py-3">Next Milestone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900">Global Journey Redesign</td>
+                            <td class="px-6 py-4">Kuriki, Jamie, Hiroko</td>
+                            <td class="px-6 py-4"><span class="status-badge status-green">On Track</span></td>
+                            <td class="px-6 py-4">Q[X] 2025</td>
+                            <td class="px-6 py-4">UAT completion</td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900">Quality Standards Calibration</td>
+                            <td class="px-6 py-4">Usui, Horiuchi</td>
+                            <td class="px-6 py-4"><span class="status-badge status-green">On Track</span></td>
+                            <td class="px-6 py-4">Ongoing</td>
+                            <td class="px-6 py-4">Monthly session</td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900">Knowledge Base Localization</td>
+                            <td class="px-6 py-4">Soeda, Yonezawa</td>
+                            <td class="px-6 py-4"><span class="status-badge status-amber">At Risk</span></td>
+                            <td class="px-6 py-4">Q[X] 2025</td>
+                            <td class="px-6 py-4">Translation backlog</td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900">Analytics Dashboard Enhancement</td>
+                            <td class="px-6 py-4">Warren</td>
+                            <td class="px-6 py-4"><span class="status-badge status-green">On Track</span></td>
+                            <td class="px-6 py-4">Q[X] 2025</td>
+                            <td class="px-6 py-4">Stakeholder demo</td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900">Digital Tool Optimization</td>
+                            <td class="px-6 py-4">Kuriki</td>
+                            <td class="px-6 py-4"><span class="status-badge status-blue">New</span></td>
+                            <td class="px-6 py-4">Q[X] 2025</td>
+                            <td class="px-6 py-4">Scope definition</td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-6 py-4 font-medium text-gray-900">Remote Partner Integration</td>
+                            <td class="px-6 py-4">All Specialists</td>
+                            <td class="px-6 py-4"><span class="status-badge status-amber">At Risk</span></td>
+                            <td class="px-6 py-4">Q[X] 2025</td>
+                            <td class="px-6 py-4">Dependency resolution</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <i class="fas fa-users text-blue-600 text-xl"></i>
+                <h2 class="text-2xl font-bold">Role Spotlights</h2>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4 border-b pb-2">
+                        <h3 class="text-lg font-bold text-blue-800">Experience Design Specialist</h3>
+                        <span class="text-xs text-gray-500">Kuriki, Jamie, Hiroko</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-bold text-sm">🎯 Global Initiative Adaptation</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: 75% | Timeline: Ongoing</div>
+                            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+                                <li>Adapted [X] global initiatives</li>
+                                <li>100% RCMP coverage in comms</li>
+                            </ul>
+                            <div class="text-xs font-semibold text-red-600">Risks: Tight timeline, Approvals</div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-blue-500">
+                            <h4 class="font-bold text-sm">🛠️ Digital Tool Enhancement</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: 40% | Timeline: Q[X] 2025</div>
+                            <p class="text-xs text-gray-700 mb-2">Submitted [X] change requests & updated tools.</p>
+                            <div class="text-xs font-semibold text-blue-600">Asks: Escalation support for vendor</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4 border-b pb-2">
+                        <h3 class="text-lg font-bold text-indigo-800">Experience Quality Specialist</h3>
+                        <span class="text-xs text-gray-500">Usui, Horiuchi</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-bold text-sm">🔍 Quality Monitoring & RCA</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: On Track | Timeline: Ongoing</div>
+                            <ul class="list-disc list-inside text-xs text-gray-700 mb-2">
+                                <li>[X] proactive root cause analyses</li>
+                                <li>[X] end-to-end monitoring sessions</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-bold text-sm">🎓 Calibration & Best Practice</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: [X] sessions | Timeline: Monthly</div>
+                            <p class="text-xs text-gray-700 mb-2">Quality adherence improved by [X]%.</p>
+                            <div class="text-xs font-semibold text-orange-600">Risks: Remote Partner engagement</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4 border-b pb-2">
+                        <h3 class="text-lg font-bold text-teal-800">Knowledge Specialist</h3>
+                        <span class="text-xs text-gray-500">Soeda, Yonezawa</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <h4 class="font-bold text-sm">📚 KB Localization & Maintenance</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: 80% | Timeline: Ongoing</div>
+                            <p class="text-xs text-gray-700 mb-2">Maintained [X]% accuracy. High volume backlog.</p>
+                            <div class="text-xs font-semibold text-blue-600">Asks: Temporary translation support</div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-bold text-sm">🤖 Chatbot Optimization</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: 60% | Timeline: Q[X] 2025</div>
+                            <p class="text-xs text-gray-700">Reduced customer escalation by [X]%.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex items-center justify-between mb-4 border-b pb-2">
+                        <h3 class="text-lg font-bold text-purple-800">Remote Analytics Specialist</h3>
+                        <span class="text-xs text-gray-500">Warren Daniels</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-bold text-sm">📈 Performance Analytics</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: On Track | Timeline: Ongoing</div>
+                            <p class="text-xs text-gray-700">Generated [X] insights & [X] country reports.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                            <h4 class="font-bold text-sm">🛠️ Analytics Tool Development</h4>
+                            <div class="text-xs text-gray-500 mb-2">Progress: 50% | Timeline: Q[X] 2025</div>
+                            <p class="text-xs text-gray-700 mb-2">Automated [X] processes. IT dependency.</p>
+                            <div class="text-xs font-semibold text-blue-600">Asks: IT prioritization</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <div class="section-header">
+                    <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
+                    <h2 class="text-2xl font-bold">Key Performance Indicators</h2>
+                </div>
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="min-w-full text-sm text-left text-gray-500">
+                        <thead class="bg-gray-100 text-gray-700">
+                            <tr>
+                                <th class="px-4 py-2">KPI</th>
+                                <th class="px-4 py-2">Target</th>
+                                <th class="px-4 py-2">Actual</th>
+                                <th class="px-4 py-2">Trend</th>
+                                <th class="px-4 py-2">Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 font-medium text-gray-900">Adoption Rate</td>
+                                <td class="px-4 py-2">95%</td>
+                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
+                                <td class="px-4 py-2 text-green-500">↗️</td>
+                                <td class="px-4 py-2 text-xs">On track</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 font-medium text-gray-900">CSAT Score</td>
+                                <td class="px-4 py-2">[X]%</td>
+                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
+                                <td class="px-4 py-2 text-green-500">↗️</td>
+                                <td class="px-4 py-2 text-xs">+[Y]% vs last month</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 font-medium text-gray-900">Quality Adherence</td>
+                                <td class="px-4 py-2">[X]%</td>
+                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
+                                <td class="px-4 py-2 text-gray-500">→</td>
+                                <td class="px-4 py-2 text-xs">Stable</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-4 py-2 font-medium text-gray-900">First Contact Res.</td>
+                                <td class="px-4 py-2">[X]%</td>
+                                <td class="px-4 py-2 font-bold text-blue-600">[X]%</td>
+                                <td class="px-4 py-2 text-green-500">↗️</td>
+                                <td class="px-4 py-2 text-xs">Chatbot impact</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <div class="section-header">
+                    <i class="fas fa-bullseye text-blue-600 text-xl"></i>
+                    <h2 class="text-2xl font-bold">Goal Alignment</h2>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow space-y-4">
+                    <div class="flex gap-3">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">CX Excellence</h4>
+                            <p class="text-xs text-gray-600">Directly supports seamless remote meetings.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Co-worker Enablement</h4>
+                            <p class="text-xs text-gray-600">Training & KB accuracy empower success.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Operational Efficiency</h4>
+                            <p class="text-xs text-gray-600">Lower AHT and higher FCR drive growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div>
+                <div class="section-header">
+                    <i class="fas fa-link text-blue-600 text-xl"></i>
+                    <h2 class="text-2xl font-bold">Dependencies</h2>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow mb-6">
+                    <h3 class="font-bold text-gray-700 mb-3">Blockers to Resolve</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center text-red-700 bg-red-50 p-2 rounded"><i class="fas fa-times-circle mr-2"></i> Critical: [Specific blocker] - Immediate intervention</li>
+                        <li class="flex items-center text-yellow-700 bg-yellow-50 p-2 rounded"><i class="fas fa-exclamation-circle mr-2"></i> Important: Translation resource gap</li>
+                        <li class="flex items-center text-yellow-700 bg-yellow-50 p-2 rounded"><i class="fas fa-exclamation-circle mr-2"></i> Important: IT infra prioritization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">
+                    <i class="fas fa-rocket text-blue-600 text-xl"></i>
+                    <h2 class="text-2xl font-bold">Next Month Priorities</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+                        <h3 class="font-bold text-blue-900">1. Complete Global Initiative Rollout</h3>
+                        <p class="text-sm text-gray-700 mt-1">Target: 100% implementation. UAT & Training completion.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="font-bold text-gray-800">2. Enhance Quality Standards Adherence</h3>
+                        <p class="text-sm text-gray-600 mt-1">Target: [X]% adherence. Calibration & improvement actions.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                        <h3 class="font-bold text-gray-800">3. Optimize Knowledge & Analytics</h3>
+                        <p class="text-sm text-gray-600 mt-1">Clear translation backlog & Deploy Analytics Dashboard v2.0.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-gray-800 text-white p-8 rounded-xl shadow-lg mt-8">
+            <h2 class="text-xl font-bold mb-4 border-b border-gray-600 pb-2">👏 Team Highlights</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+                <div>
+                    <strong class="text-white block mb-1">XD Specialists:</strong>
+                    Managed [X] complex implementations with strong stakeholder engagement.
+                </div>
+                <div>
+                    <strong class="text-white block mb-1">Quality Specialists:</strong>
+                    Demonstrated analytical rigor driving measurable quality improvements.
+                </div>
+                <div>
+                    <strong class="text-white block mb-1">Knowledge Specialists:</strong>
+                    Maintained high standards & delivered engaging internal comms.
+                </div>
+                <div>
+                    <strong class="text-white block mb-1">Remote Analytics:</strong>
+                    Provided critical insights enabling informed decision-making.
+                </div>
+            </div>
+            <div class="text-center text-xs text-gray-500 mt-8">
+                Report prepared by Naito Akiko. For questions, contact the XD Team.
+            </div>
+        </footer>
+
     </div>
-</section>
-
-<section class="slide">
-    <h2>Making Things Happen: Action Status</h2>
-    <p class="subtitle">Focusing resources on ONGOING strategic actions.</p>
-
-    <div style="width: 80%; margin-top: 30px;">
-        <div style="background-color: #2c2c2c; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
-            <p style="text-align: center; font-size: 1.5em;">[Chart Placeholder: Done (56%) vs. Ongoing (44%) Donut Graph]</p>
-        </div>
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>Action / Focus Area</th>
-                    <th>Status</th>
-                    <th>Owner</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Improving Escalation capture & quality.</td>
-                    <td class="yellow-text">**ONGOING**</td>
-                    <td>Yoichi Yuko</td>
-                </tr>
-                <tr>
-                    <td>Kitchen Knowledge migration to VETA.</td>
-                    <td class="yellow-text">**ONGOING**</td>
-                    <td>Knowledge Specialist</td>
-                </tr>
-                <tr>
-                    <td>SSC Service Office alignment (New RAS approach).</td>
-                    <td class="green">**DONE**</td>
-                    <td>Warren</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<section class="slide">
-    <h2>RR Quality: Internal Consistency is Key</h2>
-    <p class="subtitle">CX is stable. Internal risk must be addressed immediately.</p>
-
-    <div style="width: 100%; margin-top: 30px;">
-        <p style="font-size: 1.8em; margin-bottom: 10px;">CX Trend: <span class="green">UP</span> (HCS <span class="yellow-text">87.6%</span>)</p>
-    </div>
-
-    <div class="alert-box">
-        <h3 class="red" style="font-size: 2.5em; margin-top: 0;">🔴 RED ALERT: TL EVALUATION GAP</h3>
-        <p class="impact-number red" style="font-size: 8em;">15%</p>
-        <p style="font-size: 1.5em;">Exceeding target by 3x. Action: Intensive **1-on-1 Calibration Sessions** with all TLs in November.</p>
-    </div>
-</section>
-
-<section class="slide">
-    <h2>Securing Sales Quality: Building True Expertise</h2>
-    <p class="subtitle">The 3 Pillars to High Quality Service.</p>
-
-    <div class="pillar-container">
-        <div class="pillar">
-            <p style="font-size: 2.5em; color: var(--ikea-blue);">[Icon: People]</p>
-            <h3>Soft Skills</h3>
-        </div>
-        <div class="pillar">
-            <p style="font-size: 2.5em; color: var(--ikea-blue);">[Icon: Product]</p>
-            <h3>Product Knowledge</h3>
-        </div>
-        <div class="pillar">
-            <p style="font-size: 2.5em; color: var(--ikea-blue);">[Icon: Solutions]</p>
-            <h3>Sales Solution Skills</h3>
-        </div>
-    </div>
-
-    <h3 style="margin-top: 60px; color: var(--success); border-left: 5px solid var(--success); padding-left: 10px;">KEY MILESTONE: Specialist Role Quality Score</h3>
-    <p style="font-size: 1.5em;">Defined and Operational **by <span class="yellow-text">February</span>** (Pre-Peak Season Readiness).</p>
-</section>
-
-<section class="slide">
-    <h2>Self-Service Champion: Leading the Way</h2>
-    <p class="subtitle">More tools, less contact - Maximising global contribution.</p>
-    
-    <div class="big-number-container">
-        <div class="rank">#3</div>
-        <div class
+</body>
+</html>
