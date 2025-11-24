@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Executive Summary - Impact Focused</title>
+    <title>Executive Summary - Thematic Integration</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #f7f7f7; }
-        .card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); padding: 1.5rem; }
-        .metric-value { font-size: 1.875rem; font-weight: 800; line-height: 1; }
+        .theme-card { background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 1.5rem; transition: border-color 0.3s; }
+        .metric-badge { padding: 4px 10px; border-radius: 9999px; font-weight: 600; font-size: 0.875rem; }
+        .status-up { background-color: #d1fae5; color: #065f46; } /* Green */
+        .status-stable { background-color: #e0f2f1; color: #0f766e; } /* Teal */
+        .status-down { background-color: #fee2e2; color: #991b1b; } /* Red */
+        .status-risk { background-color: #fef3c7; color: #b45309; } /* Amber */
     </style>
 </head>
 <body class="p-8">
@@ -18,70 +22,89 @@
     <div class="max-w-7xl mx-auto space-y-8">
 
         <header class="mb-8">
-            <h1 class="text-4xl font-extrabold text-gray-900">Executive Summary</h1>
-            <p class="text-xl text-gray-500 mt-2">目標達成と重要課題への対応状況</p>
+            <h1 class="text-4xl font-extrabold text-gray-900">Executive Summary (Theme-Based)</h1>
+            <p class="text-xl text-gray-500 mt-2">活動とビジネスインパクトの統合報告</p>
         </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <div class="card border-t-8 border-green-500">
-                <h2 class="text-2xl font-bold text-green-700 mb-6 flex items-center">
-                    <i class="fas fa-check-circle mr-3"></i> 🟢 Highlights (達成・順調な領域)
+            <div class="theme-card border-t-8 border-blue-500">
+                <h2 class="text-xl font-bold text-blue-700 mb-4 flex items-center">
+                    <i class="fas fa-handshake mr-3 text-2xl"></i> 顧客体験と品質
                 </h2>
+                
+                <p class="text-sm text-gray-700 mb-4">
+                    **新人向けソフトスキルトレーニングの導入**や**新規CWトレーニングの再構築**をキックオフした結果、顧客対応品質が安定し、HCSとSSCは目標値を達成・超過しました。
+                </p>
 
-                <div class="space-y-6">
-                    <div class="border-l-4 border-green-400 pl-4">
-                        <h3 class="font-semibold text-lg text-gray-800 mb-1">顧客満足度 (HCS & SSC) の安定</h3>
-                        <p class="text-sm text-gray-600 mb-3">新人向けソフトスキルトレーニング導入により、質の高い初期対応が実現し、HCS・SSCともに目標を上回って安定しています。</p>
-                        <div class="flex space-x-4 text-sm font-medium">
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">HCS: 86 (Goal 82)</span>
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">SSC: 36% (Goal 35%)</span>
-                        </div>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">HCS (Goal: 82)</span>
+                        <span class="metric-badge status-stable">86 (達成)</span>
                     </div>
-
-                    <div class="border-l-4 border-green-400 pl-4">
-                        <h3 class="font-semibold text-lg text-gray-800 mb-1">定着率 (Transfer Rate) の目標達成</h3>
-                        <p class="text-sm text-gray-600 mb-3">RS Growth Sessionへの参加など、co-workerエンゲージメント施策が奏功し、離職率を低く抑えることができています。</p>
-                        <div class="flex space-x-4 text-sm font-medium">
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full">Transfer Rate: 12% (Goal <15%)</span>
-                        </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">SSC (Goal: 35%)</span>
+                        <span class="metric-badge status-stable">36% (達成)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Evaluation/cw (Goal: 2.0)</span>
+                        <span class="metric-badge status-risk">1.8 (要注意)</span>
                     </div>
                 </div>
             </div>
 
-            <div class="card border-t-8 border-red-500">
-                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
-                    <i class="fas fa-exclamation-triangle mr-3"></i> 🔴 Focus Areas (重要課題と対策)
+            <div class="theme-card border-t-8 border-red-500">
+                <h2 class="text-xl font-bold text-red-700 mb-4 flex items-center">
+                    <i class="fas fa-tachometer-alt mr-3 text-2xl"></i> 業務効率化とテクノロジー
                 </h2>
+                
+                <p class="text-sm text-gray-700 mb-4">
+                    AHTは1400秒と目標（1250秒）を大幅に超過しています。これに対し、**Biz1モニタリング支援**を開始し、増加要因の特定を進めています。AI導入率は現状の大きな課題です。
+                </p>
 
-                <div class="space-y-6">
-                    <div class="border-l-4 border-red-400 pl-4">
-                        <h3 class="font-semibold text-lg text-gray-800 mb-1">応対時間 (AHT) の増加</h3>
-                        <div class="flex space-x-4 text-sm font-medium mb-2">
-                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full">AHT: 1400秒 (Goal 1250秒)</span>
-                        </div>
-                        <p class="text-sm text-gray-600">昨年比+100秒と大幅に増加しています。これに対し、現在**Biz1モニタリング支援**を開始し、根本原因の特定と削減に向けたアクションを策定中です。</p>
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">AHT (Goal: 1250秒)</span>
+                        <span class="metric-badge status-down">1400秒 (課題)</span>
                     </div>
-
-                    <div class="border-l-4 border-yellow-400 pl-4">
-                        <h3 class="font-semibold text-lg text-gray-800 mb-1">デジタル化・評価フィードバックの遅れ</h3>
-                        <div class="flex space-x-4 text-sm font-medium mb-2">
-                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">AI Adoption: 10% (Goal 80%)</span>
-                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">Evaluation/cw: 1.8 (Goal 2.0)</span>
-                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">Survey Response: 8% (Goal 10%)</span>
-                        </div>
-                        <p class="text-sm text-gray-600">AIの導入とSurvey Responseが低迷しています。評価スコア(Evaluation/cw)改善のため、今月**New CW training restructure**をキックオフしました。AI導入については、来月以降の最優先課題としてボトルネックを解消します。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">AI Adoption Rate (Goal: 80%)</span>
+                        <span class="metric-badge status-down">10% (深刻な遅れ)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Survey Response (Goal: 10%)</span>
+                        <span class="metric-badge status-risk">8% (要注意)</span>
                     </div>
                 </div>
+            </div>
+
+            <div class="theme-card border-t-8 border-green-500">
+                <h2 class="text-xl font-bold text-green-700 mb-4 flex items-center">
+                    <i class="fas fa-users mr-3 text-2xl"></i> 人材育成と定着
+                </h2>
+                
+                <p class="text-sm text-gray-700 mb-4">
+                    **RS Growth SessionやWRトレーニングへの参加**により、co-workerエンゲージメントを維持。その結果、定着率は目標の15%未満を達成しました。今後はEvaluationスコア改善に注力します。
+                </p>
+
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Transfer Rate (Goal: <15%)</span>
+                        <span class="metric-badge status-up">12% (達成)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-600">Evaluation/cw (Goal: 2.0)</span>
+                        <span class="metric-badge status-risk">1.8 (改善計画中)</span>
+                    </div>
+                    </div>
             </div>
         </div>
-        
+
         <div class="mt-8 pt-6 border-t border-gray-200">
-            <h2 class="text-xl font-bold text-gray-800 mb-3">Next Step: 課題領域への注力</h2>
+            <h2 class="text-xl font-bold text-gray-800 mb-3">Management Focus & Next Action</h2>
             <ul class="list-disc list-inside text-gray-600 space-y-2">
-                <li><strong class="text-red-600">AHT (1400秒):</strong> Biz1モニタリングの結果に基づき、次週までにAHT短縮のための改善施策（トレーニング、ツールなど）を策定します。</li>
-                <li><strong class="text-red-600">AI Adoption (10%):</strong> 導入の阻害要因を特定し、AI活用を促進するための具体的なコミュニケーション・トレーニングプランを策定します。</li>
-                <li>**XDポートフォリオ (次ページ):** これらの課題解決に貢献する進行中のイニシアチブ（例：デジタルツール最適化、トレーニングプログラム再構築）の詳細を、この後ご説明します。</li>
+                <li><strong class="text-red-600">緊急課題 (AHT & AI):</strong> 効率化テーマにおいて、AHT増加とAI導入の遅れが明確なリスクです。次月アクションの最優先とします。</li>
+                <li><strong class="text-blue-600">次の説明：</strong> これらの課題への具体的な対応策と、それを推進するイニシアチブ（デジタルツール最適化、トレーニング再構築など）の詳細を、続くXDポートフォリオ概要にてご説明します。</li>
             </ul>
         </div>
 
