@@ -1,156 +1,179 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>XDJP Monthly Performance – Visual Deck</title>
+<meta charset="utf-8" />
+<title>Executive Summary</title>
 <style>
-    body { font-family: 'Segoe UI', Helvetica, sans-serif; margin:0; background:#f5f7fa; }
-    .slide { width:100vw; height:100vh; padding:60px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center;}
-    h1,h2,h3 { margin:0 0 20px 0; }
-    h1 { font-size:48px; }
-    h2 { font-size:32px; color:#003f7d; }
-    h3 { font-size:24px; color:#555; }
-    .center { text-align:center; }
-    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:40px;}
-    .card { background:white; padding:30px; border-radius:20px; box-shadow:0 4px 20px rgba(0,0,0,0.08);}
-    .icon { font-size:48px; margin-bottom:15px; }
-    .pill { display:inline-block; padding:6px 12px; border-radius:20px; background:#003f7d; color:white; font-size:14px; margin-bottom:10px; }
-    ul { padding-left:20px; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 40px;
+    background: #f7f8fa;
+    color: #1a1a1a;
+  }
+
+  h1 {
+    font-size: 34px;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+
+  /* Value Chain container */
+  .vc-container {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  .vc-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .vc-row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  .vc-label {
+    width: 120px;
+    padding: 12px;
+    background: #4b6382;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-right: 10px;
+    text-align: center;
+  }
+
+  .vc-arrow {
+    background: #ffe995;
+    padding: 12px 18px;
+    margin-right: 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  .vc-support {
+    background: #fafae1;
+    padding: 12px 18px;
+    margin-right: 8px;
+    border-radius: 8px;
+    font-weight: 600;
+    color: #444;
+  }
+
+  /* Executive Summary Cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 22px;
+  }
+
+  .card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  .card h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  .accent-1 { border-left: 8px solid #3b6bb7; }
+  .accent-2 { border-left: 8px solid #f2c94c; }
+  .accent-3 { border-left: 8px solid #00a976; }
+  .accent-4 { border-left: 8px solid #a66fbf; }
+
+  ul { margin-top: 4px; }
+  li { margin-bottom: 6px; }
+
+  .kpi { font-weight: 600; margin-top: 8px; }
+  .good { color: #1f8a3f; }
+  .bad { color: #c62828; }
 </style>
 </head>
 
 <body>
 
-<!-- Slide 1: Title -->
-<section class="slide center" style="background:#003f7d; color:white;">
-    <h1>XDJP Monthly Highlights</h1>
-    <h3>What We Delivered – What’s Next</h3>
-</section>
+<h1>Executive Summary</h1>
 
+<!-- VALUE CHAIN SECTION -->
+<div class="vc-container">
+  <div class="vc-title">Focused Areas within the Customer Value Chain</div>
 
-<!-- Slide 2: XDJP 全体サマリー -->
-<section class="slide">
-    <h2>XDJP Contribution at a Glance</h2>
-    <div class="grid">
-        <div class="card center">
-            <div class="icon">📊</div>
-            <h3>Business Impact</h3>
-            <p>Improved journey visibility / Identified blockers</p>
-        </div>
-        <div class="card center">
-            <div class="icon">🤝</div>
-            <h3>Collaboration</h3>
-            <p>Cross-team alignment with Ops, Digital, Global</p>
-        </div>
-        <div class="card center">
-            <div class="icon">🚀</div>
-            <h3>Execution</h3>
-            <p>Faster delivery of fixes & insights</p>
-        </div>
-    </div>
-</section>
+  <div class="vc-row">
+    <div class="vc-label">Primary</div>
+    <div class="vc-arrow">Demand Generation</div>
+    <div class="vc-arrow">Access & Routing</div>
+    <div class="vc-arrow">Interaction</div>
+    <div class="vc-arrow">Transaction & Fulfillment</div>
+    <div class="vc-arrow">Insight & Loop</div>
+  </div>
 
+  <div class="vc-row">
+    <div class="vc-label">Support</div>
+    <div class="vc-support">Technology & Data</div>
+    <div class="vc-support">Knowledge & Training</div>
+  </div>
 
-<!-- Slide 3: Experience Design -->
-<section class="slide">
-    <span class="pill">Experience Design</span>
-    <h2>Key Achievements</h2>
+  <p style="margin-top:12px; font-size:14px; color:#555;">
+    We identified the most critical parts of the Value Chain influencing customer experience and operational efficiency, and concentrated last month's improvement actions on these domains.
+  </p>
+</div>
+
+<!-- EXECUTIVE SUMMARY CARDS -->
+<div class="grid">
+
+  <div class="card accent-1">
+    <h2>Interaction</h2>
     <ul>
-        <li>Mapped end-to-end contact journey issues</li>
-        <li>Identified critical friction points impacting AHT & CSAT</li>
-        <li>Aligned with Digital team for prioritization</li>
+      <li>Biz1 Monitoring Support</li>
+      <li>RR Soft-Skills Training Renewal</li>
     </ul>
+    <div class="kpi">HCS: <span class="good">86.4</span> (Goal 81)</div>
+    <div class="kpi">Evaluation per CW: <span class="bad">XX</span> (Goal 2.0)</div>
+    <div class="kpi">Calibration Gap: XX (Goal 5%)</div>
+  </div>
 
-    <h2 style="margin-top:40px;">Next Actions</h2>
+  <div class="card accent-2">
+    <h2>Transaction & Administration</h2>
     <ul>
-        <li>Deliver revised journey blueprint</li>
-        <li>Define problem statements for top 3 bottlenecks</li>
-        <li>Run user validation with operators</li>
+      <li>Kitchen & SBB Process Mapping</li>
+      <li>Delivery Fee Calculation Prototype</li>
     </ul>
-</section>
+    <div class="kpi">AHT: <span class="bad">1,294</span> (Goal XX)</div>
+    <div class="kpi">Productivity: 18,192 (Goal XX)</div>
+  </div>
 
-
-<!-- Slide 4: Quality Specialist -->
-<section class="slide">
-    <span class="pill">Experience Quality</span>
-    <h2>Key Achievements</h2>
+  <div class="card accent-3">
+    <h2>Knowledge & Training</h2>
     <ul>
-        <li>Completed cross-channel quality dip-check</li>
-        <li>Identified primary root causes for coaching alignment</li>
-        <li>Established monthly quality rhythm with TLs</li>
+      <li>RR New CW Training Restructure</li>
     </ul>
+    <div class="kpi">Engagement: XX (Goal 67)</div>
+    <div class="kpi">Turnover Rate: XX (Goal XX)</div>
+  </div>
 
-    <h2 style="margin-top:40px;">Next Actions</h2>
+  <div class="card accent-4">
+    <h2>Technology & Data</h2>
     <ul>
-        <li>Publish Quality Heatmap v2</li>
-        <li>Introduce standard coaching guideline</li>
-        <li>Integrate with knowledge calibration flow</li>
+      <li>GenAI Document Creation</li>
+      <li>My AI Portal Introduction</li>
     </ul>
-</section>
+    <div class="kpi">SSC: XX (Goal 35%)</div>
+    <div class="kpi">AI Adoption Rate: XX (Goal 40%)</div>
+  </div>
 
-
-<!-- Slide 5: Knowledge Specialist -->
-<section class="slide">
-    <span class="pill">Knowledge</span>
-    <h2>Key Achievements</h2>
-    <ul>
-        <li>Reviewed top 50 VETA articles impacting accuracy</li>
-        <li>Aligned with Ops on article usage gaps</li>
-        <li>Delivered simplified templates for new article creation</li>
-    </ul>
-
-    <h2 style="margin-top:40px;">Next Actions</h2>
-    <ul>
-        <li>Launch Knowledge Calibration framework</li>
-        <li>Revise top 10 critical articles</li>
-        <li>Run article usability test with operators</li>
-    </ul>
-</section>
-
-
-<!-- Slide 6: Analytics -->
-<section class="slide">
-    <span class="pill">Analytics</span>
-    <h2>Key Achievements</h2>
-    <ul>
-        <li>Created new CIF dashboard prototype</li>
-        <li>Provided AHT insights for priority root causes</li>
-        <li>Improved reporting accuracy & timeliness</li>
-    </ul>
-
-    <h2 style="margin-top:40px;">Next Actions</h2>
-    <ul>
-        <li>Publish CIF dashboard v1</li>
-        <li>Automate weekly trend reporting</li>
-        <li>Define data governance rules with Ops</li>
-    </ul>
-</section>
-
-
-<!-- Slide 7: Project Management -->
-<section class="slide">
-    <span class="pill">Project & Collaboration</span>
-    <h2>Key Achievements</h2>
-    <ul>
-        <li>Established alignment rhythm across XD/Ops/Digital</li>
-        <li>Clarified business owner & decision flow</li>
-        <li>Reduced ambiguity in project scopes</li>
-    </ul>
-
-    <h2 style="margin-top:40px;">Next Actions</h2>
-    <ul>
-        <li>Define cross-team RACI</li>
-        <li>Strengthen governance for request intake</li>
-        <li>Build roadmap visibility for Mgmt</li>
-    </ul>
-</section>
-
-
-<!-- Final Slide -->
-<section class="slide center" style="background:#003f7d; color:white;">
-    <h1>Thank You</h1>
-    <h3>We continue driving impact for RCMP & our customers</h3>
-</section>
+</div>
 
 </body>
 </html>
