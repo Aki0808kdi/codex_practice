@@ -1,179 +1,99 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
-<meta charset="utf-8" />
-<title>Executive Summary</title>
-<style>
-  body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    margin: 0;
-    padding: 40px;
-    background: #f7f8fa;
-    color: #1a1a1a;
-  }
-
-  h1 {
-    font-size: 34px;
-    margin-bottom: 24px;
-    font-weight: 700;
-  }
-
-  /* Value Chain container */
-  .vc-container {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  .vc-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  .vc-row {
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
-  }
-
-  .vc-label {
-    width: 120px;
-    padding: 12px;
-    background: #4b6382;
-    color: #fff;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-right: 10px;
-    text-align: center;
-  }
-
-  .vc-arrow {
-    background: #ffe995;
-    padding: 12px 18px;
-    margin-right: 8px;
-    border-radius: 8px;
-    font-weight: 600;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  }
-
-  .vc-support {
-    background: #fafae1;
-    padding: 12px 18px;
-    margin-right: 8px;
-    border-radius: 8px;
-    font-weight: 600;
-    color: #444;
-  }
-
-  /* Executive Summary Cards */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 22px;
-  }
-
-  .card {
-    background: #fff;
-    padding: 22px;
-    border-radius: 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    position: relative;
-  }
-  .card h2 {
-    font-size: 18px;
-    margin-bottom: 12px;
-    font-weight: 700;
-  }
-
-  .accent-1 { border-left: 8px solid #3b6bb7; }
-  .accent-2 { border-left: 8px solid #f2c94c; }
-  .accent-3 { border-left: 8px solid #00a976; }
-  .accent-4 { border-left: 8px solid #a66fbf; }
-
-  ul { margin-top: 4px; }
-  li { margin-bottom: 6px; }
-
-  .kpi { font-weight: 600; margin-top: 8px; }
-  .good { color: #1f8a3f; }
-  .bad { color: #c62828; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CIF 再導入スライド（3枚）</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#0ea5a3;--text:#e6eef6}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Helvetica Neue", Helvetica, Arial; background:linear-gradient(180deg,#081122 0%, #0b1726 100%);color:var(--text)}
+    .deck{max-width:1000px;margin:40px auto;padding:20px;}
+    .slide{background:rgba(255,255,255,0.03);border-radius:14px;padding:32px;min-height:420px;box-shadow:0 10px 30px rgba(2,6,23,0.6);display:flex;flex-direction:column;justify-content:space-between}
+    h1{font-size:20px;margin:0 0 8px;color:var(--accent)}
+    h2{font-size:28px;margin:6px 0 18px}
+    p{margin:8px 0;line-height:1.6}
+    ul{margin:8px 0 16px 20px}
+    .meta{font-size:13px;color:#9fb3be}
+    .footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+    .btn{background:var(--accent);border:none;padding:10px 14px;border-radius:8px;color:#042224;font-weight:600;cursor:pointer}
+    .note{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;font-size:13px}
+    /* simple slideshow */
+    .slides{position:relative}
+    .slide{display:none}
+    .slide.active{display:block}
+    .nav{display:flex;gap:8px}
+    @media (max-width:720px){.slide{padding:20px;min-height:360px}.deck{margin:16px}}
+  </style>
 </head>
-
 <body>
+  <div class="deck" role="main">
+    <div class="slides">
+      <!-- Slide 1 -->
+      <section class="slide active" id="s1">
+        <div>
+          <h1>CIF（Continuous Improvement Forum）再導入</h1>
+          <h2>存在意義 — なぜCIFが必要か</h2>
+          <p>
+            CIFはRCMPの価値を最大化するための意思決定フォーラムです。<strong>「正しい問題を選び、正しく解く」</strong>ことに集中し、限られたリソースを最もインパクトの高い改善に振り向けます。
+          </p>
+          <ul>
+            <li>重複プロジェクトや部門優先の偏りを防ぐ</li>
+            <li>効果測定に基づく意思決定を行える</li>
+            <li>改善のROIを最大化し、オペレーション負荷を減らす</li>
+          </ul>
+        </div>
+        <div class="footer">
+          <div class="meta">目的：意思決定の品質向上と組織横断の優先付け</div>
+          <div class="nav"><button class="btn" onclick="show(2)">次へ</button></div>
+        </div>
+      </section>
 
-<h1>Executive Summary</h1>
+      <!-- Slide 2 -->
+      <section class="slide" id="s2">
+        <div>
+          <h1>何を扱うか／扱わないか（スコープの明確化）</h1>
+          <h2>Do / Don’t（簡潔版）</h2>
+          <p class="note"><strong>Do（CIFで扱う）</strong>：明確なProblem Statementに基づき、原因分析→複数案の比較→Pilot→Scaleが必要な改善案件</p>
+          <p class="note" style="margin-top:8px"><strong>Don’t（CIFから除外）</strong>：Globalのツール導入（Rollout）、単純な作業依頼、週次報告、個別のオペレーション実行タスク</p>
+          <ul>
+            <li>CI案件は「Solutionが未確定／Causeの分析が必要」なもの</li>
+            <li>Global Rollout等は別会議（Rollout Steering）で管理する</li>
+            <li>PS提出（Problem Statement）をGate0で必須化する</li>
+          </ul>
+        </div>
+        <div class="footer">
+          <div class="meta">狙い：CIFの集中と決定速度を高める</div>
+          <div class="nav"><button class="btn" onclick="show(1)">前へ</button><button class="btn" onclick="show(3)">次へ</button></div>
+        </div>
+      </section>
 
-<!-- VALUE CHAIN SECTION -->
-<div class="vc-container">
-  <div class="vc-title">Focused Areas within the Customer Value Chain</div>
-
-  <div class="vc-row">
-    <div class="vc-label">Primary</div>
-    <div class="vc-arrow">Demand Generation</div>
-    <div class="vc-arrow">Access & Routing</div>
-    <div class="vc-arrow">Interaction</div>
-    <div class="vc-arrow">Transaction & Fulfillment</div>
-    <div class="vc-arrow">Insight & Loop</div>
+      <!-- Slide 3 -->
+      <section class="slide" id="s3">
+        <div>
+          <h1>プロセス（簡易Gate）と運用ルール</h1>
+          <h2>Gateで止めて、CIFは『決める場』にする</h2>
+          <ul>
+            <li><strong>Gate0</strong>：PS提出・XDによる一次スクリーニング（CIF投入可否）</li>
+            <li><strong>Gate1</strong>：Problemの優先度合意（CIFで優先案件を決定）</li>
+            <li><strong>Gate2</strong>：分析結果に基づくGo/Deprioritise/Stopの判断</li>
+            <li><strong>Gate3</strong>：Pilot結果の評価→Scale判定</li>
+            <li><strong>Gate4</strong>：Follow-up完了／正式Close</li>
+          </ul>
+          <p>運用ルール（例）：PS提出必須、Sponsor必須、CIFは月1回／90分、事前資料は一週間前に配布。</p>
+        </div>
+        <div class="footer">
+          <div class="meta">次のアクション例：PSテンプレ配布／Gate0運用の開始／Rollout Steeringの設置</div>
+          <div class="nav"><button class="btn" onclick="show(2)">前へ</button></div>
+        </div>
+      </section>
+    </div>
   </div>
 
-  <div class="vc-row">
-    <div class="vc-label">Support</div>
-    <div class="vc-support">Technology & Data</div>
-    <div class="vc-support">Knowledge & Training</div>
-  </div>
-
-  <p style="margin-top:12px; font-size:14px; color:#555;">
-    We identified the most critical parts of the Value Chain influencing customer experience and operational efficiency, and concentrated last month's improvement actions on these domains.
-  </p>
-</div>
-
-<!-- EXECUTIVE SUMMARY CARDS -->
-<div class="grid">
-
-  <div class="card accent-1">
-    <h2>Interaction</h2>
-    <ul>
-      <li>Biz1 Monitoring Support</li>
-      <li>RR Soft-Skills Training Renewal</li>
-    </ul>
-    <div class="kpi">HCS: <span class="good">86.4</span> (Goal 81)</div>
-    <div class="kpi">Evaluation per CW: <span class="bad">XX</span> (Goal 2.0)</div>
-    <div class="kpi">Calibration Gap: XX (Goal 5%)</div>
-  </div>
-
-  <div class="card accent-2">
-    <h2>Transaction & Administration</h2>
-    <ul>
-      <li>Kitchen & SBB Process Mapping</li>
-      <li>Delivery Fee Calculation Prototype</li>
-    </ul>
-    <div class="kpi">AHT: <span class="bad">1,294</span> (Goal XX)</div>
-    <div class="kpi">Productivity: 18,192 (Goal XX)</div>
-  </div>
-
-  <div class="card accent-3">
-    <h2>Knowledge & Training</h2>
-    <ul>
-      <li>RR New CW Training Restructure</li>
-    </ul>
-    <div class="kpi">Engagement: XX (Goal 67)</div>
-    <div class="kpi">Turnover Rate: XX (Goal XX)</div>
-  </div>
-
-  <div class="card accent-4">
-    <h2>Technology & Data</h2>
-    <ul>
-      <li>GenAI Document Creation</li>
-      <li>My AI Portal Introduction</li>
-    </ul>
-    <div class="kpi">SSC: XX (Goal 35%)</div>
-    <div class="kpi">AI Adoption Rate: XX (Goal 40%)</div>
-  </div>
-
-</div>
-
+  <script>
+    function show(n){
+      document.querySelectorAll('.slide').forEach(s=>s.classList.remove('active'));
+      document.getElementById('s'+n).classList.add('active');
+    }
+  </script>
 </body>
 </html>
