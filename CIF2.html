@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <title>XD Executive Summary HTML Slides</title>
+  <meta charset="UTF-8">
+  <title>XD Executive Summary HTML Slides from Second PDF</title>
   <style>
     :root {
       --bg: #050814;
-      --bg-alt: #0b1022;
-      --panel: #111729;
-      --accent: #4dd0e1;
-      --accent-soft: rgba(77, 208, 225, 0.15);
-      --accent-strong: #00e5ff;
-      --accent-warm: #ffb74d;
-      --text-main: #f5f7fb;
-      --text-muted: #a3adc2;
-      --text-soft: #7e879c;
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --shadow-soft: 0 22px 40px rgba(0, 0, 0, 0.55);
-      --radius-lg: 18px;
-      --radius-xl: 26px;
+      --bg-alt: #0b1020;
+      --accent: #4DB6FF;
+      --accent-soft: rgba(77, 182, 255, 0.18);
+      --accent-strong: #2EC5B6;
+      --text: #f5f7ff;
+      --muted: #9aa0c2;
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --danger: #ff6b81;
+      --warning: #ffcc66;
+      --success: #5ad29a;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
     }
 
     * {
@@ -31,9 +32,9 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: radial-gradient(circle at top left, #18253f 0, #050814 45%, #000000 100%);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
+      background: radial-gradient(circle at top left, #202746 0, #050814 52%, #00010a 100%);
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
     }
 
     body {
@@ -44,983 +45,1566 @@
 
     .deck {
       position: relative;
-      width: 1180px;
-      height: 680px;
-      background:
-        radial-gradient(circle at 12% 0%, rgba(77, 208, 225, 0.18) 0, transparent 45%),
-        radial-gradient(circle at 88% 0%, rgba(129, 199, 132, 0.16) 0, transparent 50%),
-        radial-gradient(circle at 50% 100%, rgba(255, 183, 77, 0.13) 0, transparent 55%),
-        linear-gradient(135deg, #050814 0%, #02040a 55%, #050814 100%);
-      border-radius: 32px;
-      box-shadow:
-        0 34px 65px rgba(0, 0, 0, 0.85),
-        0 0 0 1px rgba(255, 255, 255, 0.03);
-      overflow: hidden;
-      padding: 22px 26px 26px 26px;
-      color: var(--text-main);
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 16px;
-    }
-
-    /* Top bar */
-    .top-bar {
+      width: 100vw;
+      height: 100vh;
+      max-width: 1440px;
+      max-height: 900px;
+      margin: 0 auto;
+      padding: 32px 40px 40px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
       gap: 18px;
     }
 
-    .brand {
+    header.deck-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .deck-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(120deg, rgba(33, 150, 243, 0.35), rgba(0, 0, 0, 0.7));
+      box-shadow: 0 0 18px rgba(0, 150, 255, 0.55);
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #4DB6FF);
+      box-shadow: 0 0 16px rgba(77, 182, 255, 0.9);
+    }
+
+    .brand-pill span {
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+    }
+
+    .deck-header-center {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      opacity: 0.75;
+    }
+
+    .deck-header-center span {
+      white-space: nowrap;
+    }
+
+    .deck-header-center .divider {
+      width: 1px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .deck-header-right {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
-      background:
-        radial-gradient(circle at 30% 20%, #ffffff 0, #c8e6ff 35%, transparent 60%),
-        conic-gradient(from 210deg, #00e5ff, #7c4dff, #ffb74d, #00e5ff);
-      position: relative;
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.12),
-        0 12px 22px rgba(0, 0, 0, 0.65);
-      display: flex;
+    .kbd {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-    }
-
-    .brand-mark::after {
-      content: "XD";
+      min-width: 22px;
+      padding: 3px 6px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.26);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.7);
       font-size: 11px;
-      font-weight: 750;
-      letter-spacing: 0.08em;
-      color: #050814;
-      text-shadow: 0 0 8px rgba(255,255,255,0.85);
     }
 
-    .brand-text-main {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-    }
-
-    .brand-text-main span {
-      color: var(--accent-strong);
-    }
-
-    .brand-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .brand-col {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .meta {
+    .keyboard-hint {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 6px;
+    }
+
+    .keyboard-hint span {
+      opacity: 0.7;
+    }
+
+    .slides {
+      position: relative;
+      flex: 1;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      background: radial-gradient(circle at top left, #171f37 0, #050814 50%, #000 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 28px 32px 32px;
+      display: none;
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .slide-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .eyebrow {
       font-size: 11px;
-      color: var(--text-soft);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(77, 182, 255, 0.14);
+      border: 1px solid rgba(77, 182, 255, 0.55);
+      color: var(--accent);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .slide-title {
+      font-size: 26px;
+      font-weight: 650;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slide-title-accent {
+      color: var(--accent);
+    }
+
+    .slide-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: var(--muted);
     }
 
     .meta-pill {
-      padding: 2px 9px 3px;
+      padding: 3px 8px;
       border-radius: 999px;
-      border: 1px solid rgba(77, 208, 225, 0.5);
-      background: radial-gradient(circle at 0 0, rgba(77,208,225,0.35) 0, transparent 60%);
-      color: var(--accent);
-      font-weight: 600;
-      letter-spacing: 0.07em;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 10px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
-    .meta-divider {
+    .slide-meta .divider {
       width: 1px;
-      height: 18px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.35), transparent);
+      height: 12px;
+      background: rgba(255, 255, 255, 0.18);
     }
 
-    .meta-label {
-      color: var(--text-soft);
-      margin-right: 2px;
-    }
-
-    .meta-value {
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    /* Content area */
-    .content {
+    .slide-body {
+      flex: 1;
       display: grid;
-      grid-template-columns: 1.55fr 1.2fr;
+      grid-template-columns: 1.1fr 1.1fr 0.9fr;
       gap: 18px;
-      min-height: 0;
+      align-items: stretch;
     }
 
     .panel {
-      background: radial-gradient(circle at 0 0, rgba(77,208,225,0.16) 0, transparent 45%),
-                  linear-gradient(135deg, rgba(8,15,34,0.94), rgba(9,10,24,0.98));
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255,255,255,0.04);
-      box-shadow: var(--shadow-soft);
-      padding: 20px 22px 18px;
-      position: relative;
-      overflow: hidden;
+      border-radius: var(--radius-lg);
+      padding: 14px 16px 16px;
+      background: radial-gradient(circle at top left, rgba(56, 90, 194, 0.45) 0, rgba(11, 16, 34, 0.98) 48%, rgba(3, 5, 16, 1) 100%);
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(120deg, rgba(255,255,255,0.02), transparent 40%, transparent 60%, rgba(255,255,255,0.02));
-      mix-blend-mode: soft-light;
-      pointer-events: none;
+    .panel-muted {
+      background: linear-gradient(145deg, rgba(10, 18, 40, 0.96), rgba(6, 9, 22, 0.98));
     }
 
     .panel-header {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-    }
-
-    .panel-kicker {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 4px;
+      gap: 10px;
+      margin-bottom: 2px;
     }
 
     .panel-title {
-      font-size: 24px;
-      line-height: 1.25;
-      font-weight: 650;
-      letter-spacing: 0.03em;
-    }
-
-    .panel-title span.highlight {
-      background: linear-gradient(120deg, #4dd0e1, #ffb74d);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .panel-subtitle {
       font-size: 13px;
-      color: var(--text-muted);
-      margin-top: 6px;
-      max-width: 420px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .quarter-tag {
-      font-size: 11px;
-      padding: 4px 9px;
+    .panel-title-dot {
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.14);
-      color: var(--text-soft);
-      background: radial-gradient(circle at 0 0, rgba(77,208,225,0.3) 0, transparent 52%);
+      background: radial-gradient(circle at 30% 30%, #fff, var(--accent));
+      box-shadow: 0 0 10px rgba(77, 182, 255, 0.9);
     }
 
-    /* Left: main storyline */
-    .story-grid {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: 1.3fr 1.1fr;
-      gap: 16px;
-      align-items: stretch;
+    .panel-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
     }
 
-    .story-column {
+    .panel-body {
+      font-size: 12px;
+      color: var(--muted);
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    .story-block {
-      background: radial-gradient(circle at 0 0, rgba(77,208,225,0.27) 0, transparent 60%),
-                  linear-gradient(145deg, #131a33, #0b1022);
-      border-radius: 14px;
-      border: 1px solid rgba(77,208,225,0.25);
-      padding: 11px 12px 10px;
-      position: relative;
-      overflow: hidden;
+    .panel-key {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.4;
     }
 
-    .story-block::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 45%);
-      mix-blend-mode: soft-light;
-      opacity: 0.65;
-      pointer-events: none;
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
     }
 
-    .story-label {
+    .pill {
       font-size: 11px;
-      letter-spacing: 0.12em;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.35);
+      color: var(--muted);
+    }
+
+    .pill-strong {
+      border-color: rgba(77, 182, 255, 0.7);
+      color: var(--accent);
+      background: rgba(77, 182, 255, 0.08);
+    }
+
+    .status-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .status-chip {
+      font-size: 10px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 4px;
+      letter-spacing: 0.12em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.4);
     }
 
-    .story-label span {
-      color: var(--accent-strong);
+    .status-chip.success {
+      border-color: rgba(90, 210, 154, 0.8);
+      color: var(--success);
     }
 
-    .story-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 4px;
+    .status-chip.warning {
+      border-color: rgba(255, 204, 102, 0.8);
+      color: var(--warning);
     }
 
-    .story-text {
+    .status-chip.danger {
+      border-color: rgba(255, 107, 129, 0.85);
+      color: var(--danger);
+    }
+
+    .status-chip.info {
+      border-color: rgba(77, 182, 255, 0.8);
+      color: var(--accent);
+    }
+
+    .bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-left: 2px;
+    }
+
+    .bullet {
+      display: grid;
+      grid-template-columns: 10px 1fr;
+      gap: 6px;
+      align-items: flex-start;
+    }
+
+    .bullet-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin-top: 5px;
+      background: radial-gradient(circle at 30% 30%, #fff, var(--accent));
+      box-shadow: 0 0 8px rgba(77, 182, 255, 0.7);
+    }
+
+    .bullet-text {
       font-size: 12px;
-      color: var(--text-muted);
       line-height: 1.6;
     }
 
-    .story-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 5px;
+    .bullet-strong {
+      color: var(--text);
     }
 
-    .chip {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: rgba(5, 8, 20, 0.6);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text-main);
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .chip-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent-strong);
-      box-shadow: 0 0 8px rgba(0,229,255,0.7);
-    }
-
-    .story-metric {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-      margin-top: 2px;
-    }
-
-    .story-metric-main {
-      font-size: 19px;
-      font-weight: 650;
-      background: linear-gradient(135deg, #4dd0e1, #80deea);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .story-metric-sub {
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .priority-tag {
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: rgba(255,183,77,0.1);
-      border: 1px solid rgba(255,183,77,0.45);
-      color: #ffcc80;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      font-weight: 600;
-      margin-left: 4px;
-    }
-
-    .impact-grid {
+    .metric-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 8px;
-      margin-top: 6px;
-    }
-
-    .impact-item {
-      padding: 6px 7px 5px;
-      border-radius: 9px;
-      background: radial-gradient(circle at 0 0, rgba(77,208,225,0.2) 0, transparent 70%);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .impact-label {
-      font-size: 10px;
-      color: var(--text-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 2px;
-    }
-
-    .impact-value {
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .impact-badge {
-      font-size: 10px;
-      padding: 1px 6px 2px;
-      border-radius: 999px;
-      border: 1px solid rgba(129,199,132,0.6);
-      color: #a5d6a7;
-      margin-left: 5px;
-    }
-
-    .risk-note {
-      font-size: 11px;
-      color: var(--text-muted);
-      display: flex;
-      gap: 6px;
-      align-items: flex-start;
-      margin-top: 5px;
-    }
-
-    .risk-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,183,77,0.7);
-      box-shadow: 0 0 7px rgba(255,183,77,0.7);
-      margin-top: 2px;
-    }
-
-    /* Right: focus & scorecard */
-    .panel-right {
-      background:
-        radial-gradient(circle at 20% 0%, rgba(129,199,132,0.17) 0, transparent 55%),
-        radial-gradient(circle at 90% 20%, rgba(77,208,225,0.22) 0, transparent 55%),
-        linear-gradient(150deg, #080d1f, #050814);
-    }
-
-    .focus-kicker {
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 4px;
-    }
-
-    .focus-title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    .focus-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-
-    .focus-pill {
-      padding: 4px 9px;
-      border-radius: 999px;
-      font-size: 11px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(5,8,20,0.8);
-      color: var(--text-main);
-    }
-
-    .focus-pill.main {
-      border-color: rgba(77,208,225,0.65);
-      background: radial-gradient(circle at 0 0, rgba(77,208,225,0.5) 0, transparent 60%);
-      box-shadow: 0 0 14px rgba(77,208,225,0.45);
-    }
-
-    .scorecard {
-      margin-top: 4px;
-      padding: 10px 11px 9px;
-      border-radius: 15px;
-      background:
-        radial-gradient(circle at 0 0, rgba(77,208,225,0.18) 0, transparent 65%),
-        radial-gradient(circle at 100% 0, rgba(255,183,77,0.2) 0, transparent 60%),
-        linear-gradient(145deg, #0b1022, #050814);
-      border: 1px solid rgba(255,255,255,0.09);
-    }
-
-    .score-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-
-    .score-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-soft);
-    }
-
-    .score-badge {
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(77,208,225,0.6);
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.11em;
-      display: inline-flex;
-      gap: 5px;
-      align-items: center;
-    }
-
-    .score-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00e676 0, #00c853 55%, #00bfa5 100%);
-      box-shadow: 0 0 10px rgba(0, 230, 118, 0.8);
-    }
-
-    .score-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-      gap: 8px;
-      align-items: stretch;
-    }
-
-    .score-col {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .score-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      padding: 3px 4px;
-      border-radius: 7px;
-      background: rgba(5, 8, 20, 0.75);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .score-item-label {
-      color: var(--text-muted);
-    }
-
-    .score-item-value {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-    }
-
-    .score-main-number {
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .score-pill-small {
-      font-size: 9px;
-      padding: 1px 5px 2px;
-      border-radius: 999px;
-      border: 1px solid rgba(129,199,132,0.7);
-      color: #a5d6a7;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    .score-delta {
-      font-size: 10px;
-      color: #81c784;
-    }
-
-    .score-delta.neg {
-      color: #ef9a9a;
-    }
-
-    .score-bullet-list {
-      margin-top: 5px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .score-bullet-list ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .score-bullet-list li {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 3px;
-    }
-
-    .score-bullet-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(77,208,225,0.8);
-      margin-top: 4px;
-    }
-
-    .roadmap {
-      margin-top: 11px;
-      padding: 9px 10px 8px;
-      border-radius: 13px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        radial-gradient(circle at 0 0, rgba(77,208,225,0.2) 0, transparent 55%),
-        linear-gradient(145deg, #050814, #080d1f);
-    }
-
-    .roadmap-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 5px;
-    }
-
-    .roadmap-title {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-    }
-
-    .roadmap-pill {
-      font-size: 10px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      color: rgba(255,255,255,0.85);
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-    }
-
-    .roadmap-lane {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 6px;
-      margin-top: 3px;
-    }
-
-    .lane-item {
-      padding: 6px 6px 5px;
-      border-radius: 9px;
-      background: rgba(5, 8, 20, 0.9);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 10px;
-      min-height: 44px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .lane-label {
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-soft);
-      margin-bottom: 2px;
-    }
-
-    .lane-main {
-      font-size: 10px;
-      font-weight: 500;
-    }
-
-    .lane-tag {
-      font-size: 9px;
-      padding: 1px 5px 2px;
-      border-radius: 999px;
-      border: 1px solid rgba(77,208,225,0.7);
-      color: var(--accent);
-      align-self: flex-start;
-      margin-top: 4px;
-    }
-
-    .lane-tag.sec {
-      border-color: rgba(255,183,77,0.7);
-      color: #ffcc80;
-    }
-
-    /* Footer */
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 10px;
-      color: var(--text-soft);
-      gap: 16px;
-    }
-
-    .footer-left {
-      display: flex;
-      align-items: center;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
+      margin-top: 4px;
     }
 
-    .footer-divider {
-      width: 1px;
-      height: 14px;
-      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.35), transparent);
-    }
-
-    .footer-right {
+    .metric {
+      border-radius: var(--radius-md);
+      padding: 8px 9px;
+      background: radial-gradient(circle at top left, rgba(77, 182, 255, 0.18), rgba(5, 10, 30, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.06);
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 2px;
     }
 
-    .footer-pill {
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(5,8,20,0.85);
-      font-size: 9px;
+    .metric-label {
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
+      color: var(--muted);
     }
 
-    .page-indicator {
-      padding: 2px 7px;
+    .metric-value {
+      font-size: 18px;
+      font-weight: 650;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .metric-unit {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .metric-footnote {
+      font-size: 10px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .progress-inner {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong), var(--success));
+    }
+
+    .mini-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .mini-tag {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+    }
+
+    .timeline {
+      border-radius: var(--radius-md);
+      padding: 8px 10px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .timeline-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .timeline-label {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 10px;
+    }
+
+    .timeline-value {
+      color: var(--text);
+    }
+
+    .timeline-footnote {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .heatmap {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 5px;
+      margin-top: 6px;
+    }
+
+    .heat-cell {
+      border-radius: 7px;
+      padding: 6px 7px;
+      font-size: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+    }
+
+    .heat-cell.hot {
+      background: radial-gradient(circle at top left, rgba(77, 182, 255, 0.45), rgba(11, 18, 40, 0.95));
+      border-color: rgba(77, 182, 255, 0.8);
+      color: var(--text);
+    }
+
+    .heat-cell-label {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       font-size: 9px;
     }
 
-    .page-current {
+    .heat-cell-value {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 6px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .legend-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .legend-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .legend-dot.primary {
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(77, 182, 255, 0.9);
+    }
+
+    .legend-dot.neutral {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .legend-dot.warning {
+      background: var(--warning);
+    }
+
+    .legend-dot.success {
+      background: var(--success);
+    }
+
+    .legend-dot.danger {
+      background: var(--danger);
+    }
+
+    footer.deck-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 0 4px;
+    }
+
+    .deck-footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .deck-footer-left .divider {
+      width: 1px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .deck-footer-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pager {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pager span {
+      min-width: 18px;
+      text-align: center;
+    }
+
+    .pager-current {
       color: var(--accent);
+      font-weight: 600;
     }
 
-    .page-total {
-      color: var(--text-soft);
+    .progress-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    /* Simple fade-in animation (no JS needed) */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
+    .progress-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .progress-dot.active {
+      width: 18px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      box-shadow: 0 0 12px rgba(77, 182, 255, 0.9);
+    }
+
+    .hint-small {
+      font-size: 10px;
+      opacity: 0.75;
+    }
+
+    @media (max-width: 1100px) {
+      .slide-body {
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(0, auto);
+        overflow-y: auto;
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .panel, .top-bar, .footer {
-      animation: fadeInUp 0.7s ease-out;
-    }
-
-    .panel-right {
-      animation-delay: 0.05s;
-      animation-fill-mode: both;
-    }
-
-    .story-block:nth-child(2) {
-      animation-delay: 0.08s;
-    }
-
-    .story-block:nth-child(3) {
-      animation-delay: 0.12s;
     }
   </style>
 </head>
 <body>
-  <section class="deck">
-    <header class="top-bar">
-      <div class="brand">
-        <div class="brand-mark"></div>
-        <div class="brand-col">
-          <div class="brand-text-main">
-            <span>XD</span> JAPAN
+<div class="deck">
+  <header class="deck-header">
+    <div class="deck-header-left">
+      <div class="brand-pill">
+        <div class="brand-dot"></div>
+        <span>XD JAPAN</span>
+      </div>
+      <span>FY26 CIF / XD Roadmap</span>
+    </div>
+    <div class="deck-header-center">
+      <span>XD Executive Summary</span>
+      <div class="divider"></div>
+      <span>Mgmt Briefing View</span>
+    </div>
+    <div class="deck-header-right">
+      <div class="keyboard-hint">
+        <span>Navigate</span>
+        <div class="kbd">←</div>
+        <div class="kbd">→</div>
+      </div>
+      <div class="kbd">F</div><span>Fullscreen</span>
+    </div>
+  </header>
+
+  <main class="slides">
+    <!-- Slide 1: Executive Summary -->
+    <section class="slide active" data-index="0">
+      <div class="slide-header">
+        <div class="slide-title-block">
+          <div class="eyebrow">
+            <span>Executive Summary</span>
+            <span>/ XD-JP FY26</span>
           </div>
-          <div class="brand-sub">
-            Customer Innovation Framework / FY26 Executive Summary
+          <div class="slide-title">
+            XD JAPAN
+            <span class="slide-title-accent">VALUE IMPACT</span>
+            OVERVIEW
+          </div>
+        </div>
+        <div class="slide-meta">
+          <span class="meta-pill">For Management</span>
+          <span class="divider"></span>
+          <span>Last update: FY26 Feb</span>
+        </div>
+      </div>
+
+      <div class="slide-body">
+        <!-- Column 1: What XD delivers -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              XDが提供している価値
+            </div>
+            <div class="panel-tag">Impact View</div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-key">
+              XDは「案件の質」「営業生産性」「意思決定スピード」を同時に高める
+              クロスファンクショナル・チームとして機能。
+            </div>
+            <div class="pill-row">
+              <div class="pill-strong">Revenue Readiness（RR）</div>
+              <div class="pill-strong">Remote Sales</div>
+              <div class="pill-strong">Analytics</div>
+              <div class="pill-strong">Knowledge / Enablement</div>
+              <div class="pill">Ops / Orchestration</div>
+            </div>
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  アカウントチームの「勝ち筋」を型化し、再現性のあるパイプライン創出を支援
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  データドリブンなインサイトを通じて、活動の「優先順位付け」と「選択と集中」を推進
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  現場の声とグローバルアセットをつなぎ、Japan向けに最適化された営業エクスペリエンスを設計
+                </div>
+              </div>
+            </div>
+
+            <div class="metric-grid">
+              <div class="metric">
+                <div class="metric-label">対象範囲</div>
+                <div class="metric-value">
+                  4
+                  <span class="metric-unit">主要ワークストリーム</span>
+                </div>
+                <div class="metric-footnote">RR / Remote / Analytics / Knowledge</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">連携チーム</div>
+                <div class="metric-value">
+                  Cross
+                  <span class="metric-unit">Sales / CS / Marketing</span>
+                </div>
+                <div class="metric-footnote">全社横断型の取り組み</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Management focus -->
+        <div class="panel panel-muted">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              MGMTに見てほしい3つのポイント
+            </div>
+            <div class="status-chips">
+              <div class="status-chip.info">Strategic</div>
+              <div class="status-chip.success">In Execution</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">① PIPELINE & WIN RATE の向上に直結：</span>
+                  RRとRemote Salesを通じて、「案件創出」「案件前進」「クロージング」の各フェーズに
+                  具体的な支援施策を設計。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">② データと現場知見の統合：</span>
+                  Analyticsで得た示唆をRR/Remoteのアクションに落とし込み、ナレッジとして循環させる
+                  「フィードバックループ」を構築。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">③ スケールする仕組み化：</span>
+                  個別支援から「仕組み・コンテンツ・ツール」提供へと進化させ、
+                  Japan全体で再利用可能なアセットとして蓄積。
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline">
+              <div class="timeline-row">
+                <span class="timeline-label">FY25</span>
+                <span class="timeline-value">検証フェーズ（パイロット / PoC）</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-label">FY26 H1</span>
+                <span class="timeline-value">スケール設計・オペレーティングモデルの確立</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-label">FY26 H2</span>
+                <span class="timeline-value">全社展開・KPIインパクト最大化</span>
+              </div>
+              <div class="timeline-footnote">
+                ※ 現在はFY26に向けた「スケール＆仕組み化」のフェーズにフォーカス
+              </div>
+            </div>
+
+            <div class="heatmap">
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">RR</div>
+                <div class="heat-cell-value">戦略アカウント支援</div>
+                <div class="metric-footnote">Deal戦略/戦術の共創, Governance設計</div>
+              </div>
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">Remote</div>
+                <div class="heat-cell-value">インサイドモデル</div>
+                <div class="metric-footnote">SMB・ミッドマーケット向けスケーラブル営業</div>
+              </div>
+              <div class="heat-cell">
+                <div class="heat-cell-label">Analytics</div>
+                <div class="heat-cell-value">インサイト刷新</div>
+                <div class="metric-footnote">データ×現場感で優先順位付け</div>
+              </div>
+              <div class="heat-cell">
+                <div class="heat-cell-label">Knowledge</div>
+                <div class="heat-cell-value">ナレッジ化</div>
+                <div class="metric-footnote">Best Practiceの標準化と展開</div>
+              </div>
+            </div>
+
+            <div class="legend">
+              <div class="legend-dots">
+                <div class="legend-item">
+                  <span class="legend-dot primary"></span><span>FY26重点領域</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot.neutral legend-dot"></span><span>継続強化領域</span>
+                </div>
+              </div>
+              <div>投資判断は「スケールポテンシャル」を軸に議論可能</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3: Snapshot by stream -->
+        <div class="panel panel-muted">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              ワークストリーム別 スナップショット
+            </div>
+            <div class="panel-tag">Snapshot</div>
+          </div>
+          <div class="panel-body">
+            <div class="metric-grid">
+              <div class="metric">
+                <div class="metric-label">RR</div>
+                <div class="metric-value">
+                  Focus
+                  <span class="metric-unit">Key Deals / Accounts</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-inner" style="width: 72%;"></div>
+                </div>
+                <div class="metric-footnote">アカウントプラン・Dealレビューの標準化を推進中</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Remote Sales</div>
+                <div class="metric-value">
+                  Scale
+                  <span class="metric-unit">SMB / Mid</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-inner" style="width: 65%;"></div>
+                </div>
+                <div class="metric-footnote">カバレッジ拡大とプレイブック整備を並行実施</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Analytics</div>
+                <div class="metric-value">
+                  Enable
+                  <span class="metric-unit">Data → Action</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-inner" style="width: 60%;"></div>
+                </div>
+                <div class="metric-footnote">「見える化」から「動かす」アナリティクスへ</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Knowledge</div>
+                <div class="metric-value">
+                  Codify
+                  <span class="metric-unit">Best Practices</span>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-inner" style="width: 55%;"></div>
+                </div>
+                <div class="metric-footnote">Japan版アセットの統合とガバナンス整備</div>
+              </div>
+            </div>
+
+            <div class="mini-tag-row">
+              <div class="mini-tag">Deal支援</div>
+              <div class="mini-tag">アカウントプランニング</div>
+              <div class="mini-tag">プレイブック</div>
+              <div class="mini-tag">キャンペーン連動</div>
+              <div class="mini-tag">ダッシュボード</div>
+              <div class="mini-tag">トレーニング / Enablement</div>
+            </div>
+
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">チームとしての一体感：</span>
+                  各ストリームが個別ではなく、「1つのCustomer Journey」を起点に設計。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">Mgmtに期待したいこと：</span>
+                  優先アカウント・KPIの明確化と、クロスファンクション連携の後押し。
+                </div>
+              </div>
+            </div>
+
+            <div class="status-chips">
+              <div class="status-chip.success">VALUE CREATION</div>
+              <div class="status-chip.warning">SCALING</div>
+              <div class="status-chip.info">MGMT ALIGNMENT</div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="meta">
-        <span class="meta-pill">Executive summary</span>
-        <div class="meta-divider"></div>
-        <div>
-          <span class="meta-label">Audience:</span>
-          <span class="meta-value">Japan Mgmt / BU Leaders</span>
+    </section>
+
+    <!-- Slide 2: RR & Remote Sales -->
+    <section class="slide" data-index="1">
+      <div class="slide-header">
+        <div class="slide-title-block">
+          <div class="eyebrow">
+            <span>Execution Pillar</span>
+            <span>/ RR & Remote Sales</span>
+          </div>
+          <div class="slide-title">
+            REVENUE
+            <span class="slide-title-accent">READINESS</span>
+            ＆ REMOTE SALES
+          </div>
         </div>
-        <div class="meta-divider"></div>
-        <div>
-          <span class="meta-label">Period:</span>
-          <span class="meta-value">FY26 Planning (XD-led)</span>
+        <div class="slide-meta">
+          <span class="meta-pill">Pipeline & Win Rate</span>
+          <span class="divider"></span>
+          <span>Key execution engines</span>
         </div>
       </div>
-    </header>
 
-    <main class="content">
-      <!-- Left: Main narrative -->
-      <section class="panel">
-        <header class="panel-header">
-          <div>
-            <div class="panel-kicker">XD team / Japan</div>
-            <h1 class="panel-title">
-              <span class="highlight">顧客起点でFY26の成長をデザイン</span>し、
-              ビジネスインパクトに直結する体験ロードマップを構築
-            </h1>
-            <p class="panel-subtitle">
-              XD team をハブに、CIF フレームワークを活用して「顧客インサイト → 事業戦略 → 実行ロードマップ」を一気通貫で設計。
-              クロスファンクショナル連携を強化し、再現性のある価値創出プロセスを定着させる。
-            </p>
+      <div class="slide-body">
+        <!-- RR -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Revenue Readiness（RR）
+            </div>
+            <div class="status-chips">
+              <div class="status-chip.success">Core</div>
+              <div class="status-chip.info">Deal / Account Level</div>
+            </div>
           </div>
-          <div class="quarter-tag">
-            FY26 Planning
-          </div>
-        </header>
-
-        <div class="story-grid">
-          <div class="story-column">
-            <article class="story-block">
-              <div class="story-label"><span>01</span> Strategic Outcome</div>
-              <div class="story-title">
-                重点セグメントごとの「勝ち筋」を定義し、
-                全社の意思決定を顧客価値基準へシフト
-              </div>
-              <p class="story-text">
-                XD team がリードし、優先セグメント別に「顧客価値・成功指標・体験原則」を整理。
-                CIF をベースに事業・営業・プロダクトの判断軸を揃え、
-                分断された施策から「1つの顧客ストーリー」に統合。
-              </p>
-              <div class="story-chip-row">
-                <span class="chip">
-                  <span class="chip-dot"></span> Customer Value Framework
-                </span>
-                <span class="chip">
-                  <span class="chip-dot"></span> XD-led cross BU alignment
-                </span>
-              </div>
-            </article>
-
-            <article class="story-block">
-              <div class="story-label"><span>02</span> Operating Model</div>
-              <div class="story-title">
-                CIF を軸にした「再現可能な」顧客共創プロセスを設計
-                <span class="priority-tag">XD 主導</span>
-              </div>
-              <p class="story-text">
-                ワークショップ、フィールドリサーチ、ジャーニーデザインを標準化し、
-                「案件ごとの属人対応」から「パターン化された顧客共創エンジン」へ転換。
-                Mgmt には、どこに投資すれば顧客価値と収益が最大化されるかを
-                可視化して提示。
-              </p>
-              <div class="impact-grid">
-                <div class="impact-item">
-                  <div class="impact-label">Decision speed</div>
-                  <div class="impact-value">
-                    Plan → Exec のリードタイム短縮
-                    <span class="impact-badge">High impact</span>
-                  </div>
-                </div>
-                <div class="impact-item">
-                  <div class="impact-label">Governance</div>
-                  <div class="impact-value">
-                    CIF ベースの共通レビューゲート
-                  </div>
+          <div class="panel-body">
+            <div class="panel-key">
+              戦略アカウントに対し、「勝ち筋」を共創し、チームとしての実行力を底上げ。
+            </div>
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">アカウントプランニング支援：</span>
+                  ゴール・ステークホルダー・課題仮説・バリューメッセージを整理し、プランを「見える化」。
                 </div>
               </div>
-            </article>
-          </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">Dealレビュー：</span>
+                  必要なコンタクト・検証すべきリスク・次の1手まで具体化したレビューを実施。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">グローバルアセットのローカライズ：</span>
+                  グローバルのベストプラクティスをJapan向けに翻訳・チューニングし、活用しやすい形に整理。
+                </div>
+              </div>
+            </div>
 
-          <div class="story-column">
-            <article class="story-block">
-              <div class="story-label"><span>03</span> Visible Impact</div>
-              <div class="story-title">
-                重点アカウント × 重点ユースケースでの「見える成果」を創出
+            <div class="metric-grid">
+              <div class="metric">
+                <div class="metric-label">インパクト</div>
+                <div class="metric-value">
+                  Win率
+                  <span class="metric-unit">向上期待</span>
+                </div>
+                <div class="metric-footnote">「型化」による再現性アップ</div>
               </div>
-              <p class="story-text">
-                XD team がハンズオンで関わるパイロット案件を選定し、
-                FY26 上期で「顧客価値・売上・組織学習」の3つの成果を同時に検証。
-                成功パターンをテンプレート化し、他アカウントへ展開可能なアセットとして蓄積。
-              </p>
-              <div class="story-metric">
-                <span class="story-metric-main">3〜5</span>
-                <span class="story-metric-sub">
-                  件の代表案件で「顧客共創モデル」を実証し、
-                  FY26 Mgmt review にて共有
-                </span>
+              <div class="metric">
+                <div class="metric-label">対象</div>
+                <div class="metric-value">
+                  Strat / Enterprise
+                  <span class="metric-unit">中心</span>
+                </div>
+                <div class="metric-footnote">高ポテンシャル案件を優先支援</div>
               </div>
-              <div class="risk-note">
-                <span class="risk-dot"></span>
-                <span>
-                  リスクは「案件ドリブンの場当たり運用」に戻ること。
-                  XD team が設計責任を持ち、CIF に沿ったレビューとナレッジ化を牽引。
-                </span>
-              </div>
-            </article>
+            </div>
           </div>
         </div>
-      </section>
 
-      <!-- Right: Focus & Scorecard -->
-      <section class="panel panel-right">
-        <header>
-          <div class="focus-kicker">What XD team is driving</div>
-          <h2 class="focus-title">
-            FY26 に向けて XD team が Mgmt と共有したい「3つの約束」
-          </h2>
-        </header>
+        <!-- Remote Sales -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Remote Sales
+            </div>
+            <div class="status-chips">
+              <div class="status-chip.warning">Scaling</div>
+              <div class="status-chip.info">SMB / Mid</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-key">
+              リモート主体の営業モデルで、カバレッジ拡大とパイプライン創出をスケール。
+            </div>
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">インサイド型営業プロセス：</span>
+                  ターゲット設定〜アプローチ〜フォローアップまで、デジタル前提のプロセスを設計。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">プレイブック化：</span>
+                  「どの顧客に、いつ、何を、どう届けるか」をテンプレート化し、再現性のある運用を実現。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">マーケ/フィールドとの連携：</span>
+                  キャンペーンやイベントと連動し、フォローアップの抜け漏れを防止。
+                </div>
+              </div>
+            </div>
 
-        <div class="focus-pill-row">
-          <span class="focus-pill main">① 顧客インサイトを一元化し、戦略レベルへ昇華</span>
-          <span class="focus-pill">② 優先セグメントごとに勝ちパターンを設計</span>
-          <span class="focus-pill">③ 成果が見えるパイロット案件を創出・展開</span>
+            <div class="metric-grid">
+              <div class="metric">
+                <div class="metric-label">狙い</div>
+                <div class="metric-value">
+                  Coverage
+                  <span class="metric-unit">最大化</span>
+                </div>
+                <div class="metric-footnote">未開拓セグメントへのアプローチ強化</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">運用</div>
+                <div class="metric-value">
+                  Playbook
+                  <span class="metric-unit">ドリブン</span>
+                </div>
+                <div class="metric-footnote">人依存から仕組み依存へシフト</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <section class="scorecard">
-          <div class="score-header">
-            <div class="score-title">XD-led CIF scorecard (FY26 view)</div>
-            <div class="score-badge">
-              <span class="score-dot"></span>
-              On track with Mgmt support
+        <!-- Mgmt ask -->
+        <div class="panel panel-muted">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Mgmtへの依頼事項（RR & Remote）
             </div>
+            <div class="panel-tag">Ask</div>
           </div>
-
-          <div class="score-grid">
-            <div class="score-col">
-              <div class="score-item">
-                <span class="score-item-label">CIF adoption in key segments</span>
-                <span class="score-item-value">
-                  <span class="score-main-number">4 / 5</span>
-                  <span class="score-pill-small">XD-led</span>
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-item-label">XD-facilitated sessions</span>
-                <span class="score-item-value">
-                  <span class="score-main-number">+30%</span>
-                  <span class="score-delta">YoY</span>
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-item-label">Mgmt visibility of CX roadmap</span>
-                <span class="score-item-value">
-                  <span class="score-main-number">High</span>
-                </span>
-              </div>
-            </div>
-            <div class="score-col">
-              <div class="score-item">
-                <span class="score-item-label">Customer-backed proposals</span>
-                <span class="score-item-value">
-                  <span class="score-main-number">+20%</span>
-                  <span class="score-delta">with CIF evidence</span>
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-item-label">Re-usable design assets</span>
-                <span class="score-item-value">
-                  <span class="score-main-number">15+</span>
-                  <span class="score-delta">journeys / playbooks</span>
-                </span>
-              </div>
-              <div class="score-item">
-                <span class="score-item-label">Risk of fragmentation</span>
-                <span class="score-item-value">
-                  <span class="score-main-number">Mitigated</span>
-                  <span class="score-delta neg">with XD gate</span>
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div class="score-bullet-list">
-            <ul>
-              <li>
-                <span class="score-bullet-dot"></span>
-                <span>XD team は「CIF のオーナー」として、顧客インサイトと体験ロードマップの一貫性を管理。</span>
-              </li>
-              <li>
-                <span class="score-bullet-dot"></span>
-                <span>Mgmt には「どの顧客価値に投資すべきか」が一目で分かるビューを定期的に提供。</span>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="roadmap">
-          <div class="roadmap-header">
-            <div class="roadmap-title">Next 90 days – XD action roadmap</div>
-            <div class="roadmap-pill">Immediate focus</div>
-          </div>
-          <div class="roadmap-lane">
-            <div class="lane-item">
-              <div>
-                <div class="lane-label">Phase 01</div>
-                <div class="lane-main">
-                  重点セグメントごとの CIF リフレッシュと
-                  「勝ち筋」仮説の整理
+          <div class="panel-body">
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  優先アカウント・セグメントの明確化とアサインメントの後押し
                 </div>
               </div>
-              <span class="lane-tag">Week 1–4</span>
-            </div>
-            <div class="lane-item">
-              <div>
-                <div class="lane-label">Phase 02</div>
-                <div class="lane-main">
-                  Mgmt / BU と共同で CX ロードマップ合意形成
-                  （レビューセッション設計）
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  RR/Remoteの取り組みを「チームとしての標準」にするためのメッセージ発信
                 </div>
               </div>
-              <span class="lane-tag sec">Week 5–8</span>
-            </div>
-            <div class="lane-item">
-              <div>
-                <div class="lane-label">Phase 03</div>
-                <div class="lane-main">
-                  パイロット案件の立ち上げと
-                  インパクト測定フレームの実装
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  成果指標（例：Win率、リード〜パイプライン転換率）を共通KPIとして合意
                 </div>
               </div>
-              <span class="lane-tag">Week 9–12</span>
+            </div>
+            <div class="mini-tag-row">
+              <div class="mini-tag">優先度付け</div>
+              <div class="mini-tag">リーダーシップメッセージ</div>
+              <div class="mini-tag">KPIアラインメント</div>
             </div>
           </div>
-        </section>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-left">
-        <span>XD Executive Summary – CIF Japan FY26</span>
-        <span class="footer-divider"></span>
-        <span>Use this slide as the opening summary for Mgmt briefing</span>
+        </div>
       </div>
-      <div class="footer-right">
-        <span class="footer-pill">For internal Mgmt use only</span>
-        <span class="page-indicator">
-          <span class="page-current">Slide 1</span>
-          <span class="page-total">/ CIF XDJP FY26 Deck</span>
-        </span>
+    </section>
+
+    <!-- Slide 3: Analytics & Knowledge -->
+    <section class="slide" data-index="2">
+      <div class="slide-header">
+        <div class="slide-title-block">
+          <div class="eyebrow">
+            <span>Enablement Pillar</span>
+            <span>/ Analytics & Knowledge</span>
+          </div>
+          <div class="slide-title">
+            DATA
+            <span class="slide-title-accent">& KNOWLEDGE</span>
+            ENABLEMENT
+          </div>
+        </div>
+        <div class="slide-meta">
+          <span class="meta-pill">Insight → Action → Learning</span>
+          <span class="divider"></span>
+          <span>Feedback Loop</span>
+        </div>
       </div>
-    </footer>
-  </section>
+
+      <div class="slide-body">
+        <!-- Analytics -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Analytics
+            </div>
+            <div class="status-chips">
+              <div class="status-chip.info">Insight</div>
+              <div class="status-chip.success">To Action</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-key">
+              「何が起きているか」だけでなく、「何をすべきか」まで落とし込むアナリティクス。
+            </div>
+
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  アカウント・セグメント別に、活動量・パイプライン・Win率を可視化し、
+                  フォーカスポイントを特定。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  RR/Remoteと連携し、「どのアカウントにどのアクションを打つか」を
+                  共同で設計。
+                </div>
+              </div>
+            </div>
+
+            <div class="metric-grid">
+              <div class="metric">
+                <div class="metric-label">役割</div>
+                <div class="metric-value">
+                  Single
+                  <span class="metric-unit">Source of Truth</span>
+                </div>
+                <div class="metric-footnote">分断された指標を一元的に管理</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">成果物</div>
+                <div class="metric-value">
+                  Dashboard
+                  <span class="metric-unit">＋Play</span>
+                </div>
+                <div class="metric-footnote">見るだけではなく「動ける」形式に</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Knowledge -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Knowledge / Enablement
+            </div>
+            <div class="status-chips">
+              <div class="status-chip.warning">Building</div>
+              <div class="status-chip.info">Codification</div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-key">
+              現場の成功パターンを「アセット」として整理し、Japan全体に展開。
+            </div>
+
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  RR/Remoteで得られたベストプラクティスを、テンプレート・
+                  ガイド・トレーニングに落とし込み。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  グローバルコンテンツを日本語化・ローカライズし、
+                  現場がすぐに使える形で配布。
+                </div>
+              </div>
+            </div>
+
+            <div class="metric-grid">
+              <div class="metric">
+                <div class="metric-label">対象</div>
+                <div class="metric-value">
+                  全Sales
+                  <span class="metric-unit">＋CS</span>
+                </div>
+                <div class="metric-footnote">個人の知見から組織の知へ</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">フォーマット</div>
+                <div class="metric-value">
+                  Hub
+                  <span class="metric-unit">＋Training</span>
+                </div>
+                <div class="metric-footnote">コンテンツとEnablementの一体運用</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feedback Loop & Ask -->
+        <div class="panel panel-muted">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Feedback Loop と Mgmtの役割
+            </div>
+            <div class="panel-tag">Loop</div>
+          </div>
+          <div class="panel-body">
+            <div class="heatmap">
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">1 INSIGHT</div>
+                <div class="heat-cell-value">Analytics</div>
+                <div class="metric-footnote">課題・機会を可視化</div>
+              </div>
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">2 ACTION</div>
+                <div class="heat-cell-value">RR / Remote</div>
+                <div class="metric-footnote">具体アクションに落とし込み</div>
+              </div>
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">3 LEARN</div>
+                <div class="heat-cell-value">Review</div>
+                <div class="metric-footnote">何が効いたかを検証</div>
+              </div>
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">4 SCALE</div>
+                <div class="heat-cell-value">Knowledge</div>
+                <div class="metric-footnote">Best Practiceとして展開</div>
+              </div>
+            </div>
+
+            <div class="legend">
+              <div class="legend-dots">
+                <div class="legend-item">
+                  <span class="legend-dot.success"></span><span>Value Creation Loop</span>
+                </div>
+              </div>
+              <div>このループが回るほど、Japan全体の営業力が底上げされる</div>
+            </div>
+
+            <div class="bullets" style="margin-top: 6px;">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  Mgmtには、このループを「共通言語」として推進してもらいたい。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  KPI（例：利用率、トレーニング参加、アセット活用実績）を
+                  チームマネジメントの一部として組み込むことが重要。
+                </div>
+              </div>
+            </div>
+
+            <div class="mini-tag-row">
+              <div class="mini-tag">共通言語</div>
+              <div class="mini-tag">KPI連動</div>
+              <div class="mini-tag">継続レビュー</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 4: Summary & Next Step -->
+    <section class="slide" data-index="3">
+      <div class="slide-header">
+        <div class="slide-title-block">
+          <div class="eyebrow">
+            <span>Wrap-Up</span>
+            <span>/ Next Step</span>
+          </div>
+          <div class="slide-title">
+            XD TEAM
+            <span class="slide-title-accent">AS A GROWTH ENGINE</span>
+          </div>
+        </div>
+        <div class="slide-meta">
+          <span class="meta-pill">Summary</span>
+          <span class="divider"></span>
+          <span>Where we need Mgmt</span>
+        </div>
+      </div>
+
+      <div class="slide-body">
+        <!-- Summary -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              XDチームからのメッセージ
+            </div>
+            <div class="panel-tag">Summary</div>
+          </div>
+          <div class="panel-body">
+            <div class="panel-key">
+              XDは「個別支援チーム」ではなく、Japan全体の成長を支える
+              <strong>Revenue Engine / Enablement Engine</strong>として機能することを目指しています。
+            </div>
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  RR・Remote・Analytics・Knowledgeを通じて、売上に直結する活動を「設計」「実行」「仕組み化」。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  現場とマネジメントの間の「翻訳者」として、意思決定を支援。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  グローバルとの橋渡し役として、Japanのニーズを反映した形でのアセット調整を実施。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mgmt Alignment -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Mgmtとのアラインメント論点
+            </div>
+            <div class="panel-tag">Discussion</div>
+          </div>
+          <div class="panel-body">
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  FY26の優先アカウント/セグメントと、XDのリソース配分の考え方
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  成果指標（KPI）の設定と、定例レビューの場づくり
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text bullet-strong">
+                  他部門（Sales/CS/Marketing/Ops）との連携の仕方と、期待役割
+                </div>
+              </div>
+            </div>
+
+            <div class="heatmap">
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">1 PRIORITY</div>
+                <div class="heat-cell-value">どこに集中するか</div>
+              </div>
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">2 METRIC</div>
+                <div class="heat-cell-value">何で測るか</div>
+              </div>
+              <div class="heat-cell hot">
+                <div class="heat-cell-label">3 GOVERN</div>
+                <div class="heat-cell-value">どう運営するか</div>
+              </div>
+              <div class="heat-cell">
+                <div class="heat-cell-label">4 SCALE</div>
+                <div class="heat-cell-value">どう広げるか</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Step -->
+        <div class="panel panel-muted">
+          <div class="panel-header">
+            <div class="panel-title">
+              <span class="panel-title-dot"></span>
+              Next Step （提案）
+            </div>
+            <div class="panel-tag">Next</div>
+          </div>
+          <div class="panel-body">
+            <div class="bullets">
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">① Mgmt＋XD＋Key Salesでのワークショップ：</span>
+                  FY26の優先アカウントとXDの関わり方を短時間ですり合わせ。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">② 四半期ごとのレビュー：</span>
+                  RR/Remote/Analytics/Knowledge毎に、実績・学び・スケール案を共有。
+                </div>
+              </div>
+              <div class="bullet">
+                <div class="bullet-dot"></div>
+                <div class="bullet-text">
+                  <span class="bullet-strong">③ XDの位置づけの明文化：</span>
+                  組織としての役割と、現場からの期待/依頼の窓口を明確化。
+                </div>
+              </div>
+            </div>
+
+            <div class="mini-tag-row">
+              <div class="mini-tag">ワークショップ</div>
+              <div class="mini-tag">Quarterly Review</div>
+              <div class="mini-tag">Role Definition</div>
+            </div>
+
+            <div class="legend" style="margin-top: 10px;">
+              <div class="legend-dots">
+                <div class="legend-item">
+                  <span class="legend-dot.primary legend-dot"></span><span>XDチーム主導</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot.neutral legend-dot"></span><span>Mgmt主導</span>
+                </div>
+              </div>
+              <div>「仕組み×人」の両輪で、FY26の成長エンジンとして機能させる</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="deck-footer">
+    <div class="deck-footer-left">
+      <span>XD JAPAN / CIF FY26</span>
+      <div class="divider"></div>
+      <span class="hint-small">Use ← → keys to navigate</span>
+    </div>
+    <div class="deck-footer-right">
+      <div class="progress-dots">
+        <div class="progress-dot active" data-dot="0"></div>
+        <div class="progress-dot" data-dot="1"></div>
+        <div class="progress-dot" data-dot="2"></div>
+        <div class="progress-dot" data-dot="3"></div>
+      </div>
+      <div class="pager">
+        <span class="pager-current" id="pager-current">1</span>
+        <span>/</span>
+        <span id="pager-total">4</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dots = Array.from(document.querySelectorAll('.progress-dot'));
+    const pagerCurrent = document.getElementById('pager-current');
+    const pagerTotal = document.getElementById('pager-total');
+    let current = 0;
+    const total = slides.length;
+    pagerTotal.textContent = total.toString();
+
+    function showSlide(index) {
+      if (index < 0 || index >= total) return;
+      slides.forEach((s, i) => {
+        if (i === index) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+      dots.forEach((d, i) => {
+        if (i === index) {
+          d.classList.add('active');
+        } else {
+          d.classList.remove('active');
+        }
+      });
+      current = index;
+      pagerCurrent.textContent = (current + 1).toString();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        e.preventDefault();
+        showSlide((current + 1) % total);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        showSlide((current - 1 + total) % total);
+      } else if (e.key.toLowerCase() === 'f') {
+        const elem = document.documentElement;
+        if (!document.fullscreenElement) {
+          if (elem.requestFullscreen) elem.requestFullscreen();
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+    });
+
+    dots.forEach((dot, i) => {
+      dot.style.cursor = 'pointer';
+      dot.addEventListener('click', () => showSlide(i));
+    });
+  })();
+</script>
 </body>
 </html>
