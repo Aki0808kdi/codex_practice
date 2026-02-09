@@ -1,0 +1,338 @@
+import React, { useState } from 'react';
+import { 
+  Search, 
+  Truck, 
+  MapPin, 
+  RefreshCcw, 
+  Wrench, 
+  AlertCircle, 
+  FileText, 
+  MessageCircle, 
+  Phone, 
+  ChevronRight, 
+  Menu, 
+  ShoppingBag, 
+  User, 
+  Heart,
+  Store,
+  MessageSquare
+} from 'lucide-react';
+
+const IkeaSupportPage = () => {
+  return (
+    <div className="font-sans text-[#111] bg-white">
+      {/* Navigation Bar Mock */}
+      <nav className="border-b border-gray-200 sticky top-0 bg-white z-50">
+        <div className="max-w-[1440px] mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <button className="p-2 hover:bg-gray-100 rounded-full">
+              <Menu size={24} />
+            </button>
+            {/* IKEA Logo Mock */}
+            <div className="w-[90px] h-[36px] bg-[#0058a3] relative">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[18px] h-[18px] bg-[#ffdb00] rounded-full absolute -top-1 -left-1 opacity-0"></div>
+                <span className="text-[#ffdb00] font-bold text-2xl tracking-tighter leading-none select-none">IKEA</span>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex-1 max-w-2xl mx-8 hidden md:block">
+            <div className="relative">
+              <input 
+                type="text" 
+                placeholder="商品、コンテンツを検索" 
+                className="w-full bg-[#f5f5f5] hover:bg-[#dfdfdf] py-3 px-6 rounded-full pl-12 outline-none focus:ring-2 focus:ring-[#0058a3] transition-colors"
+              />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" size={20} />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button className="p-2 hover:bg-gray-100 rounded-full flex items-center gap-2">
+              <span className="text-sm font-bold hidden md:block">郵便番号を入力</span>
+            </button>
+            <button className="p-2 hover:bg-gray-100 rounded-full"><User size={20} /></button>
+            <button className="p-2 hover:bg-gray-100 rounded-full"><Heart size={20} /></button>
+            <button className="p-2 hover:bg-gray-100 rounded-full"><ShoppingBag size={20} /></button>
+          </div>
+        </div>
+      </nav>
+
+      <main className="max-w-[1200px] mx-auto px-6 md:px-12 py-12">
+        {/* 1. FAQ Search Bar Section */}
+        <section className="mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">お問い合わせ・FAQ</h1>
+          <p className="text-sm text-gray-600 mb-8">よくある質問の検索、セルフサービスでの手続き、お問い合わせへのご案内。</p>
+          
+          <div className="relative max-w-3xl">
+            <input 
+              type="text" 
+              placeholder="質問やキーワードで検索" 
+              className="w-full bg-[#f5f5f5] hover:bg-[#e5e5e5] py-5 px-6 rounded-full pl-14 text-lg outline-none focus:ring-2 focus:ring-black transition-colors"
+            />
+            <Search className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-600" size={24} />
+          </div>
+        </section>
+
+        {/* 2. Self Service Support Section */}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold mb-4">セルフサービスサポート</h2>
+          <p className="text-sm text-gray-600 mb-8">
+            お問い合わせの前に、以下のセルフサービスをご利用いただくと、お客様自身でスムーズに解決・確認できる場合があります。<br/>
+            待ち時間なく、いつでも確認・手続きが可能です。
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <SelfServiceCard 
+              icon={<Truck size={32} />} 
+              title="注文の管理" 
+              desc="配送日時の変更や注文のキャンセルが行えます。" 
+              linkText="詳しくみる"
+            />
+            <SelfServiceCard 
+              icon={<Store size={32} />} 
+              title="在庫確認の方法" 
+              desc="各店舗の在庫やオンライン購入時の在庫の確認方法を紹介。" 
+              linkText="詳しくみる"
+            />
+            <SelfServiceCard 
+              icon={<MessageSquare size={32} />} 
+              title="忘れ物・落とし物" 
+              desc="拾得物はすべて遺失物の管理サイトのiLost（アイロスト）にて確認できます。" 
+              linkText="詳しくみる"
+            />
+            <SelfServiceCard 
+              icon={<Wrench size={32} />} 
+              title="スペアパーツの注文" 
+              desc="商品に同梱のネジ等をご注文し、ポスト投函でお受け取りいただけます。" 
+              linkText="詳しくみる"
+            />
+            <SelfServiceCard 
+              icon={<RefreshCcw size={32} />} 
+              title="ダメージ商品の交換" 
+              desc="小物配送で受け取られた商品にダメージがあった場合、購入履歴から返品交換の手配ができます。" 
+              linkText="手続きをする"
+            />
+            <SelfServiceCard 
+              icon={<FileText size={32} />} 
+              title="お問い合わせ案件" 
+              desc="返金などの手配進行状況は、購入履歴にて確認いただけます。" 
+              linkText="確認する"
+            />
+          </div>
+        </section>
+
+        <hr className="border-gray-200 mb-16" />
+
+        {/* 3. Chat Section */}
+        <section className="mb-20">
+          <div className="flex gap-6 items-start">
+            <div className="flex-shrink-0 bg-[#ffdb00] p-3 rounded-full">
+              <MessageCircle size={32} className="text-black fill-current" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-3">チャット</h2>
+              <p className="text-sm leading-relaxed max-w-2xl mb-6">
+                チャットボットにお気軽にお問い合わせください。チャットボットのBillieが24時間対応いたします。<br/>
+                <span className="text-[#e00751] font-bold text-xs mt-2 block">※チャットボットからオペレーターへの転送はしておりません。</span>
+              </p>
+              
+              <button className="bg-black text-white hover:bg-gray-800 font-bold py-3 px-8 rounded-full text-sm transition-transform active:scale-95">
+                チャットを始める
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* 4. FAQ Section */}
+        <section className="mb-20">
+          <h2 className="text-2xl font-bold mb-8">よくある質問</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+             <FAQCard title="IKEAの返品交換条件について教えてください。" />
+             <FAQCard title="利用できる支払い方法にはどのようなものがありますか？" />
+             <FAQCard title="イケア店舗の在庫数を確認したいのですが。" />
+             <FAQCard title="配送料金はいくらですか？" />
+             <FAQCard title="不要になった家具を引き取ってもらえますか？" />
+             <FAQCard title="商品に不具合がありました。どうすればいいですか？" />
+             <FAQCard title="領収書の発行方法を教えてください。" />
+             <FAQCard title="パスワードを忘れました。" />
+          </div>
+        </section>
+
+        <hr className="border-gray-200 mb-16" />
+
+        {/* 5. Planning Services */}
+        <section className="mb-20">
+          <h2 className="text-lg font-bold mb-6">プランニングサービスのご予約について</h2>
+          
+          <div className="bg-white border-2 border-gray-100 p-8 rounded-lg shadow-sm flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1">
+              <div className="flex items-start gap-4 mb-3">
+                 <div className="flex-shrink-0 bg-[#f5f5f5] p-3 rounded-full">
+                    <FileText size={24} className="text-black" />
+                 </div>
+                 <div>
+                    <h3 className="text-lg font-bold mb-2">ご予約はWebサイトからのみ承っております</h3>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      プランニングサービスのご予約および空き状況の確認は、<span className="font-bold">Webサイト限定</span>となっており、お電話やチャット窓口では対応しておりません。<br/>
+                      ご予約をご希望のお客様は、以下のボタンより予約ページへお進みください。
+                    </p>
+                 </div>
+              </div>
+            </div>
+            
+            <div className="flex-shrink-0 w-full md:w-auto">
+              <a href="#" className="flex items-center justify-center gap-2 w-full md:w-auto bg-[#0058a3] hover:bg-[#004f93] text-white font-bold py-4 px-8 rounded-full transition-transform active:scale-95 shadow-md">
+                <span>予約ページへ進む</span>
+                <ChevronRight size={18} />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Customer Harassment Policy */}
+        <section className="mb-20">
+          <h2 className="text-xl font-bold mb-4">カスタマーハラスメント（カスハラ）について</h2>
+          <div className="bg-gray-50 border-l-4 border-gray-300 p-6">
+            <p className="text-sm text-gray-700 leading-relaxed">
+              イケア・ジャパンでは、従業員が安心して働ける環境を守るため、カスタマーハラスメントに対する基本方針を策定しています。
+              暴言、脅迫、過度な要求などの行為が確認された場合、対応をお断りさせていただくことがございます。
+              すべてのお客様に公平で質の高いサービスを提供するため、ご理解とご協力をお願い申し上げます。
+            </p>
+            <div className="mt-4">
+              <a href="#" className="text-sm text-[#0058a3] hover:underline flex items-center gap-1 font-bold">
+                基本方針を詳しく見る <ChevronRight size={14} />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. Phone & Box Links */}
+        <section className="mb-12">
+          <div className="flex flex-col md:flex-row gap-12">
+            {/* Phone */}
+            <div className="flex gap-6 items-start flex-1">
+              <div className="flex-shrink-0 bg-[#ffdb00] p-3 rounded-full">
+                <Phone size={32} className="text-black fill-current" />
+              </div>
+              <div>
+                <h2 className="text-xl font-bold mb-3">お電話</h2>
+                <p className="text-sm text-gray-600 mb-4">
+                  お急ぎの場合や、チャット・Webで解決しない場合はお電話でも承ります。<br/>
+                  <span className="text-xs text-gray-500">※混雑時はつながりにくい場合がございます。</span>
+                </p>
+                <div className="space-y-6 text-sm font-bold mb-6">
+                  <div>
+                    <p className="text-2xl mb-1">050-4560-0494</p>
+                    <p className="font-normal text-gray-600">受付時間：10:00～18:00</p>
+                  </div>
+                  <div>
+                    <p className="mb-1">法人のお客さま専用窓口 <span className="text-lg">050-4560-0496</span></p>
+                    <p className="font-normal text-gray-600">受付時間：平日・土10:00～18:00 ※日・祝日をのぞく</p>
+                  </div>
+                </div>
+                <div className="text-xs text-gray-500 space-y-2 leading-relaxed">
+                  <p>電話番号のかけ間違いが増えています。IP電話局番「050」とともに、番号をよくお確かめのうえおかけください。</p>
+                  <p>通話料金は全国一律（固定電話は1分3.6円　携帯電話は30秒21円）</p>
+                  <p>店舗に直接おつなぎすることはできかねます。</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Box / Links */}
+            <div className="flex-1 border-t md:border-t-0 md:border-l border-gray-200 pt-8 md:pt-0 md:pl-12">
+               <h3 className="font-bold mb-4">その他のお問い合わせ・リンク</h3>
+               <ul className="space-y-4">
+                 <li>
+                   <a href="#" className="group flex items-center justify-between p-4 border border-gray-300 rounded hover:border-black transition-colors">
+                     <span className="font-bold text-sm">BOX</span>
+                     <div className="bg-black rounded-full p-1 group-hover:bg-[#0058a3] transition-colors">
+                        <ChevronRight size={16} className="text-white" />
+                     </div>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="#" className="group flex items-center justify-between p-4 border border-gray-300 rounded hover:border-black transition-colors">
+                     <span className="font-bold text-sm">ストア（店舗）情報・アクセス</span>
+                     <div className="bg-black rounded-full p-1 group-hover:bg-[#0058a3] transition-colors">
+                        <ChevronRight size={16} className="text-white" />
+                     </div>
+                   </a>
+                 </li>
+               </ul>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      {/* Footer Mock */}
+      <footer className="bg-[#f5f5f5] py-12 px-6">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+           <div>
+             <h4 className="font-bold mb-4">IKEA Family</h4>
+             <p className="text-sm text-gray-600 mb-4">入会金・年会費無料。メンバー限定価格や特典がいっぱい。</p>
+             <button className="bg-white border border-gray-300 px-4 py-2 rounded-full text-sm font-bold hover:border-black">詳しく見る</button>
+           </div>
+           <div>
+             <h4 className="font-bold mb-4">ヘルプ＆サポート</h4>
+             <ul className="text-sm space-y-2 text-gray-600">
+               <li>配送について</li>
+               <li>返品・交換</li>
+               <li>組み立てサービス</li>
+               <li>買い取りサービス</li>
+             </ul>
+           </div>
+           <div>
+             <h4 className="font-bold mb-4">イケアについて</h4>
+             <ul className="text-sm space-y-2 text-gray-600">
+               <li>イケアの理念</li>
+               <li>サステナビリティ</li>
+               <li>採用情報</li>
+               <li>ニュースルーム</li>
+             </ul>
+           </div>
+           <div>
+             <h4 className="font-bold mb-4">IKEA for Business</h4>
+             <p className="text-sm text-gray-600 mb-4">法人・ビジネスオーナー様向けのサービス。</p>
+             <button className="bg-white border border-gray-300 px-4 py-2 rounded-full text-sm font-bold hover:border-black">法人会員登録</button>
+           </div>
+        </div>
+        <div className="max-w-[1200px] mx-auto border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+          <p>© Inter IKEA Systems B.V. 1999-2024</p>
+          <div className="flex gap-4 mt-4 md:mt-0">
+            <a href="#" className="hover:underline">プライバシーポリシー</a>
+            <a href="#" className="hover:underline">利用規約</a>
+            <a href="#" className="hover:underline">Cookieポリシー</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+// Sub-components
+const SelfServiceCard = ({ icon, title, desc, linkText }) => (
+  <div className="bg-[#f9f9f9] hover:bg-[#f0f0f0] p-6 flex flex-col items-center text-center rounded transition-colors cursor-pointer group h-full">
+    <div className="mb-4 text-black group-hover:scale-110 transition-transform duration-300">
+      {icon}
+    </div>
+    <h3 className="font-bold text-sm mb-2">{title}</h3>
+    <p className="text-xs text-gray-600 mb-4 flex-grow">{desc}</p>
+    <span className="text-xs font-bold underline decoration-1 underline-offset-2 group-hover:decoration-2">
+      {linkText}
+    </span>
+  </div>
+);
+
+const FAQCard = ({ title }) => (
+  <div className="bg-[#f5f5f5] hover:bg-[#dfdfdf] p-6 rounded flex flex-col justify-between h-40 transition-colors cursor-pointer group">
+    <h3 className="font-bold text-sm leading-snug">{title}</h3>
+    <div className="self-end bg-black rounded-full p-2 group-hover:bg-[#0058a3] transition-colors">
+      <ChevronRight size={16} className="text-white" />
+    </div>
+  </div>
+);
+
+export default IkeaSupportPage;
